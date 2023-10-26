@@ -1,0 +1,15 @@
+.button {
+	font-size: 12px;
+	color: #333333;
+	padding: 2px 10px;
+	border: 1px solid var(--grayBorder);
+	text-transform: uppercase;
+	line-height: 34px;
+	transition: all 0.2s var(--transition-cubic);
+	cursor: pointer;
+
+	&:hover {
+		background: var(--brown);
+		color: #fff;
+	}
+}

@@ -1,0 +1,22 @@
+.pagination {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 25px;
+	border-top: 1px solid var(--grayBorder);
+	margin-top: 14px;
+}
+
+.viewing {
+	display: flex;
+	align-items: center;
+	font-size: 13px;
+
+	> p {
+		margin-right: 7px;
+	}
+}
+
+.pages {
+	display: flex;
+	gap: 5px;
+}

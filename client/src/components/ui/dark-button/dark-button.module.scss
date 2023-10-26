@@ -1,0 +1,17 @@
+.button {
+	color: #fff;
+	background: var(--black);
+	transition: background 0.2s ease-in-out;
+	text-transform: uppercase;
+	font-size: 15px;
+	line-height: 1.6;
+	font-weight: 700;
+	min-width: 200px;
+	letter-spacing: -0.015em;
+	padding: 16px 32px;
+
+	&:hover {
+		background: var(--brown);
+		cursor: pointer;
+	}
+}

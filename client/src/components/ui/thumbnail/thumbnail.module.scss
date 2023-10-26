@@ -1,0 +1,12 @@
+.thumbnail {
+	display: inline-block;
+	position: relative;
+
+	&:hover a img {
+		transform: scale(1.05);
+	}
+
+	> a img {
+		transition: transform 0.2s var(--transition-cubic);
+	}
+}

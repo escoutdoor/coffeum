@@ -1,0 +1,17 @@
+.heading {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 16px;
+
+	> h1 {
+		font-size: 22px;
+		line-height: 1.6;
+		color: var(--black);
+	}
+
+	> svg {
+		font-size: 35px;
+		color: var(--grayBorder);
+	}
+}

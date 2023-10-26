@@ -1,0 +1,23 @@
+.item {
+	display: inline-block;
+	text-align: center;
+	border: 1px solid var(--grayBorder);
+	width: 33px;
+	height: 33px;
+	cursor: pointer;
+	line-height: 31.5px;
+	font-weight: 700;
+	color: #7b858a;
+	transition: all 0.2s var(--transition-cubic);
+
+	&.active {
+		color: var(--gray);
+		border-color: var(--gray);
+	}
+
+	&:hover {
+		background: #ccc;
+		color: var(--gray);
+		border-color: #ccc;
+	}
+}

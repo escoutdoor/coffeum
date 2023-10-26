@@ -1,0 +1,47 @@
+.header__item {
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ease-in-out;
+	opacity: 0.5;
+	color: var(--black);
+	cursor: pointer;
+
+	&.active {
+		opacity: 1;
+
+		> h1 {
+			color: var(--brown);
+		}
+	}
+
+	> h1 {
+		font-size: 20px;
+		line-height: 2.6;
+	}
+
+	&:hover {
+		opacity: 1;
+		color: var(--brown);
+	}
+
+	&.disabled {
+		pointer-events: none;
+
+		&:hover {
+			opacity: 0.5;
+			color: var(--black);
+		}
+	}
+
+	.icon {
+		opacity: 0.5;
+		font-size: 30px;
+		margin: 2px 10px 0 10px;
+		transition: opacity 0.3s ease-in-out;
+
+		&.active {
+			opacity: 1;
+			color: var(--brown);
+		}
+	}
+}

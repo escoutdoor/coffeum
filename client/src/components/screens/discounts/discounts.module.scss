@@ -1,0 +1,17 @@
+.discounts {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+
+	.warning {
+		font-size: 14px;
+		line-height: 1.6;
+		color: #e00606;
+	}
+}
+
+.stats {
+	display: flex;
+	gap: 20px;
+}

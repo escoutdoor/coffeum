@@ -1,0 +1,8 @@
+.item {
+	border-top: 1px solid var(--grayBorder);
+	padding: 10px;
+
+	&:first-child {
+		border-top: none;
+	}
+}

@@ -1,0 +1,26 @@
+.prices {
+	display: flex;
+	gap: 8px;
+	align-items: flex-end;
+
+	.price {
+		font-size: 18px;
+		color: var(--gray);
+
+		&.original {
+			font-size: 14.4px;
+			color: #a7a7a7;
+			text-decoration: line-through;
+		}
+	}
+
+	&.lg {
+		.price {
+			font-size: 24px;
+
+			&.original {
+				font-size: 19.2px;
+			}
+		}
+	}
+}

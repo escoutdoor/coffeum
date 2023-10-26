@@ -1,0 +1,38 @@
+.icons {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: #fff;
+
+	> a {
+		> svg {
+			margin: 2px;
+			transition: all 0.2s var(--transition-cubic);
+			cursor: pointer;
+		}
+
+		&:first-child:hover svg {
+			color: #4772bd;
+		}
+
+		&:nth-child(2):hover svg {
+			color: #eb4d4d;
+		}
+
+		&:nth-child(3):hover svg {
+			color: #feda75;
+		}
+	}
+
+	&.dark {
+		color: var(--gray);
+
+		> a {
+			border: 1px solid var(--grayBorder);
+			padding: 5px;
+			border-radius: 4px;
+			display: flex;
+			align-items: center;
+		}
+	}
+}

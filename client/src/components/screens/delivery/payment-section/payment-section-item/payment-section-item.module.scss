@@ -1,0 +1,18 @@
+.item {
+	text-align: center;
+	min-width: 236px;
+	flex: 1;
+
+	> svg {
+		transition: transform 0.2s ease-in-out;
+		font-size: 60px;
+		color: var(--orange);
+		margin-bottom: 15px;
+	}
+
+	&:hover {
+		> svg {
+			transform: translateY(-4px);
+		}
+	}
+}

@@ -1,0 +1,11 @@
+.link {
+	color: var(--brown);
+	font-size: 14px;
+	line-height: 1.6;
+	cursor: pointer;
+	display: inline;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

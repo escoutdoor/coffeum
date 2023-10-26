@@ -1,0 +1,33 @@
+.footer__main {
+	position: relative;
+	background-image: url('/images/img/background.svg');
+	background-repeat: repeat;
+	padding: 64px 10px 24px;
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.widget {
+	flex: 1;
+
+	> ul {
+		margin-bottom: 12px;
+	}
+
+	> ul li,
+	p {
+		line-height: 22px;
+		color: #f9f9f9;
+		font-size: 13px;
+	}
+}
+
+.title {
+	font-size: 15px;
+	color: #fff;
+	margin-bottom: 12px;
+	text-transform: uppercase;
+}

@@ -1,0 +1,109 @@
+  
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  email       String @unique
+  password    String
+
+  firstName   String @map("first_name")
+  surName     String? @map("sur_name")
+
+  avatarPath  String @default("/images/img/avatars/no-avatar.png") @map("avatar_path")
+
+  address     String?
+
+  reviews     Review[]
+  favorites   Favorite[] 
+  orders      Order[]
+}
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  rating      Int
+  text        String
+  product     Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId   String? @map("product_id")
+  author      User? @relation(fields: [authorId], references: [id])
+  authorId    String? @map("author_id")
+}
+
+model Product {
+  id              String @id @default(cuid())
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  name            String   @unique
+  image           String?  @default("")
+  description     String
+  discountedPrice Float?   @map("discounted_price")
+  originalPrice   Float    @map("original_price")
+  quantity        Int
+  brand           String
+  type            String?
+  country         String?
+  packing         String?
+  composition     String[]
+  categories      String[]
+
+
+  reviews         Review[]
+  favorites       Favorite[]
+  orderItems      OrderItem[] 
+}
+
+model Favorite {
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  product     Product? @relation(fields: [productId], references: [id])
+  productId   String? @map("product_id")
+
+  user        User? @relation(fields: [userId], references: [id])
+  userId      String? @map("user_id")
+}
+
+model Order {
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  status      EnumOrderStatus @default(PENDING)
+  items       OrderItem[]
+
+  userId      String? @map("user_id")
+  user        User? @relation(fields: [userId], references: [id])
+}
+
+model OrderItem {
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  quantity    Int
+
+  orderId     String? @map("order_id")
+  order       Order? @relation(fields: [orderId], references: [id])
+
+  productId   String? @map("product_id")
+  product     Product? @relation(fields: [productId], references: [id])
+}
+
+enum EnumOrderStatus {
+  PENDING
+  PAYED
+  SHIPPED
+  DELIVERED
+}

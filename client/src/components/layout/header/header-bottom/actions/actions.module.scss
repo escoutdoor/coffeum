@@ -1,0 +1,12 @@
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	color: #fff;
+
+	> a {
+		> svg {
+			font-size: 27px;
+		}
+	}
+}

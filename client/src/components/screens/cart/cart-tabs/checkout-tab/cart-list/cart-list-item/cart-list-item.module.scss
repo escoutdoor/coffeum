@@ -1,0 +1,22 @@
+.item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 10px;
+
+	.product__name {
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 1.6;
+		color: var(--black);
+		flex: 1;
+	}
+
+	.price {
+		font-weight: 500;
+		font-size: 14px;
+		color: #777;
+		text-align: right;
+		flex: 1;
+	}
+}

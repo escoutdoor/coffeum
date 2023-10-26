@@ -1,0 +1,24 @@
+.forms {
+	display: flex;
+	justify-content: space-around;
+	gap: 80px;
+	margin-top: 20px;
+
+	> form {
+		width: 100%;
+
+		> h1 {
+			color: var(--black);
+			font-size: 22px;
+			line-height: 1.6;
+			margin-bottom: 8px;
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.forms {
+		flex-direction: column;
+		gap: 60px;
+	}
+}

@@ -1,0 +1,33 @@
+.header {
+	color: var(--gray);
+	padding: 12px 0;
+
+	> h1 {
+		font-size: 16.8px;
+		font-weight: 700;
+	}
+}
+
+.list {
+	display: flex;
+	padding-right: 55px;
+
+	> li {
+		font-size: 12px;
+		line-height: 24px;
+
+		> a:hover {
+			text-decoration: underline;
+		}
+
+		&::after {
+			display: inline-block;
+			content: '»';
+			margin: 0px 8px;
+		}
+
+		&:last-child::after {
+			content: '';
+		}
+	}
+}

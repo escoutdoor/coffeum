@@ -1,0 +1,44 @@
+.category {
+	position: relative;
+	max-width: 151px;
+	color: #fff;
+	transition: all 0.3s var(--transition-cubic);
+	cursor: pointer;
+
+	> img {
+		object-fit: cover;
+<<<<<<< HEAD
+		height: auto;
+		min-height: 102px;
+		width: 151px;
+=======
+		width: 151px;
+		height: auto;
+		min-height: 102px;
+>>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
+		filter: brightness(30%);
+	}
+
+	.details {
+		position: absolute;
+		bottom: 0;
+		text-transform: uppercase;
+		padding: 10px 8px;
+
+		> h1 {
+			font-size: 11px;
+		}
+
+		> span {
+			font-size: 10px;
+		}
+	}
+
+	&.active {
+		transform: scale(1.15);
+	}
+
+	&:hover {
+		transform: scale(1.05);
+	}
+}

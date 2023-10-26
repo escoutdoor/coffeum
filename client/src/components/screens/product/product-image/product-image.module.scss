@@ -1,0 +1,16 @@
+.image {
+	width: 45%;
+	height: 45%;
+	max-width: 373px;
+	max-height: 363px;
+	object-fit: contain;
+
+	cursor: pointer;
+	transition: all 0.2s var(--transition-cubic);
+
+	&:hover {
+		transform: scale(1.01);
+		box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	}
+	padding-right: 10px;
+}

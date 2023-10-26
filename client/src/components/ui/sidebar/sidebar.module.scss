@@ -1,0 +1,47 @@
+.sidebar {
+	max-width: 265px;
+	min-width: 220px;
+	flex: 0 0 24%;
+	padding: 10px 10px 0;
+	border: 1px solid var(--grayBorder);
+	margin-right: 20px;
+	height: 100vh;
+	position: sticky;
+	top: 0;
+
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: #e6e4e4 #fff;
+
+	&::-webkit-scrollbar {
+		width: 5px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: #fff;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: #bababa;
+		border-radius: 20px;
+	}
+}
+
+.reset__button {
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding-left: 10px;
+	margin-top: 14px;
+	color: var(--gray);
+
+	> svg {
+		font-size: 20px;
+	}
+
+	> p {
+		font-size: 14px;
+		line-height: 24px;
+	}
+}

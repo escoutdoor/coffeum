@@ -1,0 +1,32 @@
+.brand {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 200px;
+	border: 1px solid var(--grayBorder);
+	flex: 0 0 24%;
+	transition: box-shadow 0.2s var(--transition-cubic);
+
+	&:hover {
+		box-shadow: 0 0 10px 3px #e4e4e4;
+	}
+}
+
+.content {
+	text-align: center;
+
+	> img {
+		width: auto;
+		height: auto;
+		max-width: 150px;
+		max-height: 150px;
+	}
+
+	> h1 {
+		margin-top: 15px;
+		font-size: 15px;
+		color: var(--brown);
+		line-height: 24px;
+		text-transform: capitalize;
+	}
+}

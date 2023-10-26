@@ -1,0 +1,10 @@
+.block {
+	padding: 20px;
+	border-top: 1px solid var(--grayBorder);
+	margin: 30px 0;
+}
+
+.delivery__cities {
+	display: flex;
+	flex-wrap: wrap;
+}

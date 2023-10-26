@@ -1,0 +1,36 @@
+.navbar {
+	width: 100%;
+	border-bottom: 1px solid var(--grayBorder);
+}
+
+.content {
+	position: relative;
+}
+
+.list {
+	display: flex;
+	gap: 35px;
+}
+
+.list__item {
+	display: inline-flex;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 16px;
+	letter-spacing: -0.12px;
+	color: var(--black);
+	transition: color 0.2s var(--transition-cubic);
+	text-transform: uppercase;
+
+	&:hover {
+		color: var(--orange);
+	}
+
+	> a {
+		padding: 22px 0px;
+	}
+
+	&.active {
+		color: var(--orange);
+	}
+}

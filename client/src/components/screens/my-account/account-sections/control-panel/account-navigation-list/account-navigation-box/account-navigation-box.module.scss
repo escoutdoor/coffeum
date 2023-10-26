@@ -1,0 +1,32 @@
+.box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid var(--grayBorder);
+	cursor: pointer;
+	flex: 0 0 30%;
+	min-width: 180px;
+
+	padding: 30px;
+
+	> svg {
+		font-size: 70px;
+		transition: transform 0.3s ease-in-out;
+		color: var(--grayBorder);
+		padding: 0 10px 10px;
+	}
+
+	.title {
+		font-size: 16px;
+		line-height: 1.4;
+		color: var(--gray);
+		text-transform: uppercase;
+	}
+
+	&:hover {
+		> svg {
+			transform: scale(1.1);
+		}
+	}
+}

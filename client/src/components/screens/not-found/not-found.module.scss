@@ -1,0 +1,14 @@
+.not__found {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+
+	.container {
+		> img {
+			margin-bottom: 30px;
+		}
+
+		text-align: center;
+	}
+}

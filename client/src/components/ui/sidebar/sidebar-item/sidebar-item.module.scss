@@ -1,0 +1,36 @@
+.sidebar__item {
+	padding: 15px 10px;
+	border-top: 1px solid var(--grayBorder);
+
+	&.active {
+		.header > svg {
+			transform: rotate(180deg);
+		}
+
+		.options {
+			visibility: visible;
+			opacity: 1;
+			height: auto;
+			margin-top: 10px;
+		}
+	}
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+
+	> svg {
+		transition: all 0.2s var(--transition-cubic);
+		color: var(--gray);
+	}
+}
+
+.options {
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	transition: margin 0.2s var(--transition-cubic);
+}

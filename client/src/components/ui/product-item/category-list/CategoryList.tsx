@@ -1,0 +1,31 @@
+import { useQueryParams } from '@/hooks/useQueryParams'
+import { FC } from 'react'
+import s from '../product-item.module.scss'
+
+interface ICategoryList {}
+
+const CategoryList: FC<{ categories: string[] }> = ({ categories }) => {
+	const updateQueryParams = useQueryParams()
+
+	return (
+		<ul className={s.list}>
+			{categories?.map(tag => (
+				<li
+					className={s.list__item}
+					onClick={() => {
+						if (tag.split(' ').length > 1) {
+							updateQueryParams('category', tag)
+						} else {
+							updateQueryParams('category', '')
+						}
+					}}
+					key={tag}
+				>
+					{tag}
+				</li>
+			))}
+		</ul>
+	)
+}
+
+export default CategoryList

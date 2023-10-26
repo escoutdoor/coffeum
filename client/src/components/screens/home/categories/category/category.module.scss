@@ -1,0 +1,24 @@
+.category {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	text-align: center;
+
+	&:hover .title {
+		text-decoration: underline;
+	}
+
+	> img {
+		transition: all 0.2s var(--transition-cubic);
+	}
+
+	&:hover img {
+		transform: scale(1.01);
+	}
+}
+
+.title {
+	color: #442d25;
+	font-size: 15px;
+	line-height: 24px;
+}

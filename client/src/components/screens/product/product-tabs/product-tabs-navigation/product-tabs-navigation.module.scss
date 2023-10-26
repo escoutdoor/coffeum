@@ -1,0 +1,25 @@
+.navigation {
+	border-bottom: 1px solid var(--grayBorder);
+	margin-top: 42px;
+	display: flex;
+	gap: 35px;
+
+	.navigation__item {
+		cursor: pointer;
+		padding: 20px 0px 10px;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: #818692;
+		transition: color 0.2s var(--transition-cubic);
+		font-size: 13px;
+		line-height: 24px;
+
+		&.active {
+			color: var(--black);
+		}
+
+		&:hover {
+			color: var(--gray);
+		}
+	}
+}

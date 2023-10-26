@@ -1,0 +1,35 @@
+.item {
+	text-align: center;
+	border-top: 1px solid var(--grayBorder);
+
+	.product {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: left;
+		gap: 20px;
+
+		> a {
+			width: 80%;
+			> h1 {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+	}
+
+	> td {
+		&:nth-child(2) {
+			width: 20%;
+		}
+
+		&:nth-child(3) {
+			width: 20%;
+		}
+
+		&:nth-child(4) {
+			width: 20%;
+		}
+	}
+}

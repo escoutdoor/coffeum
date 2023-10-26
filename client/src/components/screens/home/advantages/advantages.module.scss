@@ -1,0 +1,33 @@
+.block {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border: 1px solid var(--grayBorder);
+	border-radius: 5px;
+	margin: 25px 0px;
+}
+
+.block__item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 12px 0;
+	padding: 12px 5px;
+
+	> svg {
+		font-size: 35px;
+	}
+
+	&:first-child,
+	&:nth-child(2) {
+		border-right: 1px solid var(--grayBorder);
+	}
+}
+
+.description {
+	font-weight: 300;
+	font-size: 13px;
+	line-height: 16px;
+	max-width: 300px;
+	color: var(--gray);
+}

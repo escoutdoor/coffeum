@@ -1,0 +1,9 @@
+.centered {
+	width: 100%;
+	display: flex;
+	gap: 20px;
+
+	> div {
+		flex: 1;
+	}
+}

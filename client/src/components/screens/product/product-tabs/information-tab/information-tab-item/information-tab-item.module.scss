@@ -1,0 +1,23 @@
+.item {
+	display: flex;
+	align-items: center;
+	border-top: 1px solid var(--grayBorder);
+	padding: 10px 12px;
+}
+
+.title {
+	width: 40%;
+	font-size: 14px;
+	line-height: 1.6;
+	text-transform: capitalize;
+}
+
+.link {
+	font-size: 14px;
+	line-height: 1.9;
+	color: var(--brown);
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

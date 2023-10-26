@@ -1,0 +1,36 @@
+.field {
+	display: flex;
+	flex-direction: column;
+	color: var(--gray);
+	margin-bottom: 20px;
+
+	> label {
+		display: flex;
+		font-weight: 500;
+		line-height: 1.6;
+		margin-bottom: 10px;
+
+		.title {
+			font-size: 14px;
+		}
+
+		.required {
+			font-size: 14px;
+			color: #c10000;
+			padding: 0px 5px;
+		}
+	}
+
+	.input {
+		width: 100%;
+		padding: 8px 12px;
+		border: 1px solid var(--grayBorder);
+
+		font-size: 14px;
+		line-height: 32px;
+<<<<<<< HEAD
+		color: var(--gray);
+=======
+>>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
+	}
+}

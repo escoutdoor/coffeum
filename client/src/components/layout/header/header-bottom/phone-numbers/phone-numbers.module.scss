@@ -1,0 +1,24 @@
+.block {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0 3rem 0 1.5rem;
+
+	> .numbers {
+		display: flex;
+		flex-direction: column;
+
+		> a {
+			color: #fff;
+			font-weight: 600;
+			font-size: 18px;
+			letter-spacing: 1px;
+			line-height: 20px;
+			transition: opacity 0.2s var(--transition-cubic);
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+}

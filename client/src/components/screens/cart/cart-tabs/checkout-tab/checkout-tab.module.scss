@@ -1,0 +1,20 @@
+.checkout {
+	display: flex;
+
+	> main {
+		width: 100%;
+	}
+
+	.centered {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.thin__text {
+		font-weight: 500;
+		color: #777;
+		line-height: 1.4;
+		font-size: 14px;
+	}
+}

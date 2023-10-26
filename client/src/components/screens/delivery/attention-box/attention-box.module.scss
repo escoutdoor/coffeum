@@ -1,0 +1,11 @@
+.box {
+	background: #f4f4f4;
+	padding: 16px;
+	border-left: 5px solid #bababa;
+
+	.text {
+		font-size: 14px;
+		line-height: 1.6;
+		color: var(--gray);
+	}
+}

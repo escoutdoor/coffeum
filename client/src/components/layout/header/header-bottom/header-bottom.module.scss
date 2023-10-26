@@ -1,0 +1,17 @@
+.header__bottom {
+	display: flex;
+	align-items: center;
+}
+
+.logo {
+	padding: 10px 0 20px;
+	flex: 0 0 16.6666%;
+}
+
+.right {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 0px;
+}

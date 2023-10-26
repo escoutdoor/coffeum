@@ -1,0 +1,33 @@
+.cart__item {
+	position: relative;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 10px;
+	display: flex;
+	border-bottom: 1px solid var(--grayBorder);
+
+	&:hover a img {
+		transform: scale(1.05);
+	}
+
+	> a img {
+		transition: transform 0.2s var(--transition-cubic);
+	}
+}
+
+.details {
+	> a {
+		color: var(--black);
+		font-weight: 700;
+		font-size: 13px;
+		margin-bottom: 8px;
+		padding-right: 15px;
+		line-height: 20px;
+	}
+
+	> p {
+		color: #696969;
+		font-size: 13px;
+		line-height: 24px;
+	}
+}

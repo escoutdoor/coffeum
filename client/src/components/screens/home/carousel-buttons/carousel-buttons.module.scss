@@ -1,0 +1,28 @@
+.buttons {
+	z-index: 99;
+	display: flex;
+	gap: 15px;
+	margin-top: 20px;
+}
+
+.button {
+	display: flex;
+	padding: 12px;
+	transition: all 0.2s var(--transition-cubic);
+	border: 1px solid #000;
+	cursor: pointer;
+
+	&:hover {
+		background: #000;
+	}
+
+	> svg {
+		transition: all 0.2s var(--transition-cubic);
+		text-align: center;
+		font-size: 20px;
+	}
+
+	&:hover svg {
+		color: #fff;
+	}
+}

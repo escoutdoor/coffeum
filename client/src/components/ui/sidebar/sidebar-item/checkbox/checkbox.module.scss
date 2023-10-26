@@ -1,0 +1,53 @@
+.option {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	gap: 10px;
+	cursor: pointer;
+	color: var(--gray);
+
+	> .checkbox {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		> input {
+			position: absolute;
+			left: 0;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			z-index: 99;
+		}
+
+		> span {
+			width: 16px;
+			height: 16px;
+			border: 1px solid var(--grayBorder);
+			border-radius: 42px;
+			transition: background 0.2s var(--transition-cubic);
+			padding-right: 2px;
+
+			> svg {
+				visibility: hidden;
+				opacity: 0;
+				transition: opacity 0.2s var(--transition-cubic);
+				color: var(--gray);
+				position: absolute;
+				left: 0;
+			}
+		}
+	}
+
+	&.active {
+		.checkbox span {
+			background: #f1f1f1;
+
+			> svg {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+}

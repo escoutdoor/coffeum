@@ -1,0 +1,21 @@
+.remove__button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	position: absolute;
+	font-size: 16px;
+	top: 5px;
+	right: 0px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	color: var(--black);
+	border-radius: 50%;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+	transition: all 0.2s var(--transition-cubic);
+
+	&:hover {
+		background: #f2f2f2;
+	}
+}

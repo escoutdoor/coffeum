@@ -1,0 +1,21 @@
+.button {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	height: 48px;
+	padding: 0 2em;
+	background-color: var(--black);
+	color: #fff;
+	font-weight: 700;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: filter 0.2s var(--transition-cubic);
+
+	> svg {
+		font-size: 18px;
+	}
+
+	&:hover {
+		filter: brightness(90%);
+	}
+}

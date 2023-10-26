@@ -1,0 +1,39 @@
+.block {
+	border-top: 1px solid var(--grayBorder);
+	padding-top: 30px;
+	color: var(--black);
+
+	.heading {
+		font-size: 19.6px;
+		line-height: 27px;
+	}
+
+	.form {
+		padding: 14px 0px;
+<<<<<<< HEAD
+		color: var(--gray);
+
+		> label {
+			display: flex;
+			font-weight: 500;
+			line-height: 1.6;
+			margin-bottom: 10px;
+
+			.title {
+				font-size: 14px;
+			}
+
+			.required {
+				font-size: 14px;
+				color: #c10000;
+				padding: 0px 5px;
+			}
+=======
+
+		.title {
+			font-size: 14px;
+			line-height: 1.6;
+>>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
+		}
+	}
+}

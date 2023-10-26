@@ -1,0 +1,60 @@
+.filter {
+	padding: 15px 10px;
+}
+
+.range {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin-top: 20px;
+
+	.thumb {
+		height: 20px;
+		width: 20px;
+		border-radius: 50%;
+		background-color: #fff;
+		cursor: grab;
+		box-shadow: var(--menu-box-shadow);
+		outline: none;
+	}
+
+	.track {
+		background: var(--orange);
+		height: 5px;
+		border-radius: 5px;
+
+		&:first-child,
+		&:nth-child(3) {
+			background: var(--grayBorder);
+		}
+	}
+}
+
+.range__block {
+}
+
+.values {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+
+	> span {
+		background: var(--orange);
+		color: #fff;
+		border-radius: 3px;
+		padding: 1px 5px;
+		font-size: 10px;
+		line-height: 14px;
+	}
+}
+
+.default__values {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 10px;
+	line-height: 12px;
+	color: var(--gray);
+	margin-top: 20px;
+}

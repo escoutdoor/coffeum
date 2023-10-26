@@ -1,0 +1,17 @@
+.main {
+	display: flex;
+
+	.centered__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 10px;
+	}
+
+	.thin__text {
+		font-weight: 400;
+		color: #777;
+		line-height: 1.4;
+		font-size: 14px;
+	}
+}

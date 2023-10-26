@@ -1,0 +1,16 @@
+.counter {
+	display: flex;
+
+	.value {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-top: 1px solid var(--grayBorder);
+		border-bottom: 1px solid var(--grayBorder);
+		width: 44px;
+		height: 3rem;
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 14px;
+	}
+}
