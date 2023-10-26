@@ -3,14 +3,9 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { FC } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TPaymentSchema, paymentSchema } from '@/lib/schemas/payment-schema'
-<<<<<<< HEAD
 import Field from '@/components/ui/field/Field'
 import TextArea from '@/components/ui/text-area/TextArea'
 import { useProfile } from '@/hooks/useProfile'
-=======
-import { useProfile } from '@/hooks/useProfile'
-import Field from '@/components/ui/field/Field'
->>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
 
 const CheckoutForm: FC = () => {
 	const { profile } = useProfile()
@@ -22,14 +17,6 @@ const CheckoutForm: FC = () => {
 	} = useForm<TPaymentSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(paymentSchema),
-<<<<<<< HEAD
-=======
-		defaultValues: {
-			firstName: profile?.firstName || '',
-			surName: profile?.surName || '',
-			email: profile?.email || '',
-		},
->>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
 	})
 
 	const onSumbit: SubmitHandler<TPaymentSchema> = data => {}
@@ -70,15 +57,12 @@ const CheckoutForm: FC = () => {
 					required
 				/>
 			</div>
-<<<<<<< HEAD
 			<TextArea
 				{...register('comments')}
 				label="Примітки до замовлень (необов'язково)"
 				placeholder="Нотатки до вашого замовлення, наприклад спеціальні примітки для доставки."
 				error={errors.comments?.message}
 			/>
-=======
->>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
 		</form>
 	)
 }

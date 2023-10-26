@@ -34,9 +34,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-<<<<<<< HEAD
 /public
 /public/
-=======
 public
->>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379

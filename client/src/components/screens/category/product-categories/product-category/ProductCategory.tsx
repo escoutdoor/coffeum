@@ -21,14 +21,9 @@ const ProductCategory: FC<IProductCategoryProps> = ({ category, active }) => {
 		>
 			<Image
 				src={`/images/img/category/categories/${category.image}`}
-<<<<<<< HEAD
 				width={0}
 				height={0}
 				sizes="100vw"
-=======
-				width={151}
-				height={100}
->>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
 				alt={`category image: ${category.name}`}
 			/>
 			<div className={s.details}>

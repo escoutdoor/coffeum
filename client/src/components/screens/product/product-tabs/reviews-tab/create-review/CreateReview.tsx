@@ -1,30 +1,20 @@
 import s from './create-review.module.scss'
-<<<<<<< HEAD
 import { FC } from 'react'
 import ProductRating from '@/components/ui/product-rating/ProductRating'
-=======
-import { FC, useState } from 'react'
-import ProductRating from '@/components/ui/product-rating/ProductRating'
-import ReviewText from './review-text/ReviewText'
->>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
-import SendButton from './send-button/SendButton'
 import { useCreateReview } from '@/hooks/useCreateReview'
 import { useProfile } from '@/hooks/useProfile'
 import { useRouter } from 'next/router'
-<<<<<<< HEAD
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TReview, reviewSchema } from '@/lib/schemas/review'
 import ErrorText from '@/components/ui/error-text/ErrorText'
 import TextArea from '@/components/ui/text-area/TextArea'
-=======
->>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
+import SendButton from './send-button/SendButton'
 
 const CreateReview: FC<{ productId: string }> = ({ productId }) => {
 	const { profile } = useProfile()
 	const { push } = useRouter()
 
-<<<<<<< HEAD
 	const { createReview } = useCreateReview(productId)
 
 	const {
@@ -52,34 +42,11 @@ const CreateReview: FC<{ productId: string }> = ({ productId }) => {
 		})
 
 		reset()
-=======
-	const [review, setReview] = useState<{ text: string; rating: number }>({
-		text: '',
-		rating: 0,
-	})
-
-	const { mutate: createReview } = useCreateReview(productId)
-
-	const handleSubmit = () => {
-		if (profile) {
-			createReview({
-				authorId: profile?.id,
-				text: review.text,
-				rating: review.rating,
-				productId,
-			})
-		} else {
-			push('/my-account')
-		}
-
-		setReview({ text: '', rating: 0 })
->>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
 	}
 
 	return (
 		<div className={s.block}>
 			<p className={s.heading}>Додати відгук</p>
-<<<<<<< HEAD
 			<form onSubmit={handleSubmit(onSumbit)} className={s.form}>
 				<label>
 					<h1 className={s.title}>Ваша оцінка</h1>
@@ -99,21 +66,6 @@ const CreateReview: FC<{ productId: string }> = ({ productId }) => {
 				/>
 				<SendButton />
 			</form>
-=======
-			<div className={s.form}>
-				<h1 className={s.title}>Ваша оцінка *</h1>
-				<ProductRating
-					value={review.rating}
-					onChange={e => setReview({ ...review, rating: e })}
-				/>
-				<h1 className={s.title}>Ваш відгук *</h1>
-				<ReviewText
-					text={review.text}
-					handleText={e => setReview({ ...review, text: e })}
-				/>
-			</div>
-			<SendButton onClick={() => handleSubmit()} />
->>>>>>> 5159a9b674539dc2e2001b7e508ac086cc645379
 		</div>
 	)
 }
