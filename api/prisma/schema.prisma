@@ -35,7 +35,7 @@ model Review {
   text        String
   product     Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId   String? @map("product_id")
-  author      User? @relation(fields: [authorId], references: [id])
+  author      User? @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId    String? @map("author_id")
 }
 
@@ -70,7 +70,7 @@ model Favorite {
   product     Product? @relation(fields: [productId], references: [id])
   productId   String? @map("product_id")
 
-  user        User? @relation(fields: [userId], references: [id])
+  user        User? @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String? @map("user_id")
 }
 
@@ -88,7 +88,7 @@ model Order {
   recipient     Recipient?
 
   userId      	String? @map("user_id")
-  user        	User? @relation(fields: [userId], references: [id])
+  user        	User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Recipient {
@@ -104,7 +104,7 @@ model Recipient {
 
   address     Address?
 
-  order       Order @relation(fields: [orderId], references: [id])
+  order       Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId     String @unique @map("order_id")
 }
 
@@ -116,7 +116,7 @@ model Address {
   city        String
   mailroom    String
 
-  recipient   Recipient @relation(fields: [recipientId], references: [id])
+  recipient   Recipient @relation(fields: [recipientId], references: [id], onDelete: Cascade)
   recipientId String @unique @map("recipient_id")
 }
 
@@ -128,10 +128,10 @@ model OrderItem {
   quantity    Int
 
   orderId     String? @map("order_id")
-  order       Order? @relation(fields: [orderId], references: [id])
+  order       Order? @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
   productId   String? @map("product_id")
-  product     Product? @relation(fields: [productId], references: [id])
+  product     Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
 enum EnumOrderStatus {

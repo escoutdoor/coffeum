@@ -18,4 +18,5 @@ export const returnOrderFields = {
 	items: {
 		select: returnOrderItemFields,
 	},
+	createdAt: true,
 }

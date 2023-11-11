@@ -6,6 +6,7 @@ import {
 	Body,
 	UsePipes,
 	ValidationPipe,
+	Delete,
 } from '@nestjs/common'
 import { OrderService } from './order.service'
 import { OrderDto } from './order.dto'
@@ -30,5 +31,11 @@ export class OrderController {
 		@CurrentUser('id') userId: string
 	) {
 		return this.orderService.createOrder(dto, userId)
+	}
+
+	@Delete('/:orderId')
+	@Auth()
+	async cancelOrder(@Param('orderId') orderId: string) {
+		return this.orderService.cancelOrder(orderId)
 	}
 }
