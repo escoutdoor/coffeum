@@ -5,10 +5,9 @@ import { FC } from 'react'
 import { SlSocialDropbox } from 'react-icons/sl'
 import { useRouter } from 'next/router'
 import Table from '@/components/ui/table/Table'
+import OrderList from './order-list/OrderList'
 
-interface IOrders {}
-
-const Orders: FC<IOrders> = ({}) => {
+const Orders: FC = () => {
 	const { push } = useRouter()
 
 	return (
@@ -17,9 +16,9 @@ const Orders: FC<IOrders> = ({}) => {
 			<DarkButton onClick={() => push('/search-products')}>
 				в магазин
 			</DarkButton>
-			<Table
-				items={['Замовлення', 'Дата', 'Статус', 'Загалом', 'Дії']}
-			></Table>
+			<Table items={['Замовлення', 'Дата', 'Статус', 'Загалом', 'Дії']}>
+				<OrderList />
+			</Table>
 		</div>
 	)
 }

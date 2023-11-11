@@ -3,20 +3,45 @@ import { IProductItem } from './product.interface'
 export interface IOrder {
 	id: string
 	status: EnumOrderStatus
+	description?: string
 	items: IOrderItem[]
-	userId: string
 	createdAt: Date
 }
 
 export interface IOrderItem {
 	id: string
 	quantity: number
-	product: IProductItem
+	product: IOrderItemProduct
 }
 
+export interface IOrderItemProduct
+	extends Omit<IProductItem, 'quantity' | 'categories'> {}
+
 export enum EnumOrderStatus {
-	PENDING = 'pending',
-	PAYED = 'payed',
-	SHIPPED = 'shipped',
-	DELIVERED = 'delivered',
+	PENDING = 'PENDING',
+	PAYED = 'PAYED',
+	SHIPPED = 'SHIPPED',
+	DELIVERED = 'DELIVERED',
+}
+
+export interface ICreateOrderItem {
+	quantity: number
+	productId: string
+}
+
+export interface ICreateOrder extends Pick<IOrder, 'status' | 'description'> {
+	items: ICreateOrderItem[]
+	recipient: IRecipient
+}
+
+export interface IRecipient {
+	firstName: string
+	surName: string
+	phone: string
+	address: IAddress
+}
+
+export interface IAddress {
+	city: string
+	mailroom: string
 }

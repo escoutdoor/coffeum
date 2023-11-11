@@ -12,8 +12,6 @@ import CheckoutForm from './checkout-form/CheckoutForm'
 const CheckoutTab: FC = () => {
 	const { cart, total } = useCart()
 
-	const onConfirmOrder = () => {}
-
 	return (
 		<div className={s.checkout}>
 			<main>
@@ -55,7 +53,7 @@ const CheckoutTab: FC = () => {
 					<MiddleTitle>Способи оплати</MiddleTitle>
 				</CartRightbarItem>
 				<DarkButton
-					onClick={onConfirmOrder}
+					type="submit"
 					style={{
 						marginTop: '20px',
 						width: '100%',
