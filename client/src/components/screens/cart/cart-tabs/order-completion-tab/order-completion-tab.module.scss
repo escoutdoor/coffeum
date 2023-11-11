@@ -1,0 +1,12 @@
+.completion {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 80px;
+
+	> svg {
+		font-size: 60px;
+		color: var(--gray);
+	}
+}

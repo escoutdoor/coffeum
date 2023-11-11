@@ -5,5 +5,4 @@ export const returnUserFields = {
 	firstName: true,
 	surName: true,
 	password: false,
-	address: true,
 }

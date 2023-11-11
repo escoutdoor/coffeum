@@ -4,6 +4,7 @@ import CheckoutTab from './checkout-tab/CheckoutTab'
 import CartTab from './cart-tab/CartTab'
 import NoCart from './no-cart/NoCart'
 import ICartItem from '@/shared/interfaces/cart-item.interface'
+import OrderCompletionTab from './order-completion-tab/OrderCompletionTab'
 
 const CartTabs: FC<{ activeTab: string; cart: ICartItem[] }> = ({
 	activeTab,
@@ -15,7 +16,7 @@ const CartTabs: FC<{ activeTab: string; cart: ICartItem[] }> = ({
 				activeTab === 'checkout' ? (
 					<CheckoutTab />
 				) : activeTab === 'completion' ? (
-					<div>CompletionTab</div>
+					<OrderCompletionTab />
 				) : (
 					<CartTab />
 				)

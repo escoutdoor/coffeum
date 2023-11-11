@@ -21,12 +21,11 @@ model User {
 
   avatarPath  String @default("/images/img/avatars/no-avatar.png") @map("avatar_path")
 
-  address     String?
-
   reviews     Review[]
   favorites   Favorite[] 
   orders      Order[]
 }
+
 
 model Review {
   id          Int      @id @default(autoincrement())
@@ -75,16 +74,50 @@ model Favorite {
   userId      String? @map("user_id")
 }
 
+
 model Order {
+  id          	String @id @default(cuid())
+  createdAt   	DateTime @default(now()) @map("created_at")
+  updatedAt   	DateTime @updatedAt @map("updated_at")
+
+  status      	EnumOrderStatus @default(PENDING)
+  items       	OrderItem[]
+
+  description 	String?
+
+  recipient     Recipient?
+
+  userId      	String? @map("user_id")
+  user        	User? @relation(fields: [userId], references: [id])
+}
+
+model Recipient {
   id          String @id @default(cuid())
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
-  status      EnumOrderStatus @default(PENDING)
-  items       OrderItem[]
 
-  userId      String? @map("user_id")
-  user        User? @relation(fields: [userId], references: [id])
+  firstName   String
+  surName     String
+
+  phone       String
+
+  address     Address?
+
+  order       Order @relation(fields: [orderId], references: [id])
+  orderId     String @unique @map("order_id")
+}
+
+model Address {
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  city        String
+  mailroom    String
+
+  recipient   Recipient @relation(fields: [recipientId], references: [id])
+  recipientId String @unique @map("recipient_id")
 }
 
 model OrderItem {

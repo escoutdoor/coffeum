@@ -62,7 +62,6 @@ export class UserService {
 					? await hash(dto.password)
 					: user.password,
 				avatarPath: dto.avatarPath,
-				address: dto.address,
 			},
 		})
 	}

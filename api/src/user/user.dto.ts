@@ -18,9 +18,5 @@ export class UserDto {
 
 	@IsOptional()
 	@IsString()
-	address?: string
-
-	@IsOptional()
-	@IsString()
 	avatarPath?: string
 }
