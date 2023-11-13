@@ -8,7 +8,7 @@ import { IProfileData } from '@/shared/interfaces/user.interface'
 import Field from '@/components/ui/field/Field'
 import { useUpdateProfile } from '@/hooks/useUpdateProfile'
 import { useProfile } from '@/hooks/useProfile'
-import { updateProfileSchema } from '@/lib/schemas/update-profile-schema'
+import { updateProfileSchema } from '@/lib/schemas/update-profile.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import ChangePasswordForm from './change-password-form/ChangePasswordForm'
 

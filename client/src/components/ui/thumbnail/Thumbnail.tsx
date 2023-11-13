@@ -7,7 +7,7 @@ import { FC } from 'react'
 interface IThumbnail {
 	productId: string
 	image: string
-	remove: () => void
+	remove?: () => void
 }
 
 const Thumbnail: FC<IThumbnail> = ({ productId, image, remove }) => {
@@ -21,12 +21,13 @@ const Thumbnail: FC<IThumbnail> = ({ productId, image, remove }) => {
 			>
 				<Image
 					src={image}
-					width={84}
-					height={84}
-					alt="cart-item-image"
+					width={0}
+					height={0}
+					sizes="100vw"
+					alt={`product image ${productId}`}
 				/>
 			</Link>
-			<RemoveButton remove={remove} />
+			{remove && <RemoveButton remove={remove} />}
 		</div>
 	)
 }

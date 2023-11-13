@@ -5,37 +5,10 @@ import {
 	IsArray,
 	IsEnum,
 	IsNumber,
-	IsObject,
 	IsOptional,
-	IsPhoneNumber,
 	IsString,
 	ValidateNested,
 } from 'class-validator'
-
-export class AddressDto {
-	@IsString()
-	city: string
-
-	@IsString()
-	mailroom: string
-}
-
-export class RecipientDto {
-	@IsString()
-	firstName: string
-
-	@IsString()
-	surName: string
-
-	@IsPhoneNumber()
-	@IsString()
-	phone: string
-
-	@IsObject()
-	@ValidateNested()
-	@Type(() => AddressDto)
-	address: AddressDto
-}
 
 export class OrderDto {
 	@IsEnum(EnumOrderStatus)
@@ -50,11 +23,6 @@ export class OrderDto {
 	@IsOptional()
 	@IsString()
 	description: string
-
-	@IsObject()
-	@ValidateNested()
-	@Type(() => RecipientDto)
-	recipient: RecipientDto
 }
 
 export class OrderItemDto {

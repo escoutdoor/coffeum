@@ -7,7 +7,7 @@ import { useProfile } from '@/hooks/useProfile'
 import {
 	TChangePasswordSchema,
 	changePasswordSchema,
-} from '@/lib/schemas/change-password-schema'
+} from '@/lib/schemas/change-password.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import FormButton from '@/components/ui/form-button/FormButton'
 

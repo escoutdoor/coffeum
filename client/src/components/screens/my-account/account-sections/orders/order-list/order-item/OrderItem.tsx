@@ -1,34 +1,43 @@
-import DarkButton from '@/components/ui/dark-button/DarkButton'
-import Text from '@/components/ui/heading/text/Text'
+import s from './order-item.module.scss'
+import { FC, useState } from 'react'
 import { useCancelOrder } from '@/hooks/useCancelOrder'
-import { IOrder } from '@/shared/interfaces/order.interface'
+import { EnumOrderStatus, IOrder } from '@/shared/interfaces/order.interface'
 import { getTime } from '@/utils/time'
-import { FC } from 'react'
+import BrownLink from '@/components/ui/heading/brown-link/BrownLink'
+import Text from '@/components/ui/heading/text/Text'
+import Thumbnail from '@/components/ui/thumbnail/Thumbnail'
+import { orderStatus } from './order-item.constant'
 
 const OrderItem: FC<{ item: IOrder }> = ({ item }) => {
 	const { cancelOrder, isLoading, error } = useCancelOrder()
 
-	const total = item.items.reduce(
-		(acc, item) => acc + item.product.discountedPrice * item.quantity,
-		0
-	)
+	const total = item.quantity * item.product.discountedPrice
 
 	return (
-		<tr>
+		<tr className={s.item}>
 			<td>
-				<Text>{item.id}</Text>
+				<Thumbnail
+					productId={item.product.id}
+					image={`/images/img/products/${item.product.image}`}
+				/>
 			</td>
 			<td>
-				<Text>{getTime(item.createdAt)}</Text>
+				<Text>{getTime(item.order.createdAt)}</Text>
 			</td>
 			<td>
-				<Text>{item.status}</Text>
+				<Text>{orderStatus[item.order.status]}</Text>
 			</td>
 			<td>
-				<Text>{total}</Text>
+				<Text>{total} ₴</Text>
 			</td>
 			<td>
-				<DarkButton onClick={() => cancelOrder(item.id)}></DarkButton>
+				{item.order.status === EnumOrderStatus.PENDING ? (
+					<BrownLink onClick={() => cancelOrder(item.order.id)}>
+						Скасувати замовлення
+					</BrownLink>
+				) : (
+					<Text>Замовлення виконано</Text>
+				)}
 			</td>
 		</tr>
 	)

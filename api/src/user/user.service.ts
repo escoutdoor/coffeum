@@ -62,6 +62,18 @@ export class UserService {
 					? await hash(dto.password)
 					: user.password,
 				avatarPath: dto.avatarPath,
+				recipient: {
+					[user.recipient ? 'update' : 'create']: {
+						...dto.recipient,
+						address: {
+							[user.recipient?.address ? 'update' : 'create']:
+								dto.recipient.address,
+						},
+					},
+				},
+			},
+			select: {
+				...returnUserFields,
 			},
 		})
 	}

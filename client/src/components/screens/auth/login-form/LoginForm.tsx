@@ -1,7 +1,7 @@
 import Field from '@/components/ui/field/Field'
 import FormButton from '@/components/ui/form-button/FormButton'
 import { useActions } from '@/hooks/useActions'
-import { loginSchema } from '@/lib/schemas/login-schema'
+import { loginSchema } from '@/lib/schemas/login.schema'
 import { ILoginInfo } from '@/shared/interfaces/user.interface'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FC } from 'react'

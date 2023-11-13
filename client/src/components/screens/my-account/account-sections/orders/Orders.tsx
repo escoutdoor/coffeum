@@ -13,12 +13,19 @@ const Orders: FC = () => {
 	return (
 		<div className={s.orders}>
 			<AccountSectionHeading title="Замовлення" Icon={SlSocialDropbox} />
-			<DarkButton onClick={() => push('/search-products')}>
-				в магазин
-			</DarkButton>
-			<Table items={['Замовлення', 'Дата', 'Статус', 'Загалом', 'Дії']}>
+			<Table items={['Товар', 'Дата', 'Статус', 'Загалом', 'Дії']}>
 				<OrderList />
 			</Table>
+			<div>
+				<DarkButton
+					onClick={() => push('/search-products')}
+					style={{
+						marginTop: '40px',
+					}}
+				>
+					в магазин
+				</DarkButton>
+			</div>
 		</div>
 	)
 }

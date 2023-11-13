@@ -1,14 +1,17 @@
 import s from './checkout-form.module.scss'
-import { SubmitHandler, useForm } from 'react-hook-form'
 import { FC } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import Field from '@/components/ui/field/Field'
-import TextArea from '@/components/ui/text-area/TextArea'
 import { TOrderSchema, orderSchema } from '@/lib/schemas/order.schema'
 import { useCreateOrder } from '@/hooks/useCreateOrder'
+import Field from '@/components/ui/field/Field'
+import TextArea from '@/components/ui/text-area/TextArea'
 import DarkButton from '@/components/ui/dark-button/DarkButton'
+import { useProfile } from '@/hooks/useProfile'
+import { IRecipient } from '@/shared/interfaces/user.interface'
 
 const CheckoutForm: FC = () => {
+	const { profile } = useProfile()
 	const { createOrder } = useCreateOrder()
 
 	const {
@@ -18,6 +21,7 @@ const CheckoutForm: FC = () => {
 	} = useForm<TOrderSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(orderSchema),
+		values: { recipient: profile?.recipient || ({} as IRecipient) },
 	})
 
 	const onSubmit: SubmitHandler<TOrderSchema> = data => {
@@ -28,7 +32,6 @@ const CheckoutForm: FC = () => {
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<Field
 				{...register('recipient.phone')}
-				prefix="+380"
 				label="Телефон"
 				placeholder="Телефон"
 				type="tel"

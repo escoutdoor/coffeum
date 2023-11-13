@@ -1,7 +1,7 @@
 import Field from '@/components/ui/field/Field'
 import FormButton from '@/components/ui/form-button/FormButton'
 import { useActions } from '@/hooks/useActions'
-import { registerSchema } from '@/lib/schemas/register-schema'
+import { registerSchema } from '@/lib/schemas/register.schema'
 import { ICreateUserInfo } from '@/shared/interfaces/user.interface'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FC } from 'react'

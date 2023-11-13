@@ -2,16 +2,16 @@ import { IProductItem } from './product.interface'
 
 export interface IOrder {
 	id: string
-	status: EnumOrderStatus
-	description?: string
-	items: IOrderItem[]
-	createdAt: Date
-}
-
-export interface IOrderItem {
-	id: string
 	quantity: number
 	product: IOrderItemProduct
+	order: IOrderData
+}
+
+export interface IOrderData {
+	id: string
+	status: EnumOrderStatus
+	description: string
+	createdAt: Date
 }
 
 export interface IOrderItemProduct
@@ -29,19 +29,8 @@ export interface ICreateOrderItem {
 	productId: string
 }
 
-export interface ICreateOrder extends Pick<IOrder, 'status' | 'description'> {
+export interface ICreateOrder {
+	status: EnumOrderStatus
+	description?: string
 	items: ICreateOrderItem[]
-	recipient: IRecipient
-}
-
-export interface IRecipient {
-	firstName: string
-	surName: string
-	phone: string
-	address: IAddress
-}
-
-export interface IAddress {
-	city: string
-	mailroom: string
 }

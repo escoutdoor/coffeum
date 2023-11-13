@@ -21,9 +21,41 @@ model User {
 
   avatarPath  String @default("/images/img/avatars/no-avatar.png") @map("avatar_path")
 
+  recipient   Recipient?
+
   reviews     Review[]
   favorites   Favorite[] 
   orders      Order[]
+}
+
+model Recipient {
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+
+  firstName   String
+  surName     String
+
+  phone       String
+
+  address     Address?
+
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String @unique @map("user_id")
+
+}
+
+model Address {
+  id          String @id @default(cuid())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  city        String
+  mailroom    String
+
+  recipient   Recipient @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+  recipientId String @unique @map("recipient_id")
 }
 
 
@@ -33,10 +65,12 @@ model Review {
   updatedAt   DateTime @updatedAt @map("updated_at")
   rating      Int
   text        String
-  product     Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId   String? @map("product_id")
-  author      User? @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  authorId    String? @map("author_id")
+
+  product     Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId   String @map("product_id")
+  
+  author      User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId    String @map("author_id")
 }
 
 model Product {
@@ -70,8 +104,8 @@ model Favorite {
   product     Product? @relation(fields: [productId], references: [id])
   productId   String? @map("product_id")
 
-  user        User? @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String? @map("user_id")
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String @map("user_id")
 }
 
 
@@ -85,39 +119,8 @@ model Order {
 
   description 	String?
 
-  recipient     Recipient?
-
-  userId      	String? @map("user_id")
-  user        	User? @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model Recipient {
-  id          String @id @default(cuid())
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-
-
-  firstName   String
-  surName     String
-
-  phone       String
-
-  address     Address?
-
-  order       Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  orderId     String @unique @map("order_id")
-}
-
-model Address {
-  id          String @id @default(cuid())
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-
-  city        String
-  mailroom    String
-
-  recipient   Recipient @relation(fields: [recipientId], references: [id], onDelete: Cascade)
-  recipientId String @unique @map("recipient_id")
+  userId      	String @map("user_id")
+  user        	User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model OrderItem {

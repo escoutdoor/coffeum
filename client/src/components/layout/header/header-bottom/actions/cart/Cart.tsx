@@ -44,7 +44,7 @@ const Cart: FC = () => {
 							<span>разом:</span>
 							<h1>{total} ₴</h1>
 						</div>
-						<Link className={s.button} href={''}>
+						<Link className={s.button} href={'/cart?tab=checkout'}>
 							Оформлення замовлення
 						</Link>
 					</div>

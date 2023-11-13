@@ -12,8 +12,6 @@ export class UserService {
 	}
 
 	async updateProfile(data: IProfileData) {
-		console.log(data)
-
 		await instance<IUser>({
 			method: 'PUT',
 			url: `${this.USERS_URL}/profile`,

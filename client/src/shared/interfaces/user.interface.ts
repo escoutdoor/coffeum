@@ -6,10 +6,22 @@ export interface IUser {
 	firstName: string
 	surName?: string
 	email: string
-	address?: string
 	reviews?: IReview[]
 	favorites: IFavorite[]
 	avatarPath: string
+	recipient: IRecipient
+}
+
+export interface IRecipient {
+	firstName: string
+	surName: string
+	phone: string
+	address: IAddress
+}
+
+export interface IAddress {
+	city: string
+	mailroom: string
 }
 
 export interface ICreateUserInfo extends Pick<IUser, 'email' | 'firstName'> {
