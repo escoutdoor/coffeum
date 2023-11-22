@@ -1,8 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { IInitialState } from './user.interface'
 import { checkAuth, login, logout, register } from './user.actions'
-import { getItemFromLocal } from '@/utils/getItemFromLocal'
-import { IUser } from '@/shared/interfaces/user.interface'
+import { getItemFromLocal } from '@/utils/get-item-from-local'
 
 const initialState: IInitialState = {
 	user: getItemFromLocal('user'),
