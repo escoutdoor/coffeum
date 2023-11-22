@@ -8,7 +8,6 @@ import { PrismaService } from 'src/prisma.service'
 import { UserDto } from './user.dto'
 import { returnUserFields } from './user-fields.object'
 import { hash, verify } from 'argon2'
-import { returnProductFields } from '../product/product-fields.object'
 
 @Injectable()
 export class UserService {
@@ -17,19 +16,7 @@ export class UserService {
 	async getProfileById(id: string) {
 		const user = await this.prisma.user.findUnique({
 			where: { id },
-			select: {
-				...returnUserFields,
-				favorites: {
-					include: {
-						product: {
-							select: {
-								...returnProductFields,
-								categories: false,
-							},
-						},
-					},
-				},
-			},
+			select: returnUserFields,
 		})
 
 		if (!user) {
@@ -65,16 +52,10 @@ export class UserService {
 				recipient: {
 					[user.recipient ? 'update' : 'create']: {
 						...dto.recipient,
-						address: {
-							[user.recipient?.address ? 'update' : 'create']:
-								dto.recipient.address,
-						},
 					},
 				},
 			},
-			select: {
-				...returnUserFields,
-			},
+			select: returnUserFields,
 		})
 	}
 
@@ -96,7 +77,7 @@ export class UserService {
 		const user = await this.getProfileById(id)
 
 		const isExists = user.favorites.some(
-			product => product.productId === productId
+			product => product.product.id === productId
 		)
 
 		return await this.prisma.user.update({
@@ -108,9 +89,7 @@ export class UserService {
 					},
 				},
 			},
-			include: {
-				favorites: true,
-			},
+			select: returnUserFields,
 		})
 	}
 }

@@ -9,17 +9,13 @@ export interface IUser {
 	reviews?: IReview[]
 	favorites: IFavorite[]
 	avatarPath: string
-	recipient: IRecipient
+	recipient?: IRecipient
 }
 
 export interface IRecipient {
 	firstName: string
 	surName: string
 	phone: string
-	address: IAddress
-}
-
-export interface IAddress {
 	city: string
 	mailroom: string
 }

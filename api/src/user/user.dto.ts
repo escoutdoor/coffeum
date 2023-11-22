@@ -8,16 +8,6 @@ import {
 	ValidateNested,
 } from 'class-validator'
 
-export class AddressDto {
-	@IsOptional()
-	@IsString()
-	city: string
-
-	@IsOptional()
-	@IsString()
-	mailroom: string
-}
-
 export class RecipientDto {
 	@IsOptional()
 	@IsString()
@@ -33,10 +23,12 @@ export class RecipientDto {
 	phone: string
 
 	@IsOptional()
-	@IsObject()
-	@ValidateNested()
-	@Type(() => AddressDto)
-	address: AddressDto
+	@IsString()
+	city: string
+
+	@IsOptional()
+	@IsString()
+	mailroom: string
 }
 
 export class UserDto {

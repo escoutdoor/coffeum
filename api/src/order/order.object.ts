@@ -18,5 +18,10 @@ export const returnOrderFields = {
 	items: {
 		select: returnOrderItemFields,
 	},
+	firstName: true,
+	surName: true,
+	phone: true,
+	city: true,
+	mailroom: true,
 	createdAt: true,
 }

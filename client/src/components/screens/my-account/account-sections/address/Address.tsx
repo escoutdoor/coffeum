@@ -22,8 +22,8 @@ const Address: FC = () => {
 		formState: { errors },
 	} = useForm<IRecipient>({
 		mode: 'onChange',
-		defaultValues: {
-			...profile?.recipient,
+		values: {
+			...(profile?.recipient as IRecipient),
 		},
 		resolver: zodResolver(recipientSchema),
 	})
@@ -32,6 +32,7 @@ const Address: FC = () => {
 		if (profile) {
 			updateProfile({ ...profile, recipient: data })
 		}
+		console.log(data)
 	}
 
 	return (
@@ -82,17 +83,17 @@ const Address: FC = () => {
 					<Field
 						label="Місто одержувача"
 						type="text"
-						{...register('address.city')}
+						{...register('city')}
 						placeholder="Місто одержувача"
-						error={errors.address?.city?.message}
+						error={errors?.city?.message}
 						required
 					/>
 					<Field
 						label="Поштове відділення"
 						type="text"
-						{...register('address.mailroom')}
+						{...register('mailroom')}
 						placeholder="Поштове відділення"
-						error={errors.address?.mailroom?.message}
+						error={errors?.mailroom?.message}
 						required
 					/>
 					<FormButton type="submit">Зберегти</FormButton>

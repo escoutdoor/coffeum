@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { PrismaService } from 'src/prisma.service'
 import { OrderDto } from './order.dto'
-import { returnOrderFields, returnOrderItemFields } from './order.object'
+import { returnOrderFields } from './order.object'
 
 @Injectable()
 export class OrderService {
@@ -17,23 +17,11 @@ export class OrderService {
 	}
 
 	async getAllByUserId(userId: string) {
-		return this.prisma.orderItem.findMany({
+		return this.prisma.order.findMany({
 			where: {
-				order: {
-					userId,
-				},
+				userId,
 			},
-			select: {
-				...returnOrderItemFields,
-				order: {
-					select: {
-						id: true,
-						status: true,
-						description: true,
-						createdAt: true,
-					},
-				},
-			},
+			select: returnOrderFields,
 		})
 	}
 
@@ -50,7 +38,13 @@ export class OrderService {
 				items: {
 					create: dto.items,
 				},
+				firstName: dto.firstName,
+				surName: dto.surName,
+				phone: dto.phone,
+				city: dto.city,
+				mailroom: dto.mailroom,
 			},
+			select: returnOrderFields,
 		})
 	}
 
