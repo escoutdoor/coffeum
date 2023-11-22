@@ -25,7 +25,10 @@ const CheckoutForm: FC = () => {
 	})
 
 	const onSubmit: SubmitHandler<TOrderSchema> = data => {
-		createOrder(data)
+		createOrder({
+			...data,
+			...data.recipient,
+		})
 	}
 
 	return (
@@ -57,19 +60,19 @@ const CheckoutForm: FC = () => {
 				/>
 			</div>
 			<Field
-				{...register('recipient.address.city')}
+				{...register('recipient.city')}
 				label="Доставка в"
 				placeholder="Місто"
 				type="text"
-				error={errors.recipient?.address?.city?.message}
+				error={errors.recipient?.city?.message}
 				required
 			/>
 			<Field
-				{...register('recipient.address.mailroom')}
+				{...register('recipient.mailroom')}
 				label="Відділення"
 				placeholder="Відділення"
 				type="text"
-				error={errors.recipient?.address?.mailroom?.message}
+				error={errors.recipient?.mailroom?.message}
 				required
 			/>
 			<TextArea

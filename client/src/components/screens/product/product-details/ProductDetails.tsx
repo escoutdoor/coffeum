@@ -10,6 +10,8 @@ import AddToFavoritesButton from '../add-to-favorites-button/AddToFavoritesButto
 import { useToggleFavorite } from '@/hooks/toggleFavorite'
 import { useAuth } from '@/hooks/useAuth'
 import { useActions } from '@/hooks/useActions'
+import { getAverageRating } from '@/utils/avg-rating'
+import Text from '@/components/ui/heading/text/Text'
 
 const ProductDetails: FC<{ product: IProduct }> = ({ product }) => {
 	const { user } = useAuth()
@@ -23,13 +25,13 @@ const ProductDetails: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<div className={s.details}>
 			<h1 className={s.title}>{product.name}</h1>
-			<ProductRating productId={product.id} />
+			<ProductRating value={getAverageRating(product.reviews)} />
 			<ProductPrice
 				originalPrice={product.originalPrice}
 				discountedPrice={product.discountedPrice}
 				size="lg"
 			/>
-			<ProductQuantity product={product} />
+			{product.quantity && <ProductQuantity product={product} />}
 			<div className={s.share}>
 				<SocialIcons dark />
 				<AddToFavoritesButton

@@ -7,4 +7,5 @@ export const returnProductFields = {
 	discountedPrice: true,
 	originalPrice: true,
 	quantity: true,
+	reviews: true,
 }

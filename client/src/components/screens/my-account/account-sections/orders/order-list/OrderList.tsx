@@ -1,12 +1,8 @@
-import { useOrders } from '@/hooks/useOrders'
 import { FC } from 'react'
 import OrderItem from './order-item/OrderItem'
+import { IOrder } from '@/shared/interfaces/order.interface'
 
-const OrderList: FC = () => {
-	const { orders, isLoading } = useOrders()
-
-	console.log(orders)
-
+const OrderList: FC<{ orders: IOrder[] }> = ({ orders }) => {
 	return (
 		<>
 			{orders?.map(order => (

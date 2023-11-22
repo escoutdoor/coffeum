@@ -29,12 +29,7 @@ export interface IProduct {
 export interface IProductItem
 	extends Omit<
 		IProduct,
-		| 'description'
-		| 'packing'
-		| 'type'
-		| 'country'
-		| 'composition'
-		| 'reviews'
+		'description' | 'packing' | 'type' | 'country' | 'composition'
 	> {}
 
 export enum ProductType {

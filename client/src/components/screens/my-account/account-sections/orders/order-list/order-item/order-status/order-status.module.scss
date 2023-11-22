@@ -1,0 +1,36 @@
+.order__status {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+
+	.progress__bar {
+		width: 8px;
+		height: 100%;
+		border-radius: 4px;
+
+		&.pending {
+			background: #ccc;
+		}
+
+		&.payed {
+			background: #c2a878;
+		}
+
+		&.shipped {
+			background: #9c7e61;
+		}
+
+		&.delivered {
+			background: var(--brown);
+		}
+	}
+
+	.text {
+		text-align: left;
+
+		.time {
+			font-size: 12px;
+			color: #797878;
+		}
+	}
+}

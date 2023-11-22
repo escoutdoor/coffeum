@@ -11,6 +11,11 @@ export interface IOrderData {
 	id: string
 	status: EnumOrderStatus
 	description: string
+	firstName: string
+	surName: string
+	phone: string
+	city: string
+	mailroom: string
 	createdAt: Date
 }
 
@@ -33,4 +38,9 @@ export interface ICreateOrder {
 	status: EnumOrderStatus
 	description?: string
 	items: ICreateOrderItem[]
+	firstName: string
+	surName: string
+	phone: string
+	city: string
+	mailroom: string
 }

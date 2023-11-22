@@ -1,3 +1,77 @@
 .item {
-	border-bottom: 1px solid var(--grayBorder);
+	border: 1px solid var(--grayBorder);
+	border-radius: 4px;
+	padding: 20px;
+	margin-bottom: 8px;
+
+	.preview {
+		display: flex;
+		justify-content: space-between;
+
+		.right {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+
+			> svg {
+				color: var(--gray);
+				transition: all 0.2s var(--transition-cubic);
+			}
+		}
+
+		.price {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			text-align: left;
+			width: 20%;
+
+			.text {
+				font-size: 12px;
+				color: #797878;
+			}
+		}
+	}
+
+	.dropdown {
+		visibility: hidden;
+		opacity: 0;
+		height: 0;
+		transition: padding-top 0.2s ease-in-out,
+			padding-bottom 0.2s ease-in-out;
+
+		&.active {
+			visibility: visible;
+			height: auto;
+			opacity: 1;
+			padding: 20px 0 20px 24px;
+		}
+	}
+
+	&.active {
+		.preview {
+			.right {
+				> img {
+					opacity: 0;
+				}
+
+				> svg {
+					transform: rotate(180deg);
+				}
+			}
+		}
+	}
+
+	animation: fadeIn 0.3s ease-in;
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translate3d(0, 10px, 0);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
 }

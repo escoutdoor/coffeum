@@ -4,7 +4,7 @@ import AccountNavigationList from './account-navigation-list/AccountNavigationLi
 import BrownLink from '@/components/ui/heading/brown-link/BrownLink'
 import { useActions } from '@/hooks/useActions'
 import { useProfile } from '@/hooks/useProfile'
-import { getUserName } from '@/utils/getUserName'
+import { getName } from '@/utils/get-name'
 
 const ControlPanel: FC = () => {
 	const { profile } = useProfile()
@@ -14,8 +14,8 @@ const ControlPanel: FC = () => {
 		<div className={s.panel}>
 			<div className={s.details}>
 				<p className={s.text}>
-					Вітаємо, <strong>{getUserName(profile)}</strong> (не{' '}
-					<strong>{getUserName(profile)}</strong>?{' '}
+					Вітаємо, <strong>{getName({ ...profile })}</strong> (не{' '}
+					<strong>{getName({ ...profile })}</strong>?{' '}
 					<BrownLink onClick={logout}>Вийти</BrownLink>)
 				</p>
 				<p className={s.text}>

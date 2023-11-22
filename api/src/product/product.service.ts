@@ -86,16 +86,7 @@ export class ProductService {
 			where: searchTermFilter,
 			orderBy: sorting,
 			skip,
-			select: {
-				id: true,
-				name: true,
-				categories: true,
-				image: true,
-				brand: true,
-				discountedPrice: true,
-				originalPrice: true,
-				quantity: true,
-			},
+			select: returnProductFields,
 			take: limit,
 		})
 
@@ -153,9 +144,7 @@ export class ProductService {
 			where: filter,
 			orderBy: sorting,
 			skip,
-			select: {
-				...returnProductFields,
-			},
+			select: returnProductFields,
 			take: limit,
 		})
 
@@ -195,9 +184,7 @@ export class ProductService {
 				reviews: {
 					include: {
 						author: {
-							select: {
-								...returnUserFields,
-							},
+							select: returnUserFields,
 						},
 					},
 				},
@@ -228,9 +215,7 @@ export class ProductService {
 				},
 			},
 			take: 8,
-			select: {
-				...returnProductFields,
-			},
+			select: returnProductFields,
 		})
 
 		return similar

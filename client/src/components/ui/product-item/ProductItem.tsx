@@ -9,6 +9,7 @@ import { useActions } from '@/hooks/useActions'
 import ProductRating from '../product-rating/ProductRating'
 import ProductPrice from '../product-price/ProductPrice'
 import CategoryList from './category-list/CategoryList'
+import { getAverageRating } from '@/utils/avg-rating'
 
 const ProductItem: FC<{ item: IProductItem; view?: string }> = ({
 	item,
@@ -43,7 +44,7 @@ const ProductItem: FC<{ item: IProductItem; view?: string }> = ({
 				<Link className={s.title} href={`/product/${item.id}`}>
 					{item.name}
 				</Link>
-				<ProductRating productId={item.id} />
+				<ProductRating value={getAverageRating(item.reviews)} />
 				<ProductPrice
 					originalPrice={item.originalPrice}
 					discountedPrice={item.discountedPrice}

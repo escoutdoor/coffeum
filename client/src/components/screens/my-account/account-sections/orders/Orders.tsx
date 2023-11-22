@@ -6,16 +6,16 @@ import { SlSocialDropbox } from 'react-icons/sl'
 import { useRouter } from 'next/router'
 import Table from '@/components/ui/table/Table'
 import OrderList from './order-list/OrderList'
+import { useOrders } from '@/hooks/useOrders'
 
 const Orders: FC = () => {
 	const { push } = useRouter()
+	const { orders, isLoading } = useOrders()
 
 	return (
 		<div className={s.orders}>
 			<AccountSectionHeading title="Замовлення" Icon={SlSocialDropbox} />
-			<Table items={['Товар', 'Дата', 'Статус', 'Загалом', 'Дії']}>
-				<OrderList />
-			</Table>
+			<OrderList orders={orders || []} />
 			<div>
 				<DarkButton
 					onClick={() => push('/search-products')}

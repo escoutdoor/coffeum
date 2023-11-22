@@ -3,7 +3,7 @@ import { IReview } from '@/shared/interfaces/product.interface'
 import Image from 'next/image'
 import { FC } from 'react'
 import ReviewDetails from './review-details/ReviewDetails'
-import { getUserName } from '@/utils/getUserName'
+import { getName } from '@/utils/get-name'
 
 const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 	return (
@@ -16,7 +16,10 @@ const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 				alt={review.author.firstName}
 			/>
 			<ReviewDetails
-				name={getUserName(review.author)}
+				name={getName({
+					...review.author,
+					surName: review.author.surName || '',
+				})}
 				rating={review.rating}
 				text={review.text}
 				createdAt={review.createdAt}

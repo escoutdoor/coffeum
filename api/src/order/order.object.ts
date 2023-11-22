@@ -8,6 +8,20 @@ export const returnOrderItemFields = {
 			...returnProductFields,
 			quantity: false,
 			categories: false,
+			reviews: false,
+		},
+	},
+	order: {
+		select: {
+			id: true,
+			status: true,
+			description: true,
+			createdAt: true,
+			firstName: true,
+			surName: true,
+			phone: true,
+			city: true,
+			mailroom: true,
 		},
 	},
 }

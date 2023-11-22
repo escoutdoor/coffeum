@@ -41,26 +41,11 @@ const CheckoutTab: FC = () => {
 					</div>
 				</CartRightbarItem>
 				<CartRightbarItem>
-					<MiddleTitle>Доставка</MiddleTitle>
-				</CartRightbarItem>
-				<CartRightbarItem>
 					<div className={s.centered}>
 						<MiddleTitle>Загалом</MiddleTitle>
 						<SectionTitle>{total} ₴</SectionTitle>
 					</div>
 				</CartRightbarItem>
-				<CartRightbarItem>
-					<MiddleTitle>Способи оплати</MiddleTitle>
-				</CartRightbarItem>
-				<DarkButton
-					type="submit"
-					style={{
-						marginTop: '20px',
-						width: '100%',
-					}}
-				>
-					Підтвердити замовлення
-				</DarkButton>
 			</CartRightbar>
 		</div>
 	)
