@@ -1,14 +1,21 @@
 import s from './order-details.module.scss'
 import { FC } from 'react'
-import { IOrder } from '@/shared/interfaces/order.interface'
-import Text from '@/components/ui/heading/text/Text'
+import { EnumOrderStatus, IOrder } from '@/shared/interfaces/order.interface'
 import { getAddress } from '@/utils/get-address'
 import { getName } from '@/utils/get-name'
+import Text from '@/components/ui/heading/text/Text'
 import MiddleTitle from '@/components/ui/heading/middle-title/MiddleTitle'
-import OrderImage from '../order-image/OrderImage'
-import Link from 'next/link'
+import OrderGood from './order-good/OrderGood'
+import FormButton from '@/components/ui/form-button/FormButton'
+import { useCancelOrder } from '@/hooks/useCancelOrder'
 
 const OrderDetails: FC<{ item: IOrder }> = ({ item }) => {
+	const { cancelOrder, isLoading, error } = useCancelOrder()
+
+	const isAvailableToCancel =
+		item.order.status !== EnumOrderStatus.SHIPPED &&
+		item.order.status !== EnumOrderStatus.DELIVERED
+
 	return (
 		<div className={s.details}>
 			<div className={s.left}>
@@ -23,24 +30,17 @@ const OrderDetails: FC<{ item: IOrder }> = ({ item }) => {
 			</div>
 			<div className={s.right}>
 				<MiddleTitle>Товар</MiddleTitle>
-				<div className={s.good}>
-					<OrderImage
-						src={`/images/img/products/${item.product.image}`}
-					/>
-					<div className={s.details}>
-						<Link
-							href={{
-								pathname: '/product/[id]',
-								query: { id: item.product.id },
-							}}
-						>
-							{item.product.name}
-						</Link>
-						<p>
-							{item.quantity} × {item.product.discountedPrice} ₴
-						</p>
-					</div>
-				</div>
+				<OrderGood item={item} />
+				{isAvailableToCancel ? (
+					<FormButton
+						style={{
+							margin: '30px 0 10px',
+						}}
+						onClick={() => cancelOrder(item.order.id)}
+					>
+						Скасувати замовлення
+					</FormButton>
+				) : null}
 			</div>
 		</div>
 	)

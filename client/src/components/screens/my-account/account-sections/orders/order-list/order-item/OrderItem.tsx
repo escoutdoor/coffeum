@@ -1,19 +1,14 @@
 import s from './order-item.module.scss'
 import { FC, useState } from 'react'
-import { useCancelOrder } from '@/hooks/useCancelOrder'
-import { EnumOrderStatus, IOrder } from '@/shared/interfaces/order.interface'
-import { getTime } from '@/utils/time'
-import { orderStatus } from './order-item.constant'
+import { IOrder } from '@/shared/interfaces/order.interface'
+import { FaAngleDown } from 'react-icons/fa6'
 import OrderImage from './order-image/OrderImage'
 import OrderStatus from './order-status/OrderStatus'
-import { FaAngleDown } from 'react-icons/fa6'
 import Text from '@/components/ui/heading/text/Text'
 import OrderDetails from './order-details/OrderDetails'
 
 const OrderItem: FC<{ item: IOrder }> = ({ item }) => {
 	const [active, setActive] = useState<boolean>(false)
-
-	const { cancelOrder, isLoading, error } = useCancelOrder()
 
 	const total = item.quantity * item.product.discountedPrice
 

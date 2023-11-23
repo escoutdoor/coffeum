@@ -24,37 +24,5 @@
 		> h1 {
 			margin-bottom: 20px;
 		}
-
-		.good {
-			width: 100%;
-			display: flex;
-			align-items: center;
-			gap: 20px;
-			padding: 15px 0 15px;
-
-			.details {
-				display: flex;
-				align-items: center;
-
-				> a {
-					color: var(--black);
-					font-weight: 700;
-					font-size: 13px;
-					margin-bottom: 8px;
-					padding-right: 15px;
-					line-height: 20px;
-					max-width: 300px;
-				}
-
-				> p {
-					color: #696969;
-					font-size: 13px;
-					line-height: 24px;
-				}
-			}
-
-			border-top: 1px solid var(--grayBorder);
-			border-bottom: 1px solid var(--grayBorder);
-		}
 	}
 }
