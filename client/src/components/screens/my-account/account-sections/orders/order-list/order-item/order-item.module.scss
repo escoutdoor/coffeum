@@ -37,8 +37,8 @@
 		visibility: hidden;
 		opacity: 0;
 		height: 0;
-		transition: padding-top 0.2s ease-in-out,
-			padding-bottom 0.2s ease-in-out;
+		transition: padding-top 0.3s ease-in-out,
+			padding-bottom 0.3s ease-in-out;
 
 		&.active {
 			visibility: visible;

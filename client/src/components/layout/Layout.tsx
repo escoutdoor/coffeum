@@ -16,7 +16,7 @@ const Layout: FC<PropsWithChildren<IMeta>> = ({
 			<Header />
 			<Navbar />
 			<div className="wrapper">
-				<main>{children}</main>
+				<main className={s.main}>{children}</main>
 			</div>
 			<Footer />
 		</Meta>

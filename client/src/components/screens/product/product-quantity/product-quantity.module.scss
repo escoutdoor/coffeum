@@ -5,4 +5,10 @@
 	padding: 16px 0 20px;
 	border-top: 1px solid var(--grayBorder);
 	border-bottom: 1px solid var(--grayBorder);
+
+	.not__available {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
 }

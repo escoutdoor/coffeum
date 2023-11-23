@@ -13,7 +13,7 @@ import { useDebounce } from '@/hooks/useDebounce'
 const SearchProducts: NextPage = () => {
 	const { query, sortBy, limit, page } = useGetFilterParams()
 
-	const searchTerm = useDebounce(query)
+	const searchTerm = useDebounce(query, 500)
 
 	const { isLoading, data, refetch } = useSearchProducts({
 		searchTerm,

@@ -5,6 +5,8 @@ import { FC, useState } from 'react'
 import AddToCartButton from '../add-to-cart-button/AddToCartButton'
 import { IProduct } from '@/shared/interfaces/product.interface'
 import { IQuantityCounterType } from '@/components/ui/quantity-counter/change-quantity.type'
+import { FaRegFaceSadTear } from 'react-icons/fa6'
+import SectionTitle from '@/components/ui/heading/section-title/SectionTitle'
 
 const ProductQuantity: FC<{ product: IProduct }> = ({ product }) => {
 	const [quantity, setQuantity] = useState(1)
@@ -22,18 +24,27 @@ const ProductQuantity: FC<{ product: IProduct }> = ({ product }) => {
 
 	return (
 		<div className={s.quantity}>
-			<QuantityCounter
-				quantity={quantity}
-				handleQuantity={handleQuantity}
-			/>
-			<AddToCartButton
-				addToCart={() =>
-					addToCart({
-						product,
-						quantity,
-					})
-				}
-			/>
+			{product.quantity ? (
+				<>
+					<QuantityCounter
+						quantity={quantity}
+						handleQuantity={handleQuantity}
+					/>
+					<AddToCartButton
+						addToCart={() =>
+							addToCart({
+								product,
+								quantity,
+							})
+						}
+					/>
+				</>
+			) : (
+				<div className={s.not__available}>
+					<SectionTitle>Немає в наявності</SectionTitle>
+					<FaRegFaceSadTear />
+				</div>
+			)}
 		</div>
 	)
 }

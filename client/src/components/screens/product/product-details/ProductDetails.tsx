@@ -11,7 +11,6 @@ import { useToggleFavorite } from '@/hooks/toggleFavorite'
 import { useAuth } from '@/hooks/useAuth'
 import { useActions } from '@/hooks/useActions'
 import { getAverageRating } from '@/utils/avg-rating'
-import Text from '@/components/ui/heading/text/Text'
 
 const ProductDetails: FC<{ product: IProduct }> = ({ product }) => {
 	const { user } = useAuth()
@@ -31,7 +30,9 @@ const ProductDetails: FC<{ product: IProduct }> = ({ product }) => {
 				discountedPrice={product.discountedPrice}
 				size="lg"
 			/>
-			{product.quantity && <ProductQuantity product={product} />}
+
+			<ProductQuantity product={product} />
+
 			<div className={s.share}>
 				<SocialIcons dark />
 				<AddToFavoritesButton
