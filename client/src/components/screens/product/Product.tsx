@@ -10,6 +10,7 @@ import CarouselWithTitle from '@/components/ui/carousel-with-title/CarouselWithT
 import { useProduct } from '@/hooks/useProduct'
 import { useSimilarProducts } from '@/hooks/useSimilarProducts'
 import { useEffect } from 'react'
+import Loading from '@/components/ui/loading/Loading'
 
 const Product: NextPage = () => {
 	const router = useRouter()
@@ -50,15 +51,15 @@ const Product: NextPage = () => {
 						<ProductDetails product={product} />
 					</div>
 					<ProductTabs product={product} />
-					{products?.length && (
+					{products?.length ? (
 						<CarouselWithTitle
 							title="схожі товари"
 							products={products}
 						/>
-					)}
+					) : null}
 				</div>
 			) : (
-				<p>Loading...</p>
+				<Loading />
 			)}
 		</Layout>
 	)

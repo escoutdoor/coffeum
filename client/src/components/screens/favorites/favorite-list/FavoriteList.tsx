@@ -1,11 +1,8 @@
 import s from './favorite-list.module.scss'
-import { FC } from 'react'
 import FavoriteItem from './favorite-item/FavoriteItem'
-import { useFavorites } from '@/hooks/useFavorites'
+import { IFavorite } from '@/shared/interfaces/favorite.interface'
 
-const FavoriteList: FC = () => {
-	const { favorites } = useFavorites()
-
+const FavoriteList = ({ favorites }: { favorites: IFavorite[] }) => {
 	return (
 		<>
 			{favorites.map(f => (

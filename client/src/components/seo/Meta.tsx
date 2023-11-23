@@ -18,14 +18,13 @@ const Meta: FC<PropsWithChildren<IMeta>> = ({
 
 						<meta name="og:title" content={getTitle(title)} />
 						<meta name="og:description" content={description} />
-
-						<link
-							rel="shortcut icon"
-							href="/images/favicon.png"
-							type="image/x-icon"
-						/>
 					</>
 				)}
+				<link
+					rel="shortcut icon"
+					href="/images/favicon.png"
+					type="image/x-icon"
+				/>
 			</Head>
 
 			{children}

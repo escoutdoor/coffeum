@@ -2,9 +2,9 @@ import s from './cart-tabs.module.scss'
 import { FC } from 'react'
 import CheckoutTab from './checkout-tab/CheckoutTab'
 import CartTab from './cart-tab/CartTab'
-import NoCart from './no-cart/NoCart'
 import ICartItem from '@/shared/interfaces/cart-item.interface'
 import OrderCompletionTab from './order-completion-tab/OrderCompletionTab'
+import NoList from '@/components/ui/no-list/NoList'
 
 const CartTabs: FC<{ activeTab: string; cart: ICartItem[] }> = ({
 	activeTab,
@@ -21,7 +21,7 @@ const CartTabs: FC<{ activeTab: string; cart: ICartItem[] }> = ({
 					<CartTab />
 				)
 			) : (
-				<NoCart />
+				<NoList message="Кошик порожній" />
 			)}
 		</div>
 	)

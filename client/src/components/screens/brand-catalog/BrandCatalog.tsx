@@ -31,13 +31,10 @@ const BrandProducts: NextPage = () => {
 		>
 			<PageHeader title={id} />
 			<SortingBar />
-			{isLoading ? (
-				<p>Loading...</p>
-			) : data?.products ? (
-				<ProductList products={data.products} />
-			) : (
-				router.push('/404')
-			)}
+			<ProductList
+				products={data?.products || []}
+				isLoading={isLoading}
+			/>
 			<Pagination length={data?.length as number} />
 		</Layout>
 	)

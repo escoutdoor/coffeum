@@ -4,16 +4,28 @@ import { FC } from 'react'
 import ProductItem from '../product-item/ProductItem'
 import { useGetFilterParams } from '@/hooks/useGetFilterParams'
 import Text from '../heading/text/Text'
+import Loading from '../loading/Loading'
 
-const ProductList: FC<{ products: IProductItem[] }> = ({ products }) => {
+const ProductList: FC<{ products: IProductItem[]; isLoading: boolean }> = ({
+	products,
+	isLoading,
+}) => {
 	const { view } = useGetFilterParams()
 
 	return (
-		<div className={s.list}>
-			{products.length ? (
-				products.map(product => (
-					<ProductItem key={product.id} item={product} view={view} />
-				))
+		<div className={s.content}>
+			{isLoading ? (
+				<Loading />
+			) : products.length ? (
+				<div className={s.list}>
+					{products.map(product => (
+						<ProductItem
+							key={product.id}
+							item={product}
+							view={view}
+						/>
+					))}
+				</div>
 			) : (
 				<Text>Продуктів не знайдено</Text>
 			)}

@@ -6,4 +6,17 @@
 	display: flex;
 	gap: 40px;
 	margin-bottom: 30px;
+
+	animation: zoom-out 0.2s ease-in;
+
+	@keyframes zoom-out {
+		from {
+			transform: scale(1.01);
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
 }

@@ -1,3 +1,4 @@
+import { Transform } from 'class-transformer'
 import {
 	IsString,
 	IsNumber,
@@ -25,8 +26,8 @@ const ProductTypes: ProductType[] = [
 ]
 
 export enum EnumProductSort {
-	DESCPRICE = 'desc-price',
-	ASCPRICE = 'asc-price',
+	DESC_PRICE = 'desc-price',
+	ASC_PRICE = 'asc-price',
 	RATING = 'rating',
 	POPULARITY = 'popularity',
 }
@@ -34,20 +35,28 @@ export enum EnumProductSort {
 export class ProductDto {
 	@IsString()
 	name: string
+
 	@IsString()
 	description: string
+
 	@IsEnum(ProductTypes)
 	type: string
+
 	@IsNumber()
 	originalPrice: number
+
 	@IsNumber()
 	discountedPrice: number
+
 	@IsString()
 	country: string
+
 	@IsString()
 	brand: string
+
 	@IsNumber()
 	quantity: number
+
 	@IsArray()
 	@IsString({ each: true })
 	@ArrayMinSize(1)
@@ -57,39 +66,43 @@ export class ProductDto {
 export class SortingDataDto {
 	@IsOptional()
 	@IsString()
-	category?: string
+	category: string
 
 	@IsOptional()
 	@IsString()
-	minPrice?: string
+	minPrice: string
 
 	@IsOptional()
 	@IsString()
-	maxPrice?: string
+	maxPrice: string
 
 	@IsOptional()
 	@IsString()
-	availability?: string
+	availability: string
 
 	@IsOptional()
-	@IsString()
-	brands?: string
+	@Transform(({ value }) => value.split(',').map(v => v.trim()))
+	@IsArray()
+	brands: string[]
 
 	@IsOptional()
-	@IsString()
-	countries?: string
+	@Transform(({ value }) => value.split(',').map(v => v.trim()))
+	@IsArray()
+	countries: string[]
 
 	@IsOptional()
-	@IsString()
-	packing?: string
+	@Transform(({ value }) => value.split(',').map(v => v.trim()))
+	@IsArray()
+	packing: string[]
 
 	@IsOptional()
-	@IsString()
-	composition?: string
+	@Transform(({ value }) => value.split(',').map(v => v.trim()))
+	@IsArray()
+	composition: string[]
 
 	@IsOptional()
 	@IsEnum(EnumProductSort)
-	sortBy?: EnumProductSort
+	sortBy: EnumProductSort
 
 	@IsOptional()
 	@IsString()
@@ -104,10 +117,14 @@ export class GetAllProductsDto {
 	@IsOptional()
 	@IsString()
 	searchTerm?: string
+
+	@IsOptional()
 	sortBy: EnumProductSort
+
 	@IsOptional()
 	@IsString()
 	limit?: string
+
 	@IsOptional()
 	@IsString()
 	page?: string

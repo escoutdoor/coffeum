@@ -28,11 +28,11 @@ export class ProductController {
 	}
 
 	@Get()
-	@UsePipes(new ValidationPipe())
 	async getAll(@Query() dto: GetAllProductsDto) {
 		return this.productService.getAll(dto)
 	}
 
+	@UsePipes(new ValidationPipe({ transform: true }))
 	@Get('type/:type')
 	async getAllByType(
 		@Query() dto: SortingDataDto,

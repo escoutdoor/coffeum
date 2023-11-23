@@ -1,18 +1,18 @@
-import DarkButton from '@/components/ui/dark-button/DarkButton'
-import s from './no-cart.module.scss'
+import s from './no-list.module.scss'
 import { FC } from 'react'
 import { useRouter } from 'next/router'
 import { BiShoppingBag } from 'react-icons/bi'
+import DarkButton from '@/components/ui/dark-button/DarkButton'
 import Text from '@/components/ui/heading/text/Text'
 
-const NoCart: FC = () => {
+const NoList: FC<{ message: string }> = ({ message }) => {
 	const { push } = useRouter()
 
 	return (
-		<div className={s.no__cart}>
+		<div className={s.no__list}>
 			<div className={s.preview}>
 				<BiShoppingBag />
-				<Text>Кошик порожній</Text>
+				<Text>{message}</Text>
 			</div>
 			<DarkButton onClick={() => push('/search-products')}>
 				повернутись в магазин
@@ -21,4 +21,4 @@ const NoCart: FC = () => {
 	)
 }
 
-export default NoCart
+export default NoList

@@ -12,7 +12,9 @@ const BrandList: FC<BrandListProps> = ({ brands }) => {
 				<BrandItem
 					key={brand}
 					name={brand}
-					image={`/images/img/brands/${brand.toLowerCase().replaceAll(' ', '-')}.webp`}
+					image={`/images/img/brands/${brand
+						.toLowerCase()
+						.replaceAll(' ', '-')}.webp`}
 				/>
 			))}
 		</div>

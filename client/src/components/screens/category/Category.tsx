@@ -49,7 +49,7 @@ const Category: FC<{
 						)}
 					</div>
 					<SortingBar />
-					<ProductList products={products} />
+					<ProductList products={products} isLoading={isLoading} />
 					<Pagination length={length} />
 					{productType === 'coffee' &&
 						coffeeInfo.map(item => (

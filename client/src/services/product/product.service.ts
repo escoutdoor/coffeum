@@ -14,25 +14,29 @@ class ProductService {
 	private PRODUCTS_URL = '/api/products/'
 
 	async getAll(type: ProductType, data: IProductFilterData) {
-		const {
-			limit,
-			page,
-			sortBy,
-			category,
-			minPrice,
-			maxPrice,
-			brands,
-			countries,
-			availability,
-			composition,
-			packing,
-		} = data
-
-		const query = `limit=${limit}&page=${page}&sortBy=${sortBy}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}
-		&brands=${brands}&countries=${countries}&availability=${availability}&composition=${composition}&packing=${packing}`
-
 		return await axios.get<IProductResponse>(
-			`${this.PRODUCTS_URL}type/${type}?${query}`
+			`${this.PRODUCTS_URL}type/${type}`,
+			{
+				params: {
+					limit: data.limit,
+					page: data.page,
+					minPrice: data.minPrice,
+					maxPrice: data.maxPrice,
+					sortBy: data.sortBy,
+					...(data.category && { category: data.category }),
+					...(data.brands?.length && { brands: data.brands }),
+					...(data.countries?.length && {
+						countries: data.countries,
+					}),
+					...(data.availability?.length && {
+						availability: data.availability,
+					}),
+					...(data.composition?.length && {
+						composition: data.composition,
+					}),
+					...(data.packing?.length && { packing: data.packing }),
+				},
+			}
 		)
 	}
 
@@ -51,10 +55,15 @@ class ProductService {
 	}
 
 	async getProductsByBrand(brand: string, data: IProductFilterData) {
-		const query = `limit=${data.limit}&page=${data.page}&sortBy=${data.sortBy}`
-
 		return await axios.get<IProductResponse>(
-			`${this.PRODUCTS_URL}/byBrand/${brand}?${query}`
+			`${this.PRODUCTS_URL}/byBrand/${brand}`,
+			{
+				params: {
+					limit: data.limit,
+					page: data.page,
+					sortBy: data.sortBy,
+				},
+			}
 		)
 	}
 

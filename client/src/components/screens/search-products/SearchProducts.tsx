@@ -37,11 +37,10 @@ const SearchProducts: NextPage = () => {
 			/>
 			<div className={s.search__products}>
 				<SortingBar />
-				{isLoading ? (
-					<p>Loading...</p>
-				) : data?.products ? (
-					<ProductList products={data.products} />
-				) : null}
+				<ProductList
+					products={data?.products || []}
+					isLoading={isLoading}
+				/>
 				<Pagination length={data?.length as number} />
 			</div>
 		</Layout>

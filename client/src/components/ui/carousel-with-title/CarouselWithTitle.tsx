@@ -5,9 +5,6 @@ import { Pagination, Navigation } from 'swiper/modules'
 import ICarousel from '@/shared/interfaces/carousel.interface'
 import CarouselButtons from '@/components/screens/home/carousel-buttons/CarouselButtons'
 import ProductItem from '@/components/ui/product-item/ProductItem'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
 import UpperCaseTitle from '@/components/ui/heading/upper-case-title/UpperCaseTitle'
 
 const CarouselWithTitle: FC<ICarousel> = ({ title, products }) => {

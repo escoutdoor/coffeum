@@ -1,10 +1,14 @@
-.list {
-	display: inline-flex;
-	justify-content: center;
-	align-items: flex-start;
-	align-content: flex-start;
-	flex-wrap: wrap;
-	gap: 30px 20px;
-	min-height: 100vh;
+.content {
 	margin-top: 60px;
+
+	.list {
+		display: inline-flex;
+		justify-content: center;
+		align-items: flex-start;
+		align-content: flex-start;
+		flex-wrap: wrap;
+		gap: 30px 20px;
+		min-height: 100vh;
+		margin-bottom: 30px;
+	}
 }

@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import BrandList from './brand-list/BrandList'
 import SearchManufacturer from './search-manufacturer/SearchManufacturer'
 import { useBrands } from '@/hooks/useBrands'
+import Loading from '@/components/ui/loading/Loading'
 
 const Brands: NextPage = () => {
 	const { isLoading, data: brands } = useBrands()
@@ -18,12 +19,16 @@ const Brands: NextPage = () => {
 		>
 			<PageHeader title="Виробники" />
 			<SearchManufacturer text={text} setText={setText} />
-			{brands && (
-				<BrandList
-					brands={brands.filter((item: string) =>
-						item?.toLowerCase().includes(text.toLowerCase())
-					)}
-				/>
+			{isLoading ? (
+				<Loading />
+			) : (
+				brands && (
+					<BrandList
+						brands={brands.filter((item: string) =>
+							item?.toLowerCase().includes(text.toLowerCase())
+						)}
+					/>
+				)
 			)}
 		</Layout>
 	)

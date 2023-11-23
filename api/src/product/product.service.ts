@@ -9,7 +9,6 @@ import {
 	SortingDataDto,
 } from './product.dto'
 import { Prisma } from '@prisma/client'
-import { split } from 'src/utils/split'
 import { returnUserFields } from '../user/user-fields.object'
 import { returnProductFields } from './product-fields.object'
 
@@ -28,19 +27,28 @@ export class ProductService {
 		})
 	}
 
-	async getAll(dto: GetAllProductsDto) {
-		const { searchTerm, sortBy } = dto
-
+	async getSorting(sortBy: EnumProductSort) {
 		const sorting: Prisma.ProductOrderByWithRelationInput[] = []
 
 		switch (sortBy) {
-			case EnumProductSort.ASCPRICE:
+			case EnumProductSort.ASC_PRICE:
 				sorting.push({ discountedPrice: 'asc' })
 				break
-			case EnumProductSort.DESCPRICE:
+			case EnumProductSort.DESC_PRICE:
 				sorting.push({ discountedPrice: 'desc' })
 				break
+			case EnumProductSort.POPULARITY:
+				sorting.push({ reviews: { _count: 'desc' } })
+				break
+			case EnumProductSort.RATING:
+				break
 		}
+
+		return sorting
+	}
+
+	async getAll(dto: GetAllProductsDto) {
+		const { searchTerm } = dto
 
 		const searchTermFilter: Prisma.ProductWhereInput = searchTerm
 			? {
@@ -84,7 +92,7 @@ export class ProductService {
 
 		const products = await this.prisma.product.findMany({
 			where: searchTermFilter,
-			orderBy: sorting,
+			orderBy: await this.getSorting(dto.sortBy),
 			skip,
 			select: returnProductFields,
 			take: limit,
@@ -99,50 +107,27 @@ export class ProductService {
 	}
 
 	async getAllByType(type: ProductType, dto: SortingDataDto) {
-		const {
-			category,
-			minPrice,
-			maxPrice,
-			availability,
-			brands,
-			countries,
-			composition,
-			packing,
-			sortBy,
-		} = dto
-
-		const filter: Prisma.ProductWhereInput = {
+		const filterOptions: Prisma.ProductWhereInput = {
 			type,
 			discountedPrice: {
-				gte: minPrice ? +minPrice : undefined,
-				lte: maxPrice ? +maxPrice : undefined,
+				gte: dto.minPrice ? +dto.minPrice : undefined,
+				lte: dto.maxPrice ? +dto.maxPrice : undefined,
 			},
-			...(availability && { quantity: { not: 0 } }),
-			...(category && { categories: { has: category } }),
-			...(countries && { country: { in: split(countries) } }),
-			...(brands && { brand: { in: split(brands) } }),
-			...(packing && { packing: { in: split(packing) } }),
-			...(composition && {
-				composition: { hasSome: split(composition) },
+			...(dto.availability && { quantity: { not: 0 } }),
+			...(dto.category && { categories: { has: dto.category } }),
+			...(dto.countries && { country: { in: dto.countries } }),
+			...(dto.brands && { brand: { in: dto.brands } }),
+			...(dto.packing && { packing: { in: dto.packing } }),
+			...(dto.composition && {
+				composition: { hasSome: dto.composition },
 			}),
-		}
-
-		const sorting: Prisma.ProductOrderByWithRelationInput[] = []
-
-		switch (sortBy) {
-			case EnumProductSort.ASCPRICE:
-				sorting.push({ discountedPrice: 'asc' })
-				break
-			case EnumProductSort.DESCPRICE:
-				sorting.push({ discountedPrice: 'desc' })
-				break
 		}
 
 		const { limit, skip } = this.paginationService.getPagination(dto)
 
 		const products = await this.prisma.product.findMany({
-			where: filter,
-			orderBy: sorting,
+			where: filterOptions,
+			orderBy: await this.getSorting(dto.sortBy),
 			skip,
 			select: returnProductFields,
 			take: limit,
@@ -151,7 +136,7 @@ export class ProductService {
 		return {
 			products,
 			length: await this.prisma.product.count({
-				where: filter,
+				where: filterOptions,
 			}),
 		}
 	}
@@ -222,38 +207,21 @@ export class ProductService {
 	}
 
 	getAllBrands() {
-		return this.prisma.product.findMany({
-			select: {
-				brand: true,
-			},
-			distinct: ['brand'],
+		return this.prisma.product.groupBy({
+			by: 'brand',
 		})
 	}
 
 	async getProductsByBrand(brand: string, dto: SortingDataDto) {
-		const { sortBy } = dto
-
-		const sorting: Prisma.ProductOrderByWithRelationInput[] = []
-		switch (sortBy) {
-			case EnumProductSort.ASCPRICE:
-				sorting.push({ discountedPrice: 'asc' })
-				break
-			case EnumProductSort.DESCPRICE:
-				sorting.push({ discountedPrice: 'desc' })
-				break
-		}
-
 		const { limit, skip } = this.paginationService.getPagination(dto)
 
 		const products = await this.prisma.product.findMany({
 			where: {
 				brand,
 			},
-			orderBy: sorting,
+			orderBy: await this.getSorting(dto.sortBy),
 			skip,
-			select: {
-				...returnProductFields,
-			},
+			select: returnProductFields,
 			take: limit,
 		})
 

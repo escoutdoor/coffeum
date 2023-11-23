@@ -1,0 +1,12 @@
+.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 90vh;
+
+	.image {
+		width: auto;
+		height: auto;
+		max-height: 450px;
+	}
+}
