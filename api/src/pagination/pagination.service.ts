@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common'
-import { PrismaService } from 'src/prisma.service'
 import { PaginationDto } from './pagination.dto'
 
 @Injectable()

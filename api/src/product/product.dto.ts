@@ -8,22 +8,14 @@ import {
 	IsOptional,
 } from 'class-validator'
 
-export type ProductType =
-	| 'coffee'
-	| 'coffee-machines'
-	| 'accessories'
-	| 'tea'
-	| 'cocoa-chocolate'
-	| 'markdown'
-
-const ProductTypes: ProductType[] = [
-	'coffee',
-	'coffee-machines',
-	'accessories',
-	'tea',
-	'cocoa-chocolate',
-	'markdown',
-]
+export enum EnumProductType {
+	COFFEE = 'coffee',
+	COFFEE_MACHINES = 'coffee-machines',
+	TEA = 'tea',
+	ACCESSORIES = 'accessories',
+	COCOA_CHOCOLATE = 'cocoa-chocolate',
+	MARKDOWN = 'markdown',
+}
 
 export enum EnumProductSort {
 	DESC_PRICE = 'desc-price',
@@ -39,7 +31,7 @@ export class ProductDto {
 	@IsString()
 	description: string
 
-	@IsEnum(ProductTypes)
+	@IsEnum(EnumProductType)
 	type: string
 
 	@IsNumber()
@@ -116,16 +108,16 @@ export class SortingDataDto {
 export class GetAllProductsDto {
 	@IsOptional()
 	@IsString()
-	searchTerm?: string
+	searchTerm: string
 
 	@IsOptional()
 	sortBy: EnumProductSort
 
 	@IsOptional()
 	@IsString()
-	limit?: string
+	limit: string
 
 	@IsOptional()
 	@IsString()
-	page?: string
+	page: string
 }

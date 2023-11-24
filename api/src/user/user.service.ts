@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common'
 import { PrismaService } from 'src/prisma.service'
 import { UserDto } from './user.dto'
-import { returnUserFields } from './user-fields.object'
+import { userFields } from './user-fields.object'
 import { hash, verify } from 'argon2'
 
 @Injectable()
@@ -16,7 +16,7 @@ export class UserService {
 	async getProfileById(id: string) {
 		const user = await this.prisma.user.findUnique({
 			where: { id },
-			select: returnUserFields,
+			select: userFields,
 		})
 
 		if (!user) {
@@ -55,7 +55,7 @@ export class UserService {
 					},
 				},
 			},
-			select: returnUserFields,
+			select: userFields,
 		})
 	}
 
@@ -89,7 +89,7 @@ export class UserService {
 					},
 				},
 			},
-			select: returnUserFields,
+			select: userFields,
 		})
 	}
 }

@@ -1,13 +1,13 @@
-import { returnProductFields } from 'src/product/product-fields.object'
+import { productFields } from 'src/product/product-fields.object'
 
-export const returnFavoriteFields = {
+export const favoriteFields = {
 	id: true,
 	product: {
-		select: returnProductFields,
+		select: productFields,
 	},
 }
 
-export const returnRecipientFields = {
+export const recipientFields = {
 	id: true,
 	firstName: true,
 	surName: true,
@@ -16,7 +16,7 @@ export const returnRecipientFields = {
 	mailroom: true,
 }
 
-export const returnUserFields = {
+export const userFields = {
 	id: true,
 	email: true,
 	avatarPath: true,
@@ -24,9 +24,9 @@ export const returnUserFields = {
 	surName: true,
 	password: false,
 	recipient: {
-		select: returnRecipientFields,
+		select: recipientFields,
 	},
 	favorites: {
-		select: returnFavoriteFields,
+		select: favoriteFields,
 	},
 }

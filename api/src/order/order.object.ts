@@ -1,11 +1,11 @@
-import { returnProductFields } from 'src/product/product-fields.object'
+import { productFields } from 'src/product/product-fields.object'
 
-export const returnOrderItemFields = {
+export const orderItemFields = {
 	id: true,
 	quantity: true,
 	product: {
 		select: {
-			...returnProductFields,
+			...productFields,
 			quantity: false,
 			categories: false,
 			reviews: false,
@@ -26,11 +26,11 @@ export const returnOrderItemFields = {
 	},
 }
 
-export const returnOrderFields = {
+export const orderFields = {
 	id: true,
 	status: true,
 	items: {
-		select: returnOrderItemFields,
+		select: orderItemFields,
 	},
 	firstName: true,
 	surName: true,

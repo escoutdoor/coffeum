@@ -3,14 +3,14 @@ import { PrismaService } from 'src/prisma.service'
 import { PaginationService } from 'src/pagination/pagination.service'
 import {
 	EnumProductSort,
+	EnumProductType,
 	GetAllProductsDto,
 	ProductDto,
-	ProductType,
 	SortingDataDto,
 } from './product.dto'
 import { Prisma } from '@prisma/client'
-import { returnUserFields } from '../user/user-fields.object'
-import { returnProductFields } from './product-fields.object'
+import { userFields } from '../user/user-fields.object'
+import { productFields } from './product-fields.object'
 
 @Injectable()
 export class ProductService {
@@ -94,7 +94,7 @@ export class ProductService {
 			where: searchTermFilter,
 			orderBy: await this.getSorting(dto.sortBy),
 			skip,
-			select: returnProductFields,
+			select: productFields,
 			take: limit,
 		})
 
@@ -106,7 +106,7 @@ export class ProductService {
 		}
 	}
 
-	async getAllByType(type: ProductType, dto: SortingDataDto) {
+	async getAllByType(type: EnumProductType, dto: SortingDataDto) {
 		const filterOptions: Prisma.ProductWhereInput = {
 			type,
 			discountedPrice: {
@@ -129,7 +129,7 @@ export class ProductService {
 			where: filterOptions,
 			orderBy: await this.getSorting(dto.sortBy),
 			skip,
-			select: returnProductFields,
+			select: productFields,
 			take: limit,
 		})
 
@@ -169,7 +169,7 @@ export class ProductService {
 				reviews: {
 					include: {
 						author: {
-							select: returnUserFields,
+							select: userFields,
 						},
 					},
 				},
@@ -200,7 +200,7 @@ export class ProductService {
 				},
 			},
 			take: 8,
-			select: returnProductFields,
+			select: productFields,
 		})
 
 		return similar
@@ -221,7 +221,7 @@ export class ProductService {
 			},
 			orderBy: await this.getSorting(dto.sortBy),
 			skip,
-			select: returnProductFields,
+			select: productFields,
 			take: limit,
 		})
 

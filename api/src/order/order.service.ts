@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { PrismaService } from 'src/prisma.service'
 import { OrderDto } from './order.dto'
-import { returnOrderFields, returnOrderItemFields } from './order.object'
+import { orderFields, orderItemFields } from './order.object'
 
 @Injectable()
 export class OrderService {
@@ -12,7 +12,7 @@ export class OrderService {
 			where: {
 				id,
 			},
-			select: returnOrderFields,
+			select: orderFields,
 		})
 	}
 
@@ -23,9 +23,7 @@ export class OrderService {
 					userId,
 				},
 			},
-			select: {
-				...returnOrderItemFields,
-			},
+			select: orderItemFields,
 		})
 	}
 
@@ -48,7 +46,7 @@ export class OrderService {
 				city: dto.city,
 				mailroom: dto.mailroom,
 			},
-			select: returnOrderFields,
+			select: orderFields,
 		})
 	}
 

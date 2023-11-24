@@ -12,9 +12,9 @@ import {
 } from '@nestjs/common'
 import { ProductService } from './product.service'
 import {
+	EnumProductType,
 	GetAllProductsDto,
 	ProductDto,
-	ProductType,
 	SortingDataDto,
 } from './product.dto'
 
@@ -36,7 +36,7 @@ export class ProductController {
 	@Get('type/:type')
 	async getAllByType(
 		@Query() dto: SortingDataDto,
-		@Param('type') type: ProductType
+		@Param('type') type: EnumProductType
 	) {
 		return this.productService.getAllByType(type, dto)
 	}

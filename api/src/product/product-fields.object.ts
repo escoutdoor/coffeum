@@ -1,4 +1,4 @@
-export const returnProductFields = {
+export const productFields = {
 	id: true,
 	name: true,
 	categories: true,
