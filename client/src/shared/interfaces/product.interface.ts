@@ -2,12 +2,14 @@ import { IUser } from './user.interface'
 
 export interface IReview {
 	id: number
-	author: IUser
-	authorId: string
+	author: IAuthor
 	rating: number
 	text: string
 	createdAt: Date | string
 }
+
+export interface IAuthor
+	extends Omit<IUser, 'reviews' | 'favorites' | 'recipient'> {}
 
 export interface IProductItem {
 	id: string

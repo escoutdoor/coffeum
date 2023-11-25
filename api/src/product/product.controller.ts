@@ -41,15 +41,18 @@ export class ProductController {
 		return this.productService.getAllByType(type, dto)
 	}
 
-	@Post()
 	@UsePipes(new ValidationPipe())
+	@Post()
 	async createProduct(@Body() dto: ProductDto) {
 		return this.productService.createProduct(dto)
 	}
 
 	@Put(':id')
-	async updateProductById(@Param('id') @Body() id: string, dto: any) {
-		return this.productService.updateProduct(id, dto)
+	async updateProductById(
+		@Param('id') productId: string,
+		@Body() dto: ProductDto
+	) {
+		return this.productService.updateProduct(productId, dto)
 	}
 
 	@Get(':id')

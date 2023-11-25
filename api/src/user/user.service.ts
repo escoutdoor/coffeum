@@ -6,8 +6,7 @@ import {
 } from '@nestjs/common'
 import { PrismaService } from 'src/prisma.service'
 import { UserDto } from './user.dto'
-import { userFields } from './user-fields.object'
-import { hash, verify } from 'argon2'
+import { userFields } from './user.object'
 
 @Injectable()
 export class UserService {
@@ -45,9 +44,6 @@ export class UserService {
 				firstName: dto.firstName,
 				surName: dto.surName,
 				email: dto.email,
-				password: dto.password
-					? await hash(dto.password)
-					: user.password,
 				avatarPath: dto.avatarPath,
 				recipient: {
 					[user.recipient ? 'update' : 'create']: {
@@ -59,20 +55,6 @@ export class UserService {
 		})
 	}
 
-	async changePassword(user: UserDto, password?: string) {
-		if (!password) {
-			return user.password
-		}
-
-		const isPasswordValid = await verify(user.password, password)
-
-		if (!isPasswordValid) {
-			throw new UnauthorizedException('Invalid password')
-		}
-
-		return await hash(password)
-	}
-
 	async toggleFavorite(id: string, productId: string) {
 		const user = await this.getProfileById(id)
 
@@ -81,7 +63,9 @@ export class UserService {
 		)
 
 		return await this.prisma.user.update({
-			where: { id: user.id },
+			where: {
+				id,
+			},
 			data: {
 				favorites: {
 					[isExists ? 'deleteMany' : 'create']: {

@@ -1,4 +1,4 @@
-import { productFields } from 'src/product/product-fields.object'
+import { productFields } from 'src/product/product.object'
 
 export const orderItemFields = {
 	id: true,

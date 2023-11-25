@@ -1,4 +1,4 @@
-import { productFields } from 'src/product/product-fields.object'
+import { productFields } from 'src/product/product.object'
 
 export const favoriteFields = {
 	id: true,
@@ -22,7 +22,6 @@ export const userFields = {
 	avatarPath: true,
 	firstName: true,
 	surName: true,
-	password: false,
 	recipient: {
 		select: recipientFields,
 	},

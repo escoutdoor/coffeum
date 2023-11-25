@@ -10,7 +10,12 @@ interface IInformationTabItem {
 	type: ProductType
 }
 
-const InformationTabItem: FC<IInformationTabItem> = ({ title, query, value, type }) => {
+const InformationTabItem: FC<IInformationTabItem> = ({
+	title,
+	query,
+	value,
+	type,
+}) => {
 	const isString = typeof value === 'string'
 
 	return (
@@ -18,12 +23,19 @@ const InformationTabItem: FC<IInformationTabItem> = ({ title, query, value, type
 			<h1 className={s.title}>{title}</h1>
 			<div>
 				{isString ? (
-					<Link className={s.link} href={`/${type}?${query}=${value}`}>
+					<Link
+						className={s.link}
+						href={`/${type}?${query}=${value}`}
+					>
 						{value}
 					</Link>
 				) : (
 					value.map((item, index) => (
-						<Link key={index} className={s.link} href={`/${type}?${query}=${item}`}>
+						<Link
+							key={index}
+							className={s.link}
+							href={`/${type}?${query}=${item}`}
+						>
 							{item}
 						</Link>
 					))

@@ -73,9 +73,14 @@ class ProductService {
 	}
 
 	async getFoundProducts(data: IFilterSort) {
-		return await axios.get<IProductResponse>(
-			`${this.PRODUCTS_URL}?searchTerm=${data.searchTerm}&limit=${data.limit}&page=${data.page}&sortBy=${data.sortBy}`
-		)
+		return await axios.get<IProductResponse>(`${this.PRODUCTS_URL}`, {
+			params: {
+				limit: data.limit,
+				page: data.page,
+				sortBy: data.sortBy,
+				searchTerm: data.searchTerm,
+			},
+		})
 	}
 }
 

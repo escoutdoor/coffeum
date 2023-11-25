@@ -31,6 +31,9 @@ export class ProductDto {
 	@IsString()
 	description: string
 
+	@IsString()
+	image: string
+
 	@IsEnum(EnumProductType)
 	type: string
 

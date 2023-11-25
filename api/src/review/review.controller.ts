@@ -9,6 +9,8 @@ import {
 } from '@nestjs/common'
 import { ReviewService } from './review.service'
 import { ReviewDto } from './review.dto'
+import { CurrentUser } from 'src/auth/decorators/user.decorator'
+import { Auth } from 'src/auth/decorators/auth.decorator'
 
 @Controller('reviews')
 export class ReviewController {
@@ -19,15 +21,19 @@ export class ReviewController {
 		return this.reviewService.getReviewsByProductId(productId)
 	}
 
-	@Get('getById/:reviewId')
-	async getReviewById(@Param('reviewId') reviewId: number) {
+	@Get('getById/:id')
+	async getReviewById(@Param('id') reviewId: string) {
 		return this.reviewService.getReviewById(reviewId)
 	}
 
-	@Post()
 	@UsePipes(new ValidationPipe())
-	async createReview(@Body() dto: ReviewDto) {
-		return this.reviewService.createReview(dto)
+	@Auth()
+	@Post()
+	async createReview(
+		@CurrentUser('id') userId: string,
+		@Body() dto: ReviewDto
+	) {
+		return this.reviewService.createReview(userId, dto)
 	}
 
 	@Get('avg/:productId')

@@ -9,8 +9,7 @@ import {
 	SortingDataDto,
 } from './product.dto'
 import { Prisma } from '@prisma/client'
-import { userFields } from '../user/user-fields.object'
-import { productFields } from './product-fields.object'
+import { productFields } from './product.object'
 
 @Injectable()
 export class ProductService {
@@ -20,11 +19,15 @@ export class ProductService {
 	) {}
 
 	async deleteProductById(id: string) {
-		return await this.prisma.product.delete({
+		const product = await this.getProductById(id)
+
+		await this.prisma.product.delete({
 			where: {
 				id,
 			},
 		})
+
+		return 'PRODUCT DELETED'
 	}
 
 	async getSorting(sortBy: EnumProductSort) {
@@ -149,7 +152,7 @@ export class ProductService {
 		}
 	}
 
-	createProduct(dto: ProductDto) {
+	async createProduct(dto: ProductDto) {
 		return this.prisma.product.create({
 			data: {
 				...dto,
@@ -157,14 +160,35 @@ export class ProductService {
 		})
 	}
 
-	updateProduct(id: string, dto: any) {
-		return this.prisma.product.update({
+	async updateProduct(productId: string, dto: ProductDto) {
+		console.log(productId)
+
+		const product = await this.prisma.product.findUnique({
 			where: {
-				id: id,
+				id: productId,
+			},
+		})
+
+		if (!product) {
+			throw new NotFoundException('Product not found')
+		}
+
+		return await this.prisma.product.update({
+			where: {
+				id: productId,
 			},
 			data: {
-				country: 'Франція',
+				name: dto.name,
+				description: dto.description,
+				type: dto.type,
+				originalPrice: dto.originalPrice,
+				discountedPrice: dto.discountedPrice,
+				country: dto.country,
+				brand: dto.brand,
+				quantity: dto.quantity,
+				categories: dto.categories,
 			},
+			select: productFields,
 		})
 	}
 
@@ -173,15 +197,7 @@ export class ProductService {
 			where: {
 				id: id,
 			},
-			include: {
-				reviews: {
-					include: {
-						author: {
-							select: userFields,
-						},
-					},
-				},
-			},
+			select: productFields,
 		})
 
 		if (!product) {

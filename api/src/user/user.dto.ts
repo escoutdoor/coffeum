@@ -38,7 +38,7 @@ export class UserDto {
 
 	@IsOptional()
 	@IsString()
-	surName?: string
+	surName: string
 
 	@IsEmail()
 	email: string
@@ -49,7 +49,7 @@ export class UserDto {
 
 	@IsOptional()
 	@IsString()
-	avatarPath?: string
+	avatarPath: string
 
 	@IsOptional()
 	@IsObject()

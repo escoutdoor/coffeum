@@ -9,7 +9,4 @@ export class ReviewDto {
 
 	@IsString()
 	productId: string
-
-	@IsString()
-	authorId: string
 }

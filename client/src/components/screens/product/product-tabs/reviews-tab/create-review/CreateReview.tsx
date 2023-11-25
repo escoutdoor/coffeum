@@ -29,7 +29,7 @@ const CreateReview: FC<{ productId: string }> = ({ productId }) => {
 		resolver: zodResolver(reviewSchema),
 	})
 
-	const onSumbit: SubmitHandler<TReview> = data => {
+	const onSubmit: SubmitHandler<TReview> = data => {
 		if (!profile) {
 			push('/my-account')
 			return
@@ -38,7 +38,6 @@ const CreateReview: FC<{ productId: string }> = ({ productId }) => {
 		createReview({
 			...data,
 			productId,
-			authorId: profile?.id,
 		})
 
 		reset()
@@ -47,7 +46,7 @@ const CreateReview: FC<{ productId: string }> = ({ productId }) => {
 	return (
 		<div className={s.block}>
 			<p className={s.heading}>Додати відгук</p>
-			<form onSubmit={handleSubmit(onSumbit)} className={s.form}>
+			<form onSubmit={handleSubmit(onSubmit)} className={s.form}>
 				<label>
 					<h1 className={s.title}>Ваша оцінка</h1>
 					<span className={s.required}>*</span>
