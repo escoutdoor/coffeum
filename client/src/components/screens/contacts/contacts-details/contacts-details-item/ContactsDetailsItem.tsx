@@ -5,34 +5,29 @@ import Link from 'next/link'
 import Text from '@/components/ui/heading/text/Text'
 import SectionTitle from '@/components/ui/heading/section-title/SectionTitle'
 
-const ContactsDetailsItem: FC<IContactsDetailsItem> = ({
-	title,
-	Icon,
-	links,
-	text,
-}) => {
+const ContactsDetailsItem: FC<{ item: IContactsDetailsItem }> = ({ item }) => {
 	return (
 		<div className={s.box}>
-			<Icon />
+			<item.Icon />
 			<div className={s.details}>
 				<SectionTitle
 					style={{
 						marginBottom: '15px',
 					}}
 				>
-					{title}
+					{item.title}
 				</SectionTitle>
 				<ul className={s.list}>
-					{links &&
-						links.map((link, index) => (
+					{item.links &&
+						item.links.map((link, index) => (
 							<li key={index}>
 								<Link href={link.href} className={s.link}>
 									{link.title}
 								</Link>
 							</li>
 						))}
-					{text &&
-						text.map((text, index) => (
+					{item.text &&
+						item.text.map((text, index) => (
 							<Text key={index}>{text}</Text>
 						))}
 				</ul>

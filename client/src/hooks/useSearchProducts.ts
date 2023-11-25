@@ -1,11 +1,11 @@
 import productService from '@/services/product/product.service'
-import { ISearchProducts } from '@/shared/interfaces/filter-data.interface'
+import { IFilterSort } from '@/shared/interfaces/filter-data.interface'
 import { useQuery } from '@tanstack/react-query'
 
-export const useSearchProducts = (dto: ISearchProducts) => {
+export const useSearchProducts = (data: IFilterSort) => {
 	return useQuery(
 		['found products'],
-		() => productService.getFoundProducts(dto),
+		() => productService.getFoundProducts(data),
 		{
 			select: ({ data }) => data,
 		}

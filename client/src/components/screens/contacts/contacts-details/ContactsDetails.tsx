@@ -7,13 +7,7 @@ const ContactsDetails: FC = () => {
 	return (
 		<div className={s.contacts}>
 			{contactsDetails.map(item => (
-				<ContactsDetailsItem
-					id={item.id}
-					Icon={item.Icon}
-					title={item.title}
-					links={item.links}
-					text={item.text}
-				/>
+				<ContactsDetailsItem key={item.id} item={item} />
 			))}
 		</div>
 	)

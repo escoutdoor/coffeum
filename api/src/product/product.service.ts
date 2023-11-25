@@ -110,14 +110,22 @@ export class ProductService {
 		const filterOptions: Prisma.ProductWhereInput = {
 			type,
 			discountedPrice: {
-				gte: dto.minPrice ? +dto.minPrice : undefined,
-				lte: dto.maxPrice ? +dto.maxPrice : undefined,
+				gte: +dto.minPrice,
+				lte: +dto.maxPrice,
 			},
-			...(dto.availability && { quantity: { not: 0 } }),
+			brand: {
+				in: dto.brands,
+			},
+			quantity: {
+				[dto.availability ? 'not' : 'gt']: 0,
+			},
 			...(dto.category && { categories: { has: dto.category } }),
-			...(dto.countries && { country: { in: dto.countries } }),
-			...(dto.brands && { brand: { in: dto.brands } }),
-			...(dto.packing && { packing: { in: dto.packing } }),
+			country: {
+				in: dto.countries,
+			},
+			packing: {
+				in: dto.packing,
+			},
 			...(dto.composition && {
 				composition: { hasSome: dto.composition },
 			}),

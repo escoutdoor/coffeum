@@ -14,10 +14,13 @@ const BrandProducts: NextPage = () => {
 	const id = router.query.id as string
 	const { limit, sortBy, page } = useGetFilterParams()
 
-	const { isLoading, data, refetch } = useBrandProducts(id, {
-		limit,
-		sortBy,
-		page,
+	const { isLoading, data, refetch } = useBrandProducts({
+		id,
+		data: {
+			limit,
+			sortBy,
+			page,
+		},
 	})
 
 	useEffect(() => {

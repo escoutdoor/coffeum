@@ -17,7 +17,9 @@ const ProductList: FC<{ products: IProductItem[]; isLoading: boolean }> = ({
 			{isLoading ? (
 				<Loading />
 			) : products.length ? (
-				<div className={s.list}>
+				<div
+					className={view === 'list' ? `${s.list} ${s.list}` : s.list}
+				>
 					{products.map(product => (
 						<ProductItem
 							key={product.id}

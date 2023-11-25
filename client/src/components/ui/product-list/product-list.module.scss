@@ -10,5 +10,9 @@
 		gap: 30px 20px;
 		min-height: 100vh;
 		margin-bottom: 30px;
+
+		&.list {
+			gap: 20px 0;
+		}
 	}
 }
