@@ -4,8 +4,10 @@ import { FC } from 'react'
 const AttentionBox: FC<{ text: string[] }> = ({ text }) => {
 	return (
 		<div className={s.box}>
-			{text.map(item => (
-				<h1 className={s.text}>{item}</h1>
+			{text.map((item, index) => (
+				<h1 key={index} className={s.text}>
+					{item}
+				</h1>
 			))}
 		</div>
 	)

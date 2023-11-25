@@ -1,4 +1,5 @@
 import { IFavorite } from './favorite.interface'
+import { IRecipient } from './order.interface'
 import { IReview } from './product.interface'
 
 export interface IUser {
@@ -10,14 +11,6 @@ export interface IUser {
 	favorites: IFavorite[]
 	avatarPath: string
 	recipient?: IRecipient
-}
-
-export interface IRecipient {
-	firstName: string
-	surName: string
-	phone: string
-	city: string
-	mailroom: string
 }
 
 export interface ICreateUserInfo extends Pick<IUser, 'email' | 'firstName'> {

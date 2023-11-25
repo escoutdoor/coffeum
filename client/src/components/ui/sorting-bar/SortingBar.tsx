@@ -28,7 +28,10 @@ const SortingBar: FC = () => {
 						value: sortBy,
 					}}
 					onChange={e => {
-						updateQueryParam('sortBy', e?.value as string)
+						updateQueryParam({
+							name: 'sortBy',
+							value: e?.value as string,
+						})
 					}}
 					theme={theme => ({
 						...theme,
@@ -51,7 +54,10 @@ const SortingBar: FC = () => {
 					defaultValue={limitOptions[0]}
 					value={{ label: +limit, value: +limit }}
 					onChange={e => {
-						updateQueryParam('limit', e?.value.toString() as string)
+						updateQueryParam({
+							name: 'limit',
+							value: e?.value.toString() as string,
+						})
 					}}
 					theme={theme => ({
 						...theme,
@@ -71,7 +77,7 @@ const SortingBar: FC = () => {
 								: s.button
 						}
 						onClick={() => {
-							updateQueryParam('view', 'grid')
+							updateQueryParam({ name: 'view', value: 'grid' })
 						}}
 					/>
 					<FaThList
@@ -81,7 +87,7 @@ const SortingBar: FC = () => {
 								: s.button
 						}
 						onClick={() => {
-							updateQueryParam('view', 'list')
+							updateQueryParam({ name: 'view', value: 'list' })
 						}}
 					/>
 				</div>

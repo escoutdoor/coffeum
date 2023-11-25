@@ -23,7 +23,6 @@ const Sidebar: FC<ISidebar> = ({ data }) => {
 		maxPrice,
 		availability,
 		countries,
-		reasonsForMarkDown,
 		composition,
 		packing,
 	} = useGetFilterParams(data)
@@ -41,7 +40,6 @@ const Sidebar: FC<ISidebar> = ({ data }) => {
 				brands={brands}
 				countries={countries}
 				availability={availability}
-				reasonForMarkDown={reasonsForMarkDown}
 				composition={composition}
 				packing={packing}
 			/>
@@ -76,16 +74,6 @@ const Sidebar: FC<ISidebar> = ({ data }) => {
 				setActiveGroup={setActive}
 				group="countries"
 			/>
-			{data.reasonForMarkDown && (
-				<SideBarItem
-					title="Причина уцінки"
-					options={data.reasonForMarkDown}
-					selected={reasonsForMarkDown}
-					activeGroup={active === 'Причина уцінки'}
-					setActiveGroup={setActive}
-					group="reasons-markdown"
-				/>
-			)}
 			{data.packing && (
 				<SideBarItem
 					title="Фасування"

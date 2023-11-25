@@ -55,7 +55,23 @@ export class ProductDto {
 	categories: string[]
 }
 
-export class SortingDataDto {
+export class IFilterSortDto {
+	@IsOptional()
+	@IsString()
+	searchTerm: string
+
+	@IsOptional()
+	sortBy: EnumProductSort
+
+	@IsOptional()
+	@IsString()
+	limit: string
+
+	@IsOptional()
+	@IsString()
+	page: string
+}
+export class SortingDataDto extends IFilterSortDto {
 	@IsOptional()
 	@IsString()
 	category: string
@@ -91,33 +107,4 @@ export class SortingDataDto {
 	@Transform(({ value }) => value.split(',').map(v => v.trim()))
 	@IsArray()
 	composition: string[]
-
-	@IsOptional()
-	@IsEnum(EnumProductSort)
-	sortBy: EnumProductSort
-
-	@IsOptional()
-	@IsString()
-	limit: string
-
-	@IsOptional()
-	@IsString()
-	page: string
-}
-
-export class GetAllProductsDto {
-	@IsOptional()
-	@IsString()
-	searchTerm: string
-
-	@IsOptional()
-	sortBy: EnumProductSort
-
-	@IsOptional()
-	@IsString()
-	limit: string
-
-	@IsOptional()
-	@IsString()
-	page: string
 }

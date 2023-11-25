@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import s from './page-header.module.scss'
 import { FC } from 'react'
-import { IPageHeader } from '@/shared/interfaces/page-header.interface'
+import { IPageHeader } from './page-header.interface'
 
 const PageHeader: FC<IPageHeader> = ({ title, tags }) => {
 	return (

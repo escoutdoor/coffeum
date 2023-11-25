@@ -1,8 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
 import productService from '@/services/product/product.service'
-import { IProductFilterData } from '@/shared/interfaces/filter-data.interface'
+import { IProductFilter } from '@/shared/interfaces/filter-data.interface'
 
-export const useBrandProducts = (id: string, data: IProductFilterData) => {
+export const useBrandProducts = ({
+	id,
+	data,
+}: {
+	id: string
+	data: IProductFilter
+}) => {
 	return useQuery(
 		['products by brand', id],
 		() => productService.getProductsByBrand(id, data),

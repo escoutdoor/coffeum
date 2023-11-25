@@ -9,7 +9,7 @@ export interface IReview {
 	createdAt: Date | string
 }
 
-export interface IProduct {
+export interface IProductItem {
 	id: string
 	image: string
 	name: string
@@ -18,19 +18,21 @@ export interface IProduct {
 	originalPrice: number
 	brand: string
 	quantity: number
+	reviews?: IReview[]
+}
+
+export interface IProduct extends IProductItem {
 	description: string
 	packing?: string
 	type: ProductType
 	country: string
 	composition?: string[]
-	reviews?: IReview[]
 }
 
-export interface IProductItem
-	extends Omit<
-		IProduct,
-		'description' | 'packing' | 'type' | 'country' | 'composition'
-	> {}
+export interface IProductResponse {
+	products: IProductItem[]
+	length: number
+}
 
 export enum ProductType {
 	COFFEE = 'coffee',
@@ -39,9 +41,4 @@ export enum ProductType {
 	ACCESSORIES = 'accessories',
 	COCOA_CHOCOLATE = 'cocoa-chocolate',
 	COFFEE_MACHINES = 'coffee-machines',
-}
-
-export interface IProductResponse {
-	products: IProductItem[]
-	length: number
 }

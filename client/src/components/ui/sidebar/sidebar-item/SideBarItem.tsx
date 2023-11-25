@@ -25,7 +25,7 @@ const SideBarItem: FC<ISideBarItem> = ({
 	const updateQueryParam = useQueryParams()
 
 	const selectOption = (option: string) => {
-		updateQueryParam(group, option, true)
+		updateQueryParam({ name: group, value: option, isArray: true })
 	}
 
 	return (

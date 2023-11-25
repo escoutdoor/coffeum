@@ -4,7 +4,7 @@ import { PaginationService } from 'src/pagination/pagination.service'
 import {
 	EnumProductSort,
 	EnumProductType,
-	GetAllProductsDto,
+	IFilterSortDto,
 	ProductDto,
 	SortingDataDto,
 } from './product.dto'
@@ -47,7 +47,7 @@ export class ProductService {
 		return sorting
 	}
 
-	async getAll(dto: GetAllProductsDto) {
+	async getAll(dto: IFilterSortDto) {
 		const { searchTerm } = dto
 
 		const searchTermFilter: Prisma.ProductWhereInput = searchTerm

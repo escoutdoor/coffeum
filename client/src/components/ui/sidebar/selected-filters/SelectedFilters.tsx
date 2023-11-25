@@ -6,7 +6,6 @@ interface ISelectedFilters {
 	brands: string[]
 	countries: string[]
 	availability: string[]
-	reasonForMarkDown?: string[]
 	composition?: string[]
 	packing?: string[]
 }
@@ -15,15 +14,11 @@ const SelectedFilters: FC<ISelectedFilters> = ({
 	brands,
 	countries,
 	availability,
-	reasonForMarkDown,
 	composition,
 	packing,
 }) => {
 	return (
 		<ul className={s.filters}>
-			{reasonForMarkDown?.map(item => (
-				<FilterItem key={item} title={item} group="reasons-markdown" />
-			))}
 			{availability?.map(item => (
 				<FilterItem key={item} title={item} group="availability" />
 			))}

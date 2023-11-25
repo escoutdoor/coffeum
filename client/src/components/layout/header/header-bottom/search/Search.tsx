@@ -18,7 +18,9 @@ const Search: FC = () => {
 				className={s.input}
 				type="text"
 				value={query}
-				onChange={e => updateQueryParams('q', e.target.value)}
+				onChange={e =>
+					updateQueryParams({ name: 'q', value: e.target.value })
+				}
 				onKeyDown={e => {
 					if (e.key === 'Enter') {
 						router.push(`/search-products?q=${query}`)

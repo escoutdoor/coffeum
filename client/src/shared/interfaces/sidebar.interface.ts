@@ -4,7 +4,6 @@ export interface ISidebarData {
 	initialMinPrice: number
 	initialMaxPrice: number
 	availability: string[]
-	reasonForMarkDown?: string[]
 	composition?: string[]
 	packing?: string[]
 }

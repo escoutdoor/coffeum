@@ -7,26 +7,28 @@ export interface IOrder {
 	order: IOrderData
 }
 
-export interface IOrderData {
-	id: string
-	status: EnumOrderStatus
-	description: string
+export interface IOrderItemProduct
+	extends Omit<IProductItem, 'quantity' | 'categories'> {}
+
+export interface IRecipient {
 	firstName: string
 	surName: string
 	phone: string
 	city: string
 	mailroom: string
+}
+
+export interface IOrderData extends IRecipient {
+	id: string
+	status: EnumOrderStatus
+	description: string
 	createdAt: Date
 }
 
-export interface IOrderItemProduct
-	extends Omit<IProductItem, 'quantity' | 'categories'> {}
-
-export enum EnumOrderStatus {
-	PENDING = 'PENDING',
-	PAYED = 'PAYED',
-	SHIPPED = 'SHIPPED',
-	DELIVERED = 'DELIVERED',
+export interface ICreateOrder extends IRecipient {
+	status: EnumOrderStatus
+	items: ICreateOrderItem[]
+	description?: string
 }
 
 export interface ICreateOrderItem {
@@ -34,13 +36,9 @@ export interface ICreateOrderItem {
 	productId: string
 }
 
-export interface ICreateOrder {
-	status: EnumOrderStatus
-	description?: string
-	items: ICreateOrderItem[]
-	firstName: string
-	surName: string
-	phone: string
-	city: string
-	mailroom: string
+export enum EnumOrderStatus {
+	PENDING = 'PENDING',
+	PAYED = 'PAYED',
+	SHIPPED = 'SHIPPED',
+	DELIVERED = 'DELIVERED',
 }

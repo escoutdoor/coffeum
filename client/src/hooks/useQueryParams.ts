@@ -7,7 +7,15 @@ export const useQueryParams = () => {
 	const searchParams = useSearchParams()
 
 	const updateQueryParam = useCallback(
-		(name: string, value: string, isArray?: boolean) => {
+		({
+			name,
+			value,
+			isArray,
+		}: {
+			name: string
+			value: string
+			isArray?: boolean
+		}) => {
 			const params = new URLSearchParams(searchParams)
 			let newQueryString = ''
 			let newUrl = ''

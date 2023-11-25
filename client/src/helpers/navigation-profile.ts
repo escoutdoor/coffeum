@@ -1,10 +1,10 @@
-import {
-	IAccountNavigationBox,
-	IAccountSidebarItem,
-} from '@/shared/interfaces/profile-navigation.interface'
 import { SlSocialDropbox, SlLocationPin } from 'react-icons/sl'
 import { BiUser } from 'react-icons/bi'
 import { FiHeart } from 'react-icons/fi'
+import {
+	IAccountNavigationBox,
+	IAccountSidebarItem,
+} from '@/interfaces/profile-navigation.interface'
 
 export const navigationProfile: IAccountNavigationBox[] = [
 	{

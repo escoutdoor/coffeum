@@ -1,7 +1,7 @@
-import SectionTitle from '@/components/ui/heading/section-title/SectionTitle'
 import s from './section.module.scss'
-import { ISection } from '@/shared/interfaces/section.interfaces'
 import { FC } from 'react'
+import { ISection } from '@/shared/interfaces/section.interfaces'
+import SectionTitle from '@/components/ui/heading/section-title/SectionTitle'
 import Text from '@/components/ui/heading/text/Text'
 
 const Section: FC<ISection> = ({ id, title, text, list, conclusions }) => {

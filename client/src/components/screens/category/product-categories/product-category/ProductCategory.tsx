@@ -15,7 +15,10 @@ const ProductCategory: FC<IProductCategoryProps> = ({ category, active }) => {
 	return (
 		<div
 			onClick={() =>
-				updateQueryParam('category', active ? '' : category.name)
+				updateQueryParam({
+					name: 'category',
+					value: active ? '' : category.name,
+				})
 			}
 			className={active ? `${s.category} ${s.active}` : s.category}
 		>

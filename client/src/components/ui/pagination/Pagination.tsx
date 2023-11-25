@@ -27,7 +27,10 @@ const Pagination: FC<{ length: number }> = ({ length }) => {
 					value={{ label: Number(limit), value: Number(limit) }}
 					options={limitOptions}
 					onChange={e => {
-						updateQueryParam('limit', e?.value.toString()!)
+						updateQueryParam({
+							name: 'limit',
+							value: e?.value.toString() as string,
+						})
 					}}
 					theme={theme => ({
 						...theme,
@@ -46,7 +49,12 @@ const Pagination: FC<{ length: number }> = ({ length }) => {
 						key={item}
 						active={item === +page}
 						page={item}
-						select={() => updateQueryParam('page', item.toString())}
+						select={() =>
+							updateQueryParam({
+								name: 'page',
+								value: item.toString(),
+							})
+						}
 					/>
 				))}
 			</ul>

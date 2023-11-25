@@ -4,11 +4,11 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TOrderSchema, orderSchema } from '@/lib/schemas/order.schema'
 import { useCreateOrder } from '@/hooks/useCreateOrder'
+import { useProfile } from '@/hooks/useProfile'
+import { IRecipient } from '@/shared/interfaces/order.interface'
 import Field from '@/components/ui/field/Field'
 import TextArea from '@/components/ui/text-area/TextArea'
 import DarkButton from '@/components/ui/dark-button/DarkButton'
-import { useProfile } from '@/hooks/useProfile'
-import { IRecipient } from '@/shared/interfaces/user.interface'
 
 const CheckoutForm: FC = () => {
 	const { profile } = useProfile()

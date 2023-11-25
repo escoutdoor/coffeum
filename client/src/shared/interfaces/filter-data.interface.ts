@@ -1,37 +1,17 @@
-export interface IProductFilterData {
-	limit: string
-	page: string
-	sortBy?: string
+export interface IProductFilter extends IFilterSort {
 	category?: string
-	minPrice?: string
-	maxPrice?: string
-	brands?: string
-	countries?: string
-	availability?: string
-	composition?: string
-	packing?: string
-	reasonForMarkDown?: string
-}
-
-export interface IProductDetailsFilterData
-	extends Omit<
-		IProductFilterData,
-		| 'brands'
-		| 'countries'
-		| 'availability'
-		| 'composition'
-		| 'packing'
-		| 'reasonForMarkDown'
-	> {
+	minPrice?: number
+	maxPrice?: number
 	brands?: string[]
 	countries?: string[]
 	availability?: string[]
 	composition?: string[]
 	packing?: string[]
-	reasonForMarkDown?: string[]
 }
 
-export interface ISearchProducts
-	extends Pick<IProductFilterData, 'limit' | 'page' | 'sortBy'> {
+export interface IFilterSort {
+	limit: number
+	page: number
+	sortBy: string
 	searchTerm?: string
 }

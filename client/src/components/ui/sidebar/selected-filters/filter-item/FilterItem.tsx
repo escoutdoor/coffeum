@@ -12,11 +12,15 @@ const FilterItem: FC<IFilterItem> = ({ title, group }) => {
 	const updateQueryParam = useQueryParams()
 
 	const removeFilter = (option: string) => {
-		updateQueryParam(group, option, true)
+		updateQueryParam({ name: group, value: option, isArray: true })
 	}
 
 	return (
-		<li className={s.filter__item} title={title} onClick={() => removeFilter(title)}>
+		<li
+			className={s.filter__item}
+			title={title}
+			onClick={() => removeFilter(title)}
+		>
 			<IoIosClose />
 			<span>{title}</span>
 		</li>

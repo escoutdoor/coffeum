@@ -13,7 +13,7 @@ import {
 import { ProductService } from './product.service'
 import {
 	EnumProductType,
-	GetAllProductsDto,
+	IFilterSortDto,
 	ProductDto,
 	SortingDataDto,
 } from './product.dto'
@@ -28,7 +28,7 @@ export class ProductController {
 	}
 
 	@Get()
-	async getAll(@Query() dto: GetAllProductsDto) {
+	async getAll(@Query() dto: IFilterSortDto) {
 		return this.productService.getAll(dto)
 	}
 

@@ -1,18 +1,21 @@
 import { useQuery } from '@tanstack/react-query'
 import productService from '@/services/product/product.service'
 import { ProductType } from '@/shared/interfaces/product.interface'
-import { IProductFilterData } from '@/shared/interfaces/filter-data.interface'
+import { IProductFilter } from '@/shared/interfaces/filter-data.interface'
 
-export const useFilteredProducts = (
-	type: ProductType,
-	dto: IProductFilterData
-) => {
+export const useFilteredProducts = ({
+	type,
+	data,
+}: {
+	type: ProductType
+	data: IProductFilter
+}) => {
 	return useQuery(
 		['filtered products'],
-		() => productService.getAll(type, dto),
+		() => productService.getAll(type, data),
 		{
 			select: ({ data }) => data,
-			enabled: !!type && !!dto,
+			enabled: !!type && !!data,
 		}
 	)
 }

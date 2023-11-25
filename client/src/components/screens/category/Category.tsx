@@ -4,7 +4,7 @@ import {
 	IProductItem,
 	ProductType,
 } from '@/shared/interfaces/product.interface'
-import { IProductDetailsFilterData } from '@/shared/interfaces/filter-data.interface'
+import { IProductFilter } from '@/shared/interfaces/filter-data.interface'
 import { ISidebarData } from '@/shared/interfaces/sidebar.interface'
 import { productCategories } from '@/helpers/product-categories'
 import { coffeeInfo } from '@/helpers/coffee'
@@ -19,14 +19,23 @@ import Pagination from '@/components/ui/pagination/Pagination'
 import Section from '@/components/ui/section/Section'
 import ProductCategories from './product-categories/ProductCategories'
 
-const Category: FC<{
+interface ICategory {
 	products: IProductItem[]
 	length: number
-	params: IProductDetailsFilterData
+	params: IProductFilter
 	isLoading: boolean
 	sidebarData: ISidebarData
 	productType: ProductType
-}> = ({ products, length, params, isLoading, sidebarData, productType }) => {
+}
+
+const Category: FC<ICategory> = ({
+	products,
+	length,
+	params,
+	isLoading,
+	sidebarData,
+	productType,
+}) => {
 	const meta =
 		categoryMeta[camelize(productType) as keyof typeof categoryMeta]
 

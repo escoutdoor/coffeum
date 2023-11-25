@@ -1,5 +1,5 @@
+import { IAccountNavigationBox } from '@/interfaces/profile-navigation.interface'
 import s from './account-navigation-box.module.scss'
-import { IAccountNavigationBox } from '@/shared/interfaces/profile-navigation.interface'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 

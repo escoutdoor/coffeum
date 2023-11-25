@@ -8,8 +8,8 @@ interface IFilterRange {
 	title: string
 	initialMinPrice: number
 	initialMaxPrice: number
-	minPrice: string
-	maxPrice: string
+	minPrice: number
+	maxPrice: number
 }
 
 const FilterRange: FC<IFilterRange> = ({
@@ -22,14 +22,14 @@ const FilterRange: FC<IFilterRange> = ({
 	const updateQueryParams = useQueryParams()
 
 	const handlePrice = (values: number[]) => {
-		const [min, max] = values.map(String)
+		const [min, max] = values
 
 		if (max !== maxPrice) {
-			updateQueryParams('max', max)
+			updateQueryParams({ name: 'max', value: max.toString() })
 		}
 
 		if (min !== minPrice) {
-			updateQueryParams('min', min)
+			updateQueryParams({ name: 'min', value: min.toString() })
 		}
 	}
 

@@ -6,14 +6,15 @@ import {
 	ProductType,
 } from '@/shared/interfaces/product.interface'
 import {
-	IProductFilterData,
-	ISearchProducts,
+	IProductFilter,
+	IFilterSort,
 } from '@/shared/interfaces/filter-data.interface'
+import { getString } from '@/utils/array-to-string'
 
 class ProductService {
 	private PRODUCTS_URL = '/api/products/'
 
-	async getAll(type: ProductType, data: IProductFilterData) {
+	async getAll(type: ProductType, data: IProductFilter) {
 		return await axios.get<IProductResponse>(
 			`${this.PRODUCTS_URL}type/${type}`,
 			{
@@ -24,17 +25,21 @@ class ProductService {
 					maxPrice: data.maxPrice,
 					sortBy: data.sortBy,
 					...(data.category && { category: data.category }),
-					...(data.brands?.length && { brands: data.brands }),
+					...(data.brands?.length && {
+						brands: getString(data.brands),
+					}),
 					...(data.countries?.length && {
-						countries: data.countries,
+						countries: getString(data.countries),
 					}),
 					...(data.availability?.length && {
-						availability: data.availability,
+						availability: getString(data.availability),
 					}),
 					...(data.composition?.length && {
-						composition: data.composition,
+						composition: getString(data.composition),
 					}),
-					...(data.packing?.length && { packing: data.packing }),
+					...(data.packing?.length && {
+						packing: getString(data.packing),
+					}),
 				},
 			}
 		)
@@ -54,7 +59,7 @@ class ProductService {
 		return await axios.get(`${this.PRODUCTS_URL}/brands/getAll`)
 	}
 
-	async getProductsByBrand(brand: string, data: IProductFilterData) {
+	async getProductsByBrand(brand: string, data: IProductFilter) {
 		return await axios.get<IProductResponse>(
 			`${this.PRODUCTS_URL}/byBrand/${brand}`,
 			{
@@ -67,7 +72,7 @@ class ProductService {
 		)
 	}
 
-	async getFoundProducts(data: ISearchProducts) {
+	async getFoundProducts(data: IFilterSort) {
 		return await axios.get<IProductResponse>(
 			`${this.PRODUCTS_URL}?searchTerm=${data.searchTerm}&limit=${data.limit}&page=${data.page}&sortBy=${data.sortBy}`
 		)

@@ -3,7 +3,6 @@ import { FC } from 'react'
 import AccountSectionHeading from '../account-section-heading/AccountSectionHeading'
 import { SlLocationPin } from 'react-icons/sl'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { IRecipient } from '@/shared/interfaces/user.interface'
 import { useUpdateProfile } from '@/hooks/useUpdateProfile'
 import FormButton from '@/components/ui/form-button/FormButton'
 import Field from '@/components/ui/field/Field'
@@ -11,6 +10,7 @@ import { useProfile } from '@/hooks/useProfile'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { recipientSchema } from '@/lib/schemas/recipient.schema'
 import MiddleTitle from '@/components/ui/heading/middle-title/MiddleTitle'
+import { IRecipient } from '@/shared/interfaces/order.interface'
 
 const Address: FC = () => {
 	const { profile } = useProfile()

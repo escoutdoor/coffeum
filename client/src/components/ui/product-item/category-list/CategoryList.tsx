@@ -2,8 +2,6 @@ import { useQueryParams } from '@/hooks/useQueryParams'
 import { FC } from 'react'
 import s from '../product-item.module.scss'
 
-interface ICategoryList {}
-
 const CategoryList: FC<{ categories: string[] }> = ({ categories }) => {
 	const updateQueryParams = useQueryParams()
 
@@ -14,9 +12,9 @@ const CategoryList: FC<{ categories: string[] }> = ({ categories }) => {
 					className={s.list__item}
 					onClick={() => {
 						if (tag.split(' ').length > 1) {
-							updateQueryParams('category', tag)
+							updateQueryParams({ name: 'category', value: tag })
 						} else {
-							updateQueryParams('category', '')
+							updateQueryParams({ name: 'category', value: '' })
 						}
 					}}
 					key={tag}

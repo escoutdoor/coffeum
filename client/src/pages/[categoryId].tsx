@@ -4,7 +4,6 @@ import { useFilteredProducts } from '@/hooks/useFilteredProducts'
 import { useGetFilterParams } from '@/hooks/useGetFilterParams'
 import { ProductType } from '@/shared/interfaces/product.interface'
 import { camelize } from '@/utils/camelize'
-import { getFilters } from '@/utils/filter-data'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
@@ -18,10 +17,10 @@ export default function CategoryPage() {
 
 	const params = useGetFilterParams(sidebar)
 
-	const { isLoading, data, refetch } = useFilteredProducts(
-		categoryId as ProductType,
-		getFilters(params)
-	)
+	const { isLoading, data, refetch } = useFilteredProducts({
+		type: categoryId as ProductType,
+		data: params,
+	})
 
 	useEffect(() => {
 		refetch()
