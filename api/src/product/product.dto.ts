@@ -20,7 +20,6 @@ export enum EnumProductType {
 export enum EnumProductSort {
 	DESC_PRICE = 'desc-price',
 	ASC_PRICE = 'asc-price',
-	RATING = 'rating',
 	POPULARITY = 'popularity',
 }
 

@@ -5,7 +5,6 @@ interface sortingOption {
 
 export const sortingOptions: readonly sortingOption[] = [
 	{ value: 'popularity', label: 'Сортувати за популярністю' },
-	{ value: 'rating', label: 'Сортувати за оцінкою' },
 	{ value: 'asc-price', label: 'Сортувати за ціною: від нижчої до вищої' },
 	{ value: 'desc-price', label: 'Сортувати за ціною: від вищої до нижчої' },
 ]

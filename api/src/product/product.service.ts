@@ -41,9 +41,10 @@ export class ProductService {
 				sorting.push({ discountedPrice: 'desc' })
 				break
 			case EnumProductSort.POPULARITY:
-				sorting.push({ reviews: { _count: 'desc' } })
-				break
-			case EnumProductSort.RATING:
+				sorting.push(
+					{ reviews: { _count: 'desc' } },
+					{ favorites: { _count: 'desc' } }
+				)
 				break
 		}
 
