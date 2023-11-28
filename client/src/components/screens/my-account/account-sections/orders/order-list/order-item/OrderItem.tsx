@@ -2,10 +2,10 @@ import s from './order-item.module.scss'
 import { FC, useState } from 'react'
 import { IOrder } from '@/shared/interfaces/order.interface'
 import { FaAngleDown } from 'react-icons/fa6'
-import OrderImage from './order-image/OrderImage'
 import OrderStatus from './order-status/OrderStatus'
 import Text from '@/components/ui/heading/text/Text'
 import OrderDetails from './order-details/OrderDetails'
+import Miniature from '@/components/ui/miniature/Miniature'
 
 const OrderItem: FC<{ item: IOrder }> = ({ item }) => {
 	const [active, setActive] = useState<boolean>(false)
@@ -27,16 +27,13 @@ const OrderItem: FC<{ item: IOrder }> = ({ item }) => {
 					<Text>{total} ₴</Text>
 				</div>
 				<div className={s.right}>
-					<OrderImage
+					<Miniature
 						src={`/images/img/products/${item.product.image}`}
 					/>
 					<FaAngleDown />
 				</div>
 			</div>
-			<div
-				className={active ? `${s.dropdown} ${s.active}` : s.dropdown}
-				onClick={e => e.stopPropagation()}
-			>
+			<div className={s.dropdown} onClick={e => e.stopPropagation()}>
 				<OrderDetails item={item} />
 			</div>
 		</div>

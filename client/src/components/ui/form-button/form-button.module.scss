@@ -11,4 +11,10 @@
 	&:hover {
 		background-color: #3e454d;
 	}
+
+	&:disabled {
+		background: #e0e4f5;
+		color: #a2aec3;
+		cursor: not-allowed;
+	}
 }

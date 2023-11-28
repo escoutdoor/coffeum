@@ -1,0 +1,38 @@
+.item {
+	margin: 15px 0;
+
+	> a {
+		display: inline-flex;
+
+		display: flex;
+		gap: 12px;
+		align-items: center;
+		color: var(--gray);
+		opacity: 0.2;
+
+		.icon {
+			font-size: 24px;
+		}
+
+		.title {
+			font-size: 16px;
+			line-height: 1.6;
+			font-weight: 500;
+		}
+
+		transition: all 0.2s ease;
+	}
+
+	&.active,
+	&.active:hover {
+		> a {
+			opacity: 1;
+		}
+	}
+
+	&:hover {
+		> a {
+			opacity: 0.6;
+		}
+	}
+}

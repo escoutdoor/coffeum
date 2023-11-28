@@ -7,7 +7,11 @@ export class RolesGuard implements CanActivate {
 	constructor(private reflector: Reflector) {}
 
 	match(roles: Role[], userRole: Role) {
-		return roles.some(role => role === userRole) || userRole === Role.ADMIN
+		if (userRole === 'ADMIN') {
+			return true
+		}
+
+		return roles.some(role => role === userRole)
 	}
 
 	canActivate(context: ExecutionContext): boolean {

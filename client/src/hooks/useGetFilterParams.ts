@@ -1,3 +1,4 @@
+import { EnumSort } from '@/interfaces/sort.interface'
 import { ISidebarData } from '@/shared/interfaces/sidebar.interface'
 import { useSearchParams } from 'next/navigation'
 
@@ -24,7 +25,7 @@ export const useGetFilterParams = (data?: ISidebarData) => {
 
 	return {
 		view,
-		sortBy,
+		sortBy: sortBy as EnumSort,
 		limit,
 		page,
 		category,

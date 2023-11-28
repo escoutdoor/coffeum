@@ -1,0 +1,46 @@
+.item {
+	margin-bottom: 20px;
+	border-radius: 16px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	padding: 20px;
+
+	.preview {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.left {
+			display: flex;
+			gap: 20px;
+			align-items: center;
+		}
+
+		.icon {
+			color: var(--gray);
+			transition: all 0.2s var(--transition-cubic);
+		}
+	}
+
+	.dropdown {
+		visibility: hidden;
+		opacity: 0;
+		height: 0;
+		transition: padding-top 0.3s ease-in-out,
+			padding-bottom 0.3s ease-in-out;
+	}
+
+	&.active {
+		.preview {
+			.icon {
+				transform: rotate(180deg);
+			}
+		}
+
+		.dropdown {
+			visibility: visible;
+			height: auto;
+			opacity: 1;
+			padding: 20px 0 20px 14px;
+		}
+	}
+}

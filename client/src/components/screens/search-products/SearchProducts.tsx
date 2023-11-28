@@ -15,7 +15,7 @@ const SearchProducts: NextPage = () => {
 
 	const searchTerm = useDebounce(query, 500)
 
-	const { isLoading, data, refetch } = useSearchProducts({
+	const { isLoading, products, length, refetch } = useSearchProducts({
 		searchTerm,
 		sortBy,
 		limit,
@@ -37,11 +37,8 @@ const SearchProducts: NextPage = () => {
 			/>
 			<div className={s.search__products}>
 				<SortingBar />
-				<ProductList
-					products={data?.products || []}
-					isLoading={isLoading}
-				/>
-				<Pagination length={data?.length as number} />
+				<ProductList products={products || []} isLoading={isLoading} />
+				<Pagination length={length as number} />
 			</div>
 		</Layout>
 	)

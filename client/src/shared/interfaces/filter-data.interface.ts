@@ -1,3 +1,5 @@
+import { EnumSort } from '@/interfaces/sort.interface'
+
 export interface IProductFilter extends IFilterSort {
 	category?: string
 	minPrice?: number
@@ -12,6 +14,6 @@ export interface IProductFilter extends IFilterSort {
 export interface IFilterSort {
 	limit: number
 	page: number
-	sortBy: string
+	sortBy: EnumSort
 	searchTerm?: string
 }

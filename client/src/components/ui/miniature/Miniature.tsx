@@ -1,7 +1,7 @@
-import s from './order-image.module.scss'
 import Image from 'next/image'
+import s from './miniature.module.scss'
 
-const OrderImage = ({ src }: { src: string }) => {
+const Miniature = ({ src }: { src: string }) => {
 	return (
 		<Image
 			width={50}
@@ -13,4 +13,4 @@ const OrderImage = ({ src }: { src: string }) => {
 	)
 }
 
-export default OrderImage
+export default Miniature

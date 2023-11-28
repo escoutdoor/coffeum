@@ -1,12 +1,20 @@
+import { EnumSort } from '@/interfaces/sort.interface'
+
 interface sortingOption {
-	readonly value: string
+	readonly value: EnumSort
 	readonly label: string
 }
 
 export const sortingOptions: readonly sortingOption[] = [
-	{ value: 'popularity', label: 'Сортувати за популярністю' },
-	{ value: 'asc-price', label: 'Сортувати за ціною: від нижчої до вищої' },
-	{ value: 'desc-price', label: 'Сортувати за ціною: від вищої до нижчої' },
+	{ value: EnumSort.POPULARITY, label: 'Сортувати за популярністю' },
+	{
+		value: EnumSort.ASC_PRICE,
+		label: 'Сортувати за ціною: від нижчої до вищої',
+	},
+	{
+		value: EnumSort.DESC_PRICE,
+		label: 'Сортувати за ціною: від вищої до нижчої',
+	},
 ]
 
 interface limitOption {

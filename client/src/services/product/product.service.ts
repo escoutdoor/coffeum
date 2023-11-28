@@ -10,6 +10,7 @@ import {
 	IFilterSort,
 } from '@/shared/interfaces/filter-data.interface'
 import { getString } from '@/utils/array-to-string'
+import { instance } from '@/api/api.interceptor'
 
 class ProductService {
 	private PRODUCTS_URL = '/api/products/'
@@ -73,13 +74,24 @@ class ProductService {
 	}
 
 	async getFoundProducts(data: IFilterSort) {
-		return await axios.get<IProductResponse>(`${this.PRODUCTS_URL}`, {
-			params: {
-				limit: data.limit,
-				page: data.page,
-				sortBy: data.sortBy,
-				searchTerm: data.searchTerm,
-			},
+		return await axios.get<{ length: number; products: IProduct[] }>(
+			`${this.PRODUCTS_URL}`,
+			{
+				params: {
+					limit: data.limit,
+					page: data.page,
+					sortBy: data.sortBy,
+					searchTerm: data.searchTerm,
+				},
+			}
+		)
+	}
+
+	async updateProduct(data: IProduct) {
+		return await instance({
+			method: 'PUT',
+			url: `${this.PRODUCTS_URL}/${data.id}`,
+			data,
 		})
 	}
 }
