@@ -1,16 +1,20 @@
 import { IFavorite } from './favorite.interface'
 import { IRecipient } from './order.interface'
-import { IReview } from './product.interface'
 
 export interface IUser {
 	id: string
+	email: string
+	avatarPath: string
 	firstName: string
 	surName?: string
-	email: string
-	reviews?: IReview[]
-	favorites: IFavorite[]
-	avatarPath: string
 	recipient?: IRecipient
+	favorites: IFavorite[]
+	role: EnumRole
+}
+
+export enum EnumRole {
+	ADMIN = 'ADMIN',
+	USER = 'USER',
 }
 
 export interface ICreateUserInfo extends Pick<IUser, 'email' | 'firstName'> {
