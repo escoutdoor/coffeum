@@ -28,4 +28,5 @@ export const userFields = {
 	favorites: {
 		select: favoriteFields,
 	},
+	role: true,
 }

@@ -4,6 +4,7 @@ import { Strategy, ExtractJwt } from 'passport-jwt'
 import { ConfigService } from '@nestjs/config'
 import { PrismaService } from 'src/prisma.service'
 import { User } from '@prisma/client'
+import { userFields } from 'src/user/user.object'
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -23,6 +24,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 			where: {
 				id,
 			},
+			select: userFields,
 		})
 
 		return user

@@ -17,12 +17,14 @@ import {
 	ProductDto,
 	SortingDataDto,
 } from './product.dto'
+import { Auth } from 'src/auth/decorators/auth.decorator'
 
 @Controller('products')
 export class ProductController {
 	constructor(private readonly productService: ProductService) {}
 
 	@Delete(':id')
+	@Auth('ADMIN')
 	async deleteProductById(@Param('id') id: string) {
 		return this.productService.deleteProductById(id)
 	}
@@ -43,11 +45,13 @@ export class ProductController {
 
 	@UsePipes(new ValidationPipe())
 	@Post()
+	@Auth('ADMIN')
 	async createProduct(@Body() dto: ProductDto) {
 		return this.productService.createProduct(dto)
 	}
 
 	@Put(':id')
+	@Auth('ADMIN')
 	async updateProductById(
 		@Param('id') productId: string,
 		@Body() dto: ProductDto

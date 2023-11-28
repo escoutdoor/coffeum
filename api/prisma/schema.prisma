@@ -23,6 +23,8 @@ model User {
 
   recipient   Recipient?
 
+  role        Role @default(USER) 
+
   reviews     Review[]
   favorites   Favorite[] 
   orders      Order[]
@@ -134,4 +136,9 @@ enum EnumOrderStatus {
   PAYED
   SHIPPED
   DELIVERED
+}
+
+enum Role {
+  ADMIN
+  USER
 }

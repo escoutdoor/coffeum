@@ -7,7 +7,7 @@ import { UserModule } from './user/user.module'
 import { PaginationModule } from './pagination/pagination.module'
 import { AuthModule } from './auth/auth.module'
 import { ConfigModule } from '@nestjs/config'
-import { OrderModule } from './order/order.module';
+import { OrderModule } from './order/order.module'
 
 @Module({
 	imports: [

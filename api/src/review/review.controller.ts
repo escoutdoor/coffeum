@@ -27,8 +27,8 @@ export class ReviewController {
 	}
 
 	@UsePipes(new ValidationPipe())
-	@Auth()
 	@Post()
+	@Auth('USER')
 	async createReview(
 		@CurrentUser('id') userId: string,
 		@Body() dto: ReviewDto
