@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common'
 import { PrismaService } from 'src/prisma.service'
 import { PaginationService } from 'src/pagination/pagination.service'
 import {
-	EnumProductSort,
+	EnumSort,
 	EnumProductType,
 	IFilterSortDto,
 	ProductDto,
@@ -30,17 +30,17 @@ export class ProductService {
 		return 'PRODUCT DELETED'
 	}
 
-	async getSorting(sortBy: EnumProductSort) {
+	async getSorting(sortBy: EnumSort) {
 		const sorting: Prisma.ProductOrderByWithRelationInput[] = []
 
 		switch (sortBy) {
-			case EnumProductSort.ASC_PRICE:
+			case EnumSort.ASC_PRICE:
 				sorting.push({ discountedPrice: 'asc' })
 				break
-			case EnumProductSort.DESC_PRICE:
+			case EnumSort.DESC_PRICE:
 				sorting.push({ discountedPrice: 'desc' })
 				break
-			case EnumProductSort.POPULARITY:
+			case EnumSort.POPULARITY:
 				sorting.push(
 					{ reviews: { _count: 'desc' } },
 					{ favorites: { _count: 'desc' } }
@@ -156,7 +156,18 @@ export class ProductService {
 	async createProduct(dto: ProductDto) {
 		return this.prisma.product.create({
 			data: {
-				...dto,
+				name: dto.name,
+				description: dto.description,
+				type: dto.type,
+				originalPrice: dto.originalPrice,
+				discountedPrice: dto.discountedPrice,
+				country: dto.country,
+				packing: dto.packing,
+				brand: dto.brand,
+				quantity: dto.quantity,
+				categories: dto.categories,
+				composition: dto.composition,
+				image: dto.image,
 			},
 		})
 	}
@@ -172,6 +183,8 @@ export class ProductService {
 			throw new NotFoundException('Product not found')
 		}
 
+		console.log(dto.composition)
+
 		return await this.prisma.product.update({
 			where: {
 				id: productId,
@@ -183,9 +196,12 @@ export class ProductService {
 				originalPrice: dto.originalPrice,
 				discountedPrice: dto.discountedPrice,
 				country: dto.country,
+				packing: dto.packing,
 				brand: dto.brand,
 				quantity: dto.quantity,
 				categories: dto.categories,
+				composition: dto.composition || [],
+				image: dto.image,
 			},
 			select: productFields,
 		})

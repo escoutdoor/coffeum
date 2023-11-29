@@ -87,10 +87,23 @@ class ProductService {
 		)
 	}
 
-	async updateProduct(data: IProduct) {
+	async createProduct(data: Omit<IProduct, 'id'>) {
+		return await instance({
+			method: 'POST',
+			url: `${this.PRODUCTS_URL}`,
+			data,
+		})
+	}
+
+	async updateProduct(
+		data: Omit<IProduct, 'id' | 'image'> & {
+			image?: string
+		},
+		id: string
+	) {
 		return await instance({
 			method: 'PUT',
-			url: `${this.PRODUCTS_URL}/${data.id}`,
+			url: `${this.PRODUCTS_URL}/${id}`,
 			data,
 		})
 	}

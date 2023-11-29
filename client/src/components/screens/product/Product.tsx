@@ -36,7 +36,9 @@ const Product: NextPage = () => {
 				title={`${product?.name}`}
 				tags={[
 					{
-						title: product?.categories[1] as string,
+						title: product?.categories[
+							product.categories.length - 1
+						] as string,
 						link: `/${product?.type}?category=${product?.categories[1]}`,
 					},
 				]}
@@ -46,7 +48,9 @@ const Product: NextPage = () => {
 					<div className={s.summary}>
 						<ProductImage
 							title={product.name || ''}
-							image={`/images/img/products/${product.image}`}
+							image={`/images/img/products/${
+								product.image || 'no-image.jpg'
+							}`}
 						/>
 						<ProductDetails product={product} />
 					</div>

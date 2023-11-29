@@ -6,6 +6,8 @@ import {
 	IsEnum,
 	ArrayMinSize,
 	IsOptional,
+	MinLength,
+	Min,
 } from 'class-validator'
 
 export enum EnumProductType {
@@ -17,39 +19,73 @@ export enum EnumProductType {
 	MARKDOWN = 'markdown',
 }
 
-export enum EnumProductSort {
+export enum EnumSort {
 	DESC_PRICE = 'desc-price',
 	ASC_PRICE = 'asc-price',
 	POPULARITY = 'popularity',
+	NEWEST = 'newest',
+	OLDEST = 'oldest',
 }
 
 export class ProductDto {
 	@IsString()
+	@MinLength(3, {
+		message: 'Назва продукту має містити не менше 3 символів',
+	})
 	name: string
 
 	@IsString()
+	@MinLength(3, {
+		message: 'Опис продукту має містити не менше 3 символів',
+	})
 	description: string
 
 	@IsString()
 	image: string
 
 	@IsEnum(EnumProductType)
+	@MinLength(3, {
+		message: 'Мінімальная довжина типу продукту - 3 символи',
+	})
 	type: string
 
 	@IsNumber()
+	@Min(0, {
+		message: 'Мінімальна ціна - 1 грн',
+	})
 	originalPrice: number
 
 	@IsNumber()
+	@Min(0, {
+		message: 'Мінімальная ціна зі знижкою - 0 грн',
+	})
 	discountedPrice: number
 
 	@IsString()
+	@MinLength(3, {
+		message: 'Мінімальная довжина країни - 3 символи',
+	})
 	country: string
 
+	@IsOptional()
 	@IsString()
+	packing: string
+
+	@IsString()
+	@MinLength(3, {
+		message: 'Назва бренду має містити не менше 3 символів',
+	})
 	brand: string
 
 	@IsNumber()
+	@Min(0, {
+		message: 'Мінімальна кількість - 0 грн',
+	})
 	quantity: number
+
+	@IsOptional()
+	@IsArray()
+	composition: string[]
 
 	@IsArray()
 	@IsString({ each: true })
@@ -63,7 +99,7 @@ export class IFilterSortDto {
 	searchTerm: string
 
 	@IsOptional()
-	sortBy: EnumProductSort
+	sortBy: EnumSort
 
 	@IsOptional()
 	@IsString()

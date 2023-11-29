@@ -1,4 +1,5 @@
 import { instance } from '@/api/api.interceptor'
+import { IFilterSort } from '@/shared/interfaces/filter-data.interface'
 import { IProfileData, IUser } from '@/shared/interfaces/user.interface'
 
 export class UserService {
@@ -23,6 +24,16 @@ export class UserService {
 		return await instance<IUser>({
 			method: 'PATCH',
 			url: `${this.USERS_URL}/profile/favorites/${productId}`,
+		})
+	}
+
+	async getUsers(data: IFilterSort) {
+		return await instance<IUser[]>({
+			method: 'GET',
+			url: `${this.USERS_URL}`,
+			params: {
+				...data,
+			},
 		})
 	}
 }

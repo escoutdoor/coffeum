@@ -29,6 +29,7 @@ export class ProductController {
 		return this.productService.deleteProductById(id)
 	}
 
+	@UsePipes(new ValidationPipe())
 	@Get()
 	async getAll(@Query() dto: IFilterSortDto) {
 		return this.productService.getAll(dto)

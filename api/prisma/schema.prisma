@@ -19,7 +19,7 @@ model User {
   firstName   String @map("first_name")
   surName     String? @map("sur_name")
 
-  avatarPath  String @default("/images/img/avatars/no-avatar.png") @map("avatar_path")
+  avatarPath  String @default("no-avatar.png") @map("avatar_path")
 
   recipient   Recipient?
 

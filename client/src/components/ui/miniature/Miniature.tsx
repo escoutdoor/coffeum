@@ -7,7 +7,7 @@ const Miniature = ({ src }: { src: string }) => {
 			width={50}
 			height={50}
 			src={src}
-			alt={`product image ${src}`}
+			alt={`image ${src}`}
 			className={s.image}
 		/>
 	)

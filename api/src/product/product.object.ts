@@ -13,6 +13,7 @@ export const productFields = {
 	categories: true,
 	image: true,
 	packing: true,
+	composition: true,
 	reviews: {
 		select: reviewFields,
 	},

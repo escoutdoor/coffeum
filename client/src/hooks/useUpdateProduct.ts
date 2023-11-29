@@ -11,7 +11,15 @@ export const useUpdateProduct = () => {
 		error,
 	} = useMutation({
 		mutationKey: ['update product'],
-		mutationFn: (data: IProduct) => productService.updateProduct(data),
+		mutationFn: ({
+			data,
+			id,
+		}: {
+			data: Omit<IProduct, 'id' | 'image'> & {
+				image?: string
+			}
+			id: string
+		}) => productService.updateProduct(data, id),
 		onSuccess: async () => {
 			await queryClient.invalidateQueries(['products'])
 		},

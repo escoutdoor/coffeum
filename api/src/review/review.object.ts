@@ -7,9 +7,9 @@ export const reviewFields = {
 		select: {
 			id: true,
 			email: true,
+			avatarPath: true,
 			firstName: true,
 			surName: true,
-			avatarPath: true,
 		},
 	},
 }

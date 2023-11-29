@@ -1,11 +1,11 @@
 import Layout from '@/components/layout/Layout'
 import PageHeader from '@/components/ui/page-header/PageHeader'
 import { NextPage } from 'next'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import BrandList from './brand-list/BrandList'
-import SearchManufacturer from './search-manufacturer/SearchManufacturer'
 import { useBrands } from '@/hooks/useBrands'
 import Loading from '@/components/ui/loading/Loading'
+import SearchInput from '@/components/ui/search-input/SearchInput'
 
 const Brands: NextPage = () => {
 	const { isLoading, data: brands } = useBrands()
@@ -18,7 +18,11 @@ const Brands: NextPage = () => {
 			description="Відкрийте Світ Кави разом із Нами - Дізнайтеся про найкращих виробників кави, які представлені на нашому сайті. Знайдіть свої улюблені бренди для ідеального кавового досвіду."
 		>
 			<PageHeader title="Виробники" />
-			<SearchManufacturer text={text} setText={setText} />
+			<SearchInput
+				placeholder="Пошук виробника"
+				value={text}
+				onChange={e => setText(e.target.value)}
+			/>
 			{isLoading ? (
 				<Loading />
 			) : (

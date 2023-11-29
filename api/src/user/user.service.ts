@@ -2,15 +2,61 @@ import {
 	Injectable,
 	NotFoundException,
 	BadRequestException,
-	UnauthorizedException,
 } from '@nestjs/common'
 import { PrismaService } from 'src/prisma.service'
 import { UserDto } from './user.dto'
 import { userFields } from './user.object'
+import { EnumSort, IFilterSortDto } from 'src/product/product.dto'
+import { Prisma } from '@prisma/client'
 
 @Injectable()
 export class UserService {
 	constructor(private prisma: PrismaService) {}
+
+	async getAll(dto: IFilterSortDto) {
+		const orderBy: Prisma.UserOrderByWithRelationInput[] = []
+
+		switch (dto.sortBy) {
+			case EnumSort.NEWEST:
+				orderBy.push({ createdAt: 'desc' })
+				break
+			case EnumSort.OLDEST:
+				orderBy.push({ createdAt: 'asc' })
+				break
+		}
+
+		const where: Prisma.UserWhereInput = dto.searchTerm
+			? {
+					OR: [
+						{
+							firstName: {
+								contains: dto.searchTerm,
+								mode: 'insensitive',
+							},
+						},
+						{
+							surName: {
+								contains: dto.searchTerm,
+								mode: 'insensitive',
+							},
+						},
+						{
+							email: {
+								contains: dto.searchTerm,
+								mode: 'insensitive',
+							},
+						},
+						{ id: dto.searchTerm },
+					],
+			  }
+			: {}
+
+		return await this.prisma.user.findMany({
+			where,
+			select: userFields,
+			orderBy,
+		})
+	}
 
 	async getProfileById(id: string) {
 		const user = await this.prisma.user.findUnique({
