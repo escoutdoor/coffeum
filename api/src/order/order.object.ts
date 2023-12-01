@@ -1,34 +1,22 @@
-import { productFields } from 'src/product/product.object'
+export const orderProductFields = {
+	id: true,
+	name: true,
+	discountedPrice: true,
+	image: true,
+}
 
 export const orderItemFields = {
 	id: true,
 	quantity: true,
 	product: {
-		select: {
-			...productFields,
-			quantity: false,
-			categories: false,
-			reviews: false,
-		},
-	},
-	order: {
-		select: {
-			id: true,
-			status: true,
-			description: true,
-			createdAt: true,
-			firstName: true,
-			surName: true,
-			phone: true,
-			city: true,
-			mailroom: true,
-		},
+		select: orderProductFields,
 	},
 }
 
 export const orderFields = {
 	id: true,
 	status: true,
+	description: true,
 	items: {
 		select: orderItemFields,
 	},

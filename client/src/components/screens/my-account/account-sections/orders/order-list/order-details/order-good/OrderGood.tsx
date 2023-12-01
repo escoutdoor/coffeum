@@ -1,9 +1,9 @@
 import s from './order-good.module.scss'
-import { IOrder } from '@/shared/interfaces/order.interface'
+import { IOrderItem } from '@/shared/interfaces/order.interface'
 import Link from 'next/link'
 import Miniature from '@/components/ui/miniature/Miniature'
 
-const OrderGood = ({ item }: { item: IOrder }) => {
+const OrderGood = ({ item }: { item: IOrderItem }) => {
 	return (
 		<div className={s.good}>
 			<Miniature src={`/images/img/products/${item.product.image}`} />

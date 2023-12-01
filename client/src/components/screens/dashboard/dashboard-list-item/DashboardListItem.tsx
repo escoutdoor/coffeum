@@ -1,8 +1,8 @@
-import { FC, PropsWithChildren, useState } from 'react'
 import s from './dashboard-list-item.module.scss'
+import { FC, PropsWithChildren, useState } from 'react'
+import { FaAngleDown } from 'react-icons/fa6'
 import Miniature from '@/components/ui/miniature/Miniature'
 import MiddleTitle from '@/components/ui/heading/middle-title/MiddleTitle'
-import { FaAngleDown } from 'react-icons/fa6'
 
 interface IDashboardListItem {
 	title: string

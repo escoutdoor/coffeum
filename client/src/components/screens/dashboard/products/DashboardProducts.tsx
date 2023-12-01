@@ -13,7 +13,7 @@ const DashboardProducts = ({ products }: { products: IProduct[] }) => {
 	const { query } = useGetFilterParams()
 
 	return (
-		<DashboardLayout title="Products">
+		<DashboardLayout title="Продукти">
 			<div className={s.products}>
 				<SectionTitle
 					style={{

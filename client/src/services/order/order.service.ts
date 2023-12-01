@@ -25,4 +25,11 @@ export const OrderService = {
 			url: `${ORDERS_URL}${orderId}`,
 		})
 	},
+
+	async getAll() {
+		return await instance<IOrder[]>({
+			method: 'GET',
+			url: `${ORDERS_URL}`,
+		})
+	},
 }

@@ -1,9 +1,9 @@
 import s from './order-status.module.scss'
 import { FC } from 'react'
-import { EnumOrderStatus } from '@/shared/interfaces/order.interface'
-import { orderStatus } from '../order-item.constant'
-import Text from '@/components/ui/heading/text/Text'
 import { getTime } from '@/utils/time'
+import { EnumOrderStatus } from '@/shared/interfaces/order.interface'
+import Text from '@/components/ui/heading/text/Text'
+import { orderStatus } from './order-item.constant'
 
 const OrderStatus: FC<{
 	status: EnumOrderStatus

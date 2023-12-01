@@ -1,5 +1,5 @@
 import { IOrder } from '@/shared/interfaces/order.interface'
 
 export const getAddress = (order: IOrder): string => {
-	return `${order.order.city}, ${order.order.mailroom}`
+	return `${order.city}, ${order.mailroom}`
 }

@@ -1,14 +1,25 @@
-import { IProductItem } from './product.interface'
 
-export interface IOrder {
+export interface IOrder extends IRecipient {
+	id: string
+	quantity: number
+	status: EnumOrderStatus
+	description?: string
+	items: IOrderItem[]
+	createdAt: Date
+}
+
+export interface IOrderItem {
 	id: string
 	quantity: number
 	product: IOrderItemProduct
-	order: IOrderData
 }
 
-export interface IOrderItemProduct
-	extends Omit<IProductItem, 'quantity' | 'categories'> {}
+export interface IOrderItemProduct {
+	id: string
+	name: string
+	discountedPrice: number
+	image: string
+}
 
 export interface IRecipient {
 	firstName: string
@@ -18,12 +29,7 @@ export interface IRecipient {
 	mailroom: string
 }
 
-export interface IOrderData extends IRecipient {
-	id: string
-	status: EnumOrderStatus
-	description: string
-	createdAt: Date
-}
+// create order items
 
 export interface ICreateOrder extends IRecipient {
 	status: EnumOrderStatus
@@ -35,6 +41,8 @@ export interface ICreateOrderItem {
 	quantity: number
 	productId: string
 }
+
+// order status
 
 export enum EnumOrderStatus {
 	PENDING = 'PENDING',

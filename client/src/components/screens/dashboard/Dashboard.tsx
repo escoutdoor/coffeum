@@ -4,7 +4,7 @@ import { NextPage } from 'next'
 
 const Dashboard: NextPage = () => {
 	return (
-		<DashboardLayout title="Dashboard">
+		<DashboardLayout title="Панель адміністратора">
 			Home page of Dashboard
 		</DashboardLayout>
 	)
