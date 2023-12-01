@@ -1,4 +1,4 @@
-import productService from '@/services/product/product.service'
+import { ProductService } from '@/services/product/product.service'
 import { IFilterSort } from '@/shared/interfaces/filter-data.interface'
 import { useQuery } from '@tanstack/react-query'
 
@@ -10,7 +10,7 @@ export const useSearchProducts = (data: IFilterSort) => {
 		refetch,
 	} = useQuery({
 		queryKey: ['products'],
-		queryFn: () => productService.getFoundProducts(data),
+		queryFn: () => ProductService.getFoundProducts(data),
 		select: ({ data }) => data,
 	})
 

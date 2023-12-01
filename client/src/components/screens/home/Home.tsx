@@ -9,11 +9,12 @@ import CategoryCarousel from './category-carousel/CategoryCarousel'
 import Catalog from './catalog/Catalog'
 import Slider from './slider/Slider'
 
-import { products } from '@/helpers/products'
 import { catalog } from '@/helpers/catalog'
 import CarouselWithTitle from '@/components/ui/carousel-with-title/CarouselWithTitle'
+import { IProduct } from '@/shared/interfaces/product.interface'
+import { products } from '@/helpers/products'
 
-const Home: NextPage = () => {
+const Home = () => {
 	return (
 		<Layout
 			title="Головна"

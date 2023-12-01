@@ -12,12 +12,12 @@ import {
 import { getString } from '@/utils/array-to-string'
 import { instance } from '@/api/api.interceptor'
 
-class ProductService {
-	private PRODUCTS_URL = '/api/products/'
+const PRODUCTS_URL = '/api/products/'
 
+export const ProductService = {
 	async getAll(type: ProductType, data: IProductFilter) {
 		return await axios.get<IProductResponse>(
-			`${this.PRODUCTS_URL}type/${type}`,
+			`${PRODUCTS_URL}type/${type}`,
 			{
 				params: {
 					limit: data.limit,
@@ -44,25 +44,25 @@ class ProductService {
 				},
 			}
 		)
-	}
+	},
 
 	async getProductById(id: string) {
-		return await axios.get<IProduct>(`${this.PRODUCTS_URL}${id}`)
-	}
+		return await axios.get<IProduct>(`${PRODUCTS_URL}${id}`)
+	},
 
 	async getSimilarProducts(productId: string) {
 		return await axios.get<IProductItem[]>(
-			`${this.PRODUCTS_URL}similar/${productId}`
+			`${PRODUCTS_URL}similar/${productId}`
 		)
-	}
+	},
 
 	async getAllBrands() {
-		return await axios.get(`${this.PRODUCTS_URL}/brands/getAll`)
-	}
+		return await axios.get(`${PRODUCTS_URL}/brands/getAll`)
+	},
 
 	async getProductsByBrand(brand: string, data: IProductFilter) {
 		return await axios.get<IProductResponse>(
-			`${this.PRODUCTS_URL}/byBrand/${brand}`,
+			`${PRODUCTS_URL}/byBrand/${brand}`,
 			{
 				params: {
 					limit: data.limit,
@@ -71,11 +71,11 @@ class ProductService {
 				},
 			}
 		)
-	}
+	},
 
 	async getFoundProducts(data: IFilterSort) {
 		return await axios.get<{ length: number; products: IProduct[] }>(
-			`${this.PRODUCTS_URL}`,
+			`${PRODUCTS_URL}`,
 			{
 				params: {
 					limit: data.limit,
@@ -85,15 +85,15 @@ class ProductService {
 				},
 			}
 		)
-	}
+	},
 
 	async createProduct(data: Omit<IProduct, 'id'>) {
 		return await instance({
 			method: 'POST',
-			url: `${this.PRODUCTS_URL}`,
+			url: `${PRODUCTS_URL}`,
 			data,
 		})
-	}
+	},
 
 	async updateProduct(
 		data: Omit<IProduct, 'id' | 'image'> & {
@@ -103,10 +103,8 @@ class ProductService {
 	) {
 		return await instance({
 			method: 'PUT',
-			url: `${this.PRODUCTS_URL}/${id}`,
+			url: `${PRODUCTS_URL}/${id}`,
 			data,
 		})
-	}
+	},
 }
-
-export default new ProductService()

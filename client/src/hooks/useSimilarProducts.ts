@@ -1,4 +1,4 @@
-import productService from '@/services/product/product.service'
+import { ProductService } from '@/services/product/product.service'
 import { useQuery } from '@tanstack/react-query'
 
 export const useSimilarProducts = (productId: string) => {
@@ -8,7 +8,7 @@ export const useSimilarProducts = (productId: string) => {
 		refetch,
 	} = useQuery(
 		['similar products'],
-		() => productService.getSimilarProducts(productId),
+		() => ProductService.getSimilarProducts(productId),
 		{
 			select: ({ data }) => data,
 			enabled: !!productId,

@@ -19,23 +19,20 @@ export class OrderController {
 
 	@Get('')
 	@Auth('USER')
-	async getAllByUserId(@CurrentUser('id') userId: string) {
-		return this.orderService.getAllByUserId(userId)
+	async getAll(@CurrentUser('id') userId: string) {
+		return this.orderService.getAll(userId)
 	}
 
 	@UsePipes(new ValidationPipe())
 	@Post('')
 	@Auth('USER')
-	async createOrder(
-		@Body() dto: OrderDto,
-		@CurrentUser('id') userId: string
-	) {
-		return this.orderService.createOrder(dto, userId)
+	async create(@Body() dto: OrderDto, @CurrentUser('id') userId: string) {
+		return this.orderService.create(dto, userId)
 	}
 
 	@Delete('/:orderId')
 	@Auth('USER')
-	async cancelOrder(@Param('orderId') orderId: string) {
-		return this.orderService.cancelOrder(orderId)
+	async cancel(@Param('orderId') orderId: string) {
+		return this.orderService.cancel(orderId)
 	}
 }

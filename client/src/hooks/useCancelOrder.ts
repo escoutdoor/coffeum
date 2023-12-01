@@ -1,4 +1,4 @@
-import orderService from '@/services/order/order.service'
+import { OrderService } from '@/services/order/order.service'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 export const useCancelOrder = () => {
@@ -11,7 +11,7 @@ export const useCancelOrder = () => {
 	} = useMutation({
 		mutationKey: ['cancel order'],
 		mutationFn: async (orderId: string) =>
-			orderService.cancelOrder(orderId),
+			OrderService.cancelOrder(orderId),
 		onSuccess: () => {
 			queryClient.invalidateQueries(['get user orders'])
 		},

@@ -1,4 +1,4 @@
-import orderService from '@/services/order/order.service'
+import { OrderService } from '@/services/order/order.service'
 import {
 	EnumOrderStatus,
 	ICreateOrder,
@@ -19,7 +19,7 @@ export const useCreateOrder = () => {
 	} = useMutation({
 		mutationKey: ['create an order'],
 		mutationFn: (data: Omit<ICreateOrder, 'status' | 'items'>) =>
-			orderService.createOrder({
+			OrderService.createOrder({
 				...data,
 				status: EnumOrderStatus.PENDING,
 				items: cart.map(item => ({

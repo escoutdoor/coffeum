@@ -10,7 +10,7 @@ const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 		<li className={s.item}>
 			<Image
 				className={s.avatar}
-				src={review.author.avatarPath}
+				src={`/images/img/avatars/${review.author.avatarPath}`}
 				width={80}
 				height={80}
 				alt={review.author.firstName}

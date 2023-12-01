@@ -16,7 +16,7 @@ export class OrderService {
 		})
 	}
 
-	async getAllByUserId(userId: string) {
+	async getAll(userId: string) {
 		return this.prisma.orderItem.findMany({
 			where: {
 				order: {
@@ -27,7 +27,7 @@ export class OrderService {
 		})
 	}
 
-	async createOrder(dto: OrderDto, userId: string) {
+	async create(dto: OrderDto, userId: string) {
 		return this.prisma.order.create({
 			data: {
 				status: dto.status,
@@ -50,7 +50,7 @@ export class OrderService {
 		})
 	}
 
-	async cancelOrder(orderId: string) {
+	async cancel(orderId: string) {
 		const order = await this.orderById(orderId)
 
 		if (!order) {

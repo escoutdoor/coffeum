@@ -7,7 +7,7 @@ import { PrismaService } from 'src/prisma.service'
 import { UserDto } from './user.dto'
 import { userFields } from './user.object'
 import { EnumSort, IFilterSortDto } from 'src/product/product.dto'
-import { Prisma } from '@prisma/client'
+import { Prisma, Role } from '@prisma/client'
 
 @Injectable()
 export class UserService {
@@ -71,7 +71,7 @@ export class UserService {
 		return user
 	}
 
-	async updateProfile(id: string, dto: UserDto) {
+	async update(id: string, dto: UserDto) {
 		const isSameUser = await this.prisma.user.findUnique({
 			where: {
 				email: dto.email,
@@ -96,6 +96,21 @@ export class UserService {
 						...dto.recipient,
 					},
 				},
+			},
+			select: userFields,
+		})
+	}
+
+	async modify(userId: string, dto: UserDto & { role?: Role }) {
+		const user = await this.getProfileById(userId)
+
+		return await this.prisma.user.update({
+			where: { id: userId },
+			data: {
+				firstName: dto.firstName,
+				surName: dto.surName,
+				avatarPath: dto.avatarPath,
+				role: dto.role,
 			},
 			select: userFields,
 		})

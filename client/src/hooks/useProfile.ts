@@ -1,4 +1,4 @@
-import userService from '@/services/user/user.service'
+import { UserService } from '@/services/user/user.service'
 import { useQuery } from '@tanstack/react-query'
 import { useAuth } from './useAuth'
 
@@ -7,7 +7,7 @@ export const useProfile = () => {
 
 	const { data } = useQuery(
 		['profile', user?.id],
-		() => userService.getProfile(),
+		() => UserService.getProfile(),
 		{
 			select: ({ data }) => data,
 			enabled: !!user,

@@ -1,4 +1,4 @@
-import productService from '@/services/product/product.service'
+import { ProductService } from '@/services/product/product.service'
 import { IProduct } from '@/shared/interfaces/product.interface'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
@@ -19,7 +19,7 @@ export const useUpdateProduct = () => {
 				image?: string
 			}
 			id: string
-		}) => productService.updateProduct(data, id),
+		}) => ProductService.updateProduct(data, id),
 		onSuccess: async () => {
 			await queryClient.invalidateQueries(['products'])
 		},

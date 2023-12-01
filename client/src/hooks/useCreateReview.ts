@@ -7,7 +7,7 @@ export const useCreateReview = (productId: string) => {
 
 	const { mutate: createReview } = useMutation(
 		['create review'],
-		(reviewData: ReviewInfo) => reviewService.createReview(reviewData),
+		(reviewData: ReviewInfo) => reviewService.create(reviewData),
 		{
 			async onSuccess() {
 				queryClient.invalidateQueries(['avg rating', productId])

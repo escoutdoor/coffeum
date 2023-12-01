@@ -17,27 +17,19 @@ export class ReviewController {
 	constructor(private readonly reviewService: ReviewService) {}
 
 	@Get(':productId')
-	async getReviewsByProductId(@Param('productId') productId: string) {
-		return this.reviewService.getReviewsByProductId(productId)
+	async byProductId(@Param('productId') productId: string) {
+		return this.reviewService.byProductId(productId)
 	}
 
 	@Get('getById/:id')
-	async getReviewById(@Param('id') reviewId: string) {
-		return this.reviewService.getReviewById(reviewId)
+	async byId(@Param('id') reviewId: string) {
+		return this.reviewService.byId(reviewId)
 	}
 
 	@UsePipes(new ValidationPipe())
 	@Post()
 	@Auth('USER')
-	async createReview(
-		@CurrentUser('id') userId: string,
-		@Body() dto: ReviewDto
-	) {
-		return this.reviewService.createReview(userId, dto)
-	}
-
-	@Get('avg/:productId')
-	async getAvgByProductId(@Param('productId') productId: string) {
-		return this.reviewService.getAvgByProductId(productId)
+	async create(@CurrentUser('id') userId: string, @Body() dto: ReviewDto) {
+		return this.reviewService.create(userId, dto)
 	}
 }

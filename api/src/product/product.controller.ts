@@ -25,8 +25,8 @@ export class ProductController {
 
 	@Delete(':id')
 	@Auth('ADMIN')
-	async deleteProductById(@Param('id') id: string) {
-		return this.productService.deleteProductById(id)
+	async deleteById(@Param('id') id: string) {
+		return this.productService.deleteById(id)
 	}
 
 	@UsePipes(new ValidationPipe())
@@ -47,39 +47,36 @@ export class ProductController {
 	@UsePipes(new ValidationPipe())
 	@Post()
 	@Auth('ADMIN')
-	async createProduct(@Body() dto: ProductDto) {
-		return this.productService.createProduct(dto)
+	async create(@Body() dto: ProductDto) {
+		return this.productService.create(dto)
 	}
 
 	@Put(':id')
 	@Auth('ADMIN')
-	async updateProductById(
-		@Param('id') productId: string,
-		@Body() dto: ProductDto
-	) {
-		return this.productService.updateProduct(productId, dto)
+	async updateById(@Param('id') productId: string, @Body() dto: ProductDto) {
+		return this.productService.updateById(productId, dto)
 	}
 
 	@Get(':id')
-	async getProductById(@Param('id') id: string) {
-		return this.productService.getProductById(id)
+	async byId(@Param('id') id: string) {
+		return this.productService.byId(id)
 	}
 
 	@Get('similar/:productId')
-	async getSimilarProducts(@Param('productId') productId: string) {
+	async getSimilar(@Param('productId') productId: string) {
 		return this.productService.getSimilar(productId)
 	}
 
 	@Get('/brands/getAll')
-	async getAllBrands() {
-		return this.productService.getAllBrands()
+	async getBrands() {
+		return this.productService.getBrands()
 	}
 
 	@Get('byBrand/:brand')
-	async getProductsByBrand(
+	async getByBrand(
 		@Query() dto: SortingDataDto,
 		@Param('brand') brand: string
 	) {
-		return this.productService.getProductsByBrand(brand, dto)
+		return this.productService.getByBrand(brand, dto)
 	}
 }

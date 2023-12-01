@@ -6,13 +6,13 @@ import { getContentType } from '@/api/api.helper'
 import { IAuthResponse } from '@/store/user/user.interface'
 import { instance } from '@/api/api.interceptor'
 
-export class AuthService {
-	private AUTH_URL = '/api/auth'
+const AUTH_URL = '/api/auth'
 
+export const AuthService = {
 	async register(data: ICreateUserInfo) {
 		const response = await instance<IAuthResponse>({
 			method: 'POST',
-			url: `${this.AUTH_URL}/register`,
+			url: `${AUTH_URL}/register`,
 			data,
 		})
 
@@ -21,12 +21,12 @@ export class AuthService {
 		}
 
 		return response.data
-	}
+	},
 
 	async login(data: ILoginInfo) {
 		const response = await instance<string, { data: IAuthResponse }>({
 			method: 'POST',
-			url: `${this.AUTH_URL}/login`,
+			url: `${AUTH_URL}/login`,
 			data,
 		})
 
@@ -35,13 +35,13 @@ export class AuthService {
 		}
 
 		return response.data
-	}
+	},
 
 	async getNewTokens() {
 		const refreshToken = Cookies.get(EnumTokens.REFRESHTOKEN)
 
 		const response = await axios.post<string, { data: IAuthResponse }>(
-			`${this.AUTH_URL}/login/access-token`,
+			`${AUTH_URL}/login/access-token`,
 			{ refreshToken },
 			{ headers: getContentType() }
 		)
@@ -51,7 +51,5 @@ export class AuthService {
 		}
 
 		return response.data
-	}
+	},
 }
-
-export default new AuthService()

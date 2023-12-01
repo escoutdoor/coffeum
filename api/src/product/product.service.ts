@@ -18,8 +18,8 @@ export class ProductService {
 		private paginationService: PaginationService
 	) {}
 
-	async deleteProductById(id: string) {
-		const product = await this.getProductById(id)
+	async deleteById(id: string) {
+		const product = await this.byId(id)
 
 		await this.prisma.product.delete({
 			where: {
@@ -153,7 +153,7 @@ export class ProductService {
 		}
 	}
 
-	async createProduct(dto: ProductDto) {
+	async create(dto: ProductDto) {
 		return this.prisma.product.create({
 			data: {
 				name: dto.name,
@@ -172,7 +172,7 @@ export class ProductService {
 		})
 	}
 
-	async updateProduct(productId: string, dto: ProductDto) {
+	async updateById(productId: string, dto: ProductDto) {
 		const product = await this.prisma.product.findUnique({
 			where: {
 				id: productId,
@@ -207,7 +207,7 @@ export class ProductService {
 		})
 	}
 
-	async getProductById(id: string) {
+	async byId(id: string) {
 		const product = await this.prisma.product.findUnique({
 			where: {
 				id: id,
@@ -223,7 +223,7 @@ export class ProductService {
 	}
 
 	async getSimilar(id: string) {
-		const product = await this.getProductById(id)
+		const product = await this.byId(id)
 
 		const similar = await this.prisma.product.findMany({
 			where: {
@@ -245,13 +245,13 @@ export class ProductService {
 		return similar
 	}
 
-	getAllBrands() {
+	getBrands() {
 		return this.prisma.product.groupBy({
 			by: 'brand',
 		})
 	}
 
-	async getProductsByBrand(brand: string, dto: SortingDataDto) {
+	async getByBrand(brand: string, dto: SortingDataDto) {
 		const { limit, skip } = this.paginationService.getPagination(dto)
 
 		const products = await this.prisma.product.findMany({

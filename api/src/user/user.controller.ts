@@ -15,6 +15,7 @@ import { UserDto } from './user.dto'
 import { CurrentUser } from 'src/auth/decorators/user.decorator'
 import { Auth } from 'src/auth/decorators/auth.decorator'
 import { IFilterSortDto } from 'src/product/product.dto'
+import { Role } from '@prisma/client'
 
 @Controller('users')
 export class UserController {
@@ -37,8 +38,19 @@ export class UserController {
 	@HttpCode(200)
 	@Put('profile')
 	@Auth('USER')
-	async updateProfile(@CurrentUser('id') id: string, @Body() dto: UserDto) {
-		return await this.userService.updateProfile(id, dto)
+	async update(@CurrentUser('id') id: string, @Body() dto: UserDto) {
+		return await this.userService.update(id, dto)
+	}
+
+	@UsePipes(new ValidationPipe())
+	@HttpCode(200)
+	@Put('modify/:userId')
+	@Auth('ADMIN')
+	async modify(
+		@Param('userId') userId: string,
+		@Body() dto: UserDto & { role?: Role }
+	) {
+		return await this.userService.modify(userId, dto)
 	}
 
 	@HttpCode(200)

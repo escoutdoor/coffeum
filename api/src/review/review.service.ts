@@ -7,7 +7,7 @@ import { reviewFields } from './review.object'
 export class ReviewService {
 	constructor(private prisma: PrismaService) {}
 
-	async getReviewById(reviewId: string) {
+	async byId(reviewId: string) {
 		const review = await this.prisma.review.findUnique({
 			where: {
 				id: reviewId,
@@ -21,7 +21,7 @@ export class ReviewService {
 		return review
 	}
 
-	getReviewsByProductId(productId: string) {
+	async byProductId(productId: string) {
 		return this.prisma.review.findMany({
 			where: {
 				productId,
@@ -30,18 +30,7 @@ export class ReviewService {
 		})
 	}
 
-	async getAvgByProductId(productId: string) {
-		const rating = await this.prisma.review.aggregate({
-			where: { productId },
-			_avg: {
-				rating: true,
-			},
-		})
-
-		return rating._avg.rating
-	}
-
-	createReview(userId: string, dto: ReviewDto) {
+	create(userId: string, dto: ReviewDto) {
 		return this.prisma.review.create({
 			data: {
 				...dto,
