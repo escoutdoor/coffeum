@@ -3,7 +3,6 @@ import { NextPage } from 'next'
 import { IOrder } from '@/shared/interfaces/order.interface'
 import DashboardLayout from '../layout/DashboardLayout'
 import SectionTitle from '@/components/ui/heading/section-title/SectionTitle'
-import DashboardOrderList from './dashboard-order-list/DashboardOrderList'
 
 const DashboardOrders: NextPage<{ orders: IOrder[] }> = ({ orders }) => {
 	return (
@@ -16,8 +15,6 @@ const DashboardOrders: NextPage<{ orders: IOrder[] }> = ({ orders }) => {
 				>
 					Замовлення
 				</SectionTitle>
-
-				<DashboardOrderList orders={orders} />
 			</div>
 		</DashboardLayout>
 	)

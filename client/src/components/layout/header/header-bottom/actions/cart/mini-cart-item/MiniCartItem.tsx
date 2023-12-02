@@ -6,6 +6,8 @@ import Link from 'next/link'
 import RemoveButton from '@/components/ui/remove-button/RemoveButton'
 import Thumbnail from '@/components/ui/thumbnail/Thumbnail'
 import { useActions } from '@/hooks/useActions'
+import ProductLinkTitle from '@/components/ui/heading/product-link-title/ProductLinkTitle'
+import SmallText from '@/components/ui/heading/small-text/SmallText'
 
 interface IMiniCartItem {
 	item: ICartItem
@@ -17,21 +19,23 @@ const MiniCartItem: FC<IMiniCartItem> = ({ item }) => {
 	return (
 		<div className={s.cart__item}>
 			<div className={s.details}>
-				<Link
+				<ProductLinkTitle
 					href={{
 						pathname: '/product/[id]',
 						query: { id: item.product.id },
 					}}
 				>
 					{item.product.name}
-				</Link>
-				<p>
+				</ProductLinkTitle>
+				<SmallText>
 					{item.quantity} × {item.product.discountedPrice} ₴
-				</p>
+				</SmallText>
 			</div>
 			<Thumbnail
 				productId={item.product.id}
-				image={`/images/img/products/${item.product.image ? item.product.image : 'no-image.jpg'}`}
+				image={`/images/img/products/${
+					item.product.image ? item.product.image : 'no-image.jpg'
+				}`}
 				remove={() =>
 					removeFromCart({
 						id: item.id,

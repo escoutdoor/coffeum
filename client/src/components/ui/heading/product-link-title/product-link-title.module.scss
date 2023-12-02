@@ -1,0 +1,15 @@
+.link {
+	color: var(--black);
+	font-weight: 700;
+	font-size: 13px;
+	margin-bottom: 8px;
+	padding-right: 15px;
+	line-height: 20px;
+	max-width: 95%;
+
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

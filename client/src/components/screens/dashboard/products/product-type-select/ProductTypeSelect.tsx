@@ -39,6 +39,12 @@ const ProductTypeSelect: FC<{
 									primary: '#777',
 								},
 							})}
+							styles={{
+								control: (base, state) => ({
+									...base,
+									backgroundColor: 'transparent',
+								}),
+							}}
 						/>
 					</>
 				)}

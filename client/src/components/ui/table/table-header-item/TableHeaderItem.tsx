@@ -1,10 +1,15 @@
+import { TextProps } from '@/shared/interfaces/text.interface'
 import s from './table-header-item.module.scss'
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
+import MiddleTitle from '../../heading/middle-title/MiddleTitle'
 
-const TableHeaderItem: FC<{ title: string }> = ({ title }) => {
+const TableHeaderItem: FC<PropsWithChildren<TextProps>> = ({
+	children,
+	...rest
+}) => {
 	return (
 		<th className={s.item}>
-			<h1 className={s.title}>{title}</h1>
+			<MiddleTitle>{children}</MiddleTitle>
 		</th>
 	)
 }

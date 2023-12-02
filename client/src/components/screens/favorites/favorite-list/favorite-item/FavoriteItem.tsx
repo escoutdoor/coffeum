@@ -10,8 +10,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useActions } from '@/hooks/useActions'
 import { IFavorite } from '@/shared/interfaces/favorite.interface'
 import { getTime } from '@/utils/time'
-import ProductName from '@/components/ui/table/product-name/ProductName'
-
+import ProductLinkTitle from '@/components/ui/heading/product-link-title/ProductLinkTitle'
 const FavoriteItem: FC<{ item: IFavorite }> = ({ item }) => {
 	const { user } = useAuth()
 	const { mutate: toggleFavorite } = useToggleFavorite()
@@ -34,7 +33,14 @@ const FavoriteItem: FC<{ item: IFavorite }> = ({ item }) => {
 								: 'no-image.jpg'
 						}`}
 					/>
-					<ProductName product={item.product} />
+					<ProductLinkTitle
+						href={{
+							pathname: '/product/[id]',
+							query: { id: item.product.id },
+						}}
+					>
+						{item.product.name}
+					</ProductLinkTitle>
 				</div>
 			</td>
 			<td>

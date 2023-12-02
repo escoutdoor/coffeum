@@ -4,6 +4,7 @@ import { getTime } from '@/utils/time'
 import { EnumOrderStatus } from '@/shared/interfaces/order.interface'
 import Text from '@/components/ui/heading/text/Text'
 import { orderStatus } from './order-item.constant'
+import SmallText from '@/components/ui/heading/small-text/SmallText'
 
 const OrderStatus: FC<{
 	status: EnumOrderStatus
@@ -25,7 +26,7 @@ const OrderStatus: FC<{
 				}`}
 			/>
 			<div className={s.text}>
-				<p className={s.time}>{getTime(createdAt)}</p>
+				<SmallText>{getTime(createdAt)}</SmallText>
 				<Text>{orderStatus[status]}</Text>
 			</div>
 		</div>

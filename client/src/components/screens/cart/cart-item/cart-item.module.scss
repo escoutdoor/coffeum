@@ -8,16 +8,6 @@
 		align-items: center;
 		text-align: left;
 		gap: 20px;
-		max-width: 362px;
-
-		> a {
-			width: 80%;
-			> h1 {
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-			}
-		}
 	}
 
 	> td {

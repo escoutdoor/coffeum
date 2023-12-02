@@ -7,6 +7,7 @@ import Miniature from '@/components/ui/miniature/Miniature'
 import { getTotalPrice } from '@/utils/get-total-price'
 import OrderStatus from '../order-status/OrderStatus'
 import OrderDetails from '../order-details/OrderDetails'
+import SmallText from '@/components/ui/heading/small-text/SmallText'
 
 const OrderItem: FC<{ item: IOrder }> = ({ item }) => {
 	const [active, setActive] = useState<boolean>(false)
@@ -21,13 +22,15 @@ const OrderItem: FC<{ item: IOrder }> = ({ item }) => {
 			<div className={s.preview}>
 				<OrderStatus status={item.status} createdAt={item.createdAt} />
 				<div className={s.price}>
-					<p className={s.text}>Сума</p>
+					<SmallText>Сума</SmallText>
 					<Text>{total} ₴</Text>
 				</div>
 				<div className={s.right}>
-					<Miniature
-						src={`/images/img/products/${item.items[0].product.image}`}
-					/>
+					<div className={s.miniatures}>
+						<Miniature
+							src={`/images/img/products/${item.items[0].product.image}`}
+						/>
+					</div>
 					<FaAngleDown />
 				</div>
 			</div>

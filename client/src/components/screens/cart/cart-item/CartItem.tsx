@@ -1,9 +1,9 @@
 import s from './cart-item.module.scss'
 import MiddleTitle from '@/components/ui/heading/middle-title/MiddleTitle'
+import ProductLinkTitle from '@/components/ui/heading/product-link-title/ProductLinkTitle'
 import Text from '@/components/ui/heading/text/Text'
 import QuantityCounter from '@/components/ui/quantity-counter/QuantityCounter'
 import { IQuantityCounterType } from '@/components/ui/quantity-counter/change-quantity.type'
-import ProductName from '@/components/ui/table/product-name/ProductName'
 import Thumbnail from '@/components/ui/thumbnail/Thumbnail'
 import { useActions } from '@/hooks/useActions'
 import ICartItem from '@/shared/interfaces/cart-item.interface'
@@ -31,7 +31,14 @@ const CartItem: FC<ICartItem> = ({ id, product, quantity }) => {
 							product.image ? product.image : 'no-image.jpg'
 						}`}
 					/>
-					<ProductName product={product} />
+					<ProductLinkTitle
+						href={{
+							pathname: '/product/[id]',
+							query: { id: product.id },
+						}}
+					>
+						{product.name}
+					</ProductLinkTitle>
 				</div>
 			</td>
 			<td>
