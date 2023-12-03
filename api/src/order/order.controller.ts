@@ -3,6 +3,7 @@ import {
 	Get,
 	Param,
 	Post,
+	Query,
 	Body,
 	UsePipes,
 	ValidationPipe,
@@ -12,6 +13,7 @@ import { OrderService } from './order.service'
 import { OrderDto } from './order.dto'
 import { CurrentUser } from 'src/auth/decorators/user.decorator'
 import { Auth } from 'src/auth/decorators/auth.decorator'
+import { IFilterSortDto } from 'src/product/product.dto'
 
 @Controller('orders')
 export class OrderController {
@@ -19,8 +21,15 @@ export class OrderController {
 
 	@Get('')
 	@Auth('USER')
-	async getAll(@CurrentUser('id') userId: string) {
-		return this.orderService.getAll(userId)
+	async byUserId(@CurrentUser('id') userId: string) {
+		return this.orderService.byUserId(userId)
+	}
+
+	@UsePipes(new ValidationPipe())
+	@Get('all')
+	@Auth('ADMIN')
+	async getAll(@Query() dto: IFilterSortDto) {
+		return this.orderService.getAll(dto)
 	}
 
 	@UsePipes(new ValidationPipe())

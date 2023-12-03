@@ -14,6 +14,7 @@ export const useCancelOrder = () => {
 			OrderService.cancelOrder(orderId),
 		onSuccess: () => {
 			queryClient.invalidateQueries(['get user orders'])
+			queryClient.invalidateQueries(['orders'])
 		},
 	})
 

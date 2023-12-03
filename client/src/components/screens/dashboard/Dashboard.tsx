@@ -1,3 +1,4 @@
+import SectionTitle from '@/components/ui/heading/section-title/SectionTitle'
 import s from './dashboard.module.scss'
 import DashboardLayout from './layout/DashboardLayout'
 import { NextPage } from 'next'
@@ -5,7 +6,14 @@ import { NextPage } from 'next'
 const Dashboard: NextPage = () => {
 	return (
 		<DashboardLayout title="Панель адміністратора">
-			Home page of Dashboard
+			<SectionTitle
+				style={{
+					textAlign: 'center',
+					marginBottom: '3rem',
+				}}
+			>
+				Панель адміністратора
+			</SectionTitle>
 		</DashboardLayout>
 	)
 }

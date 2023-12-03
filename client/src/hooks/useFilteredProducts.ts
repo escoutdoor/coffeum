@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import { ProductService } from '@/services/product/product.service'
-import { ProductType } from '@/shared/interfaces/product.interface'
+import { EnumProductType } from '@/shared/interfaces/product.interface'
 import { IProductFilter } from '@/shared/interfaces/filter-data.interface'
 
 export const useFilteredProducts = ({
 	type,
 	data,
 }: {
-	type: ProductType
+	type: EnumProductType
 	data: IProductFilter
 }) => {
 	return useQuery(

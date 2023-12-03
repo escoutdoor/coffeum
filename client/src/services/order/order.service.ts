@@ -1,7 +1,8 @@
 import { instance } from '@/api/api.interceptor'
+import { IFilterSort } from '@/shared/interfaces/filter-data.interface'
 import { ICreateOrder, IOrder } from '@/shared/interfaces/order.interface'
 
-const ORDERS_URL = '/api/orders/'
+const ORDERS_URL = 'orders'
 
 export const OrderService = {
 	async getOrders() {
@@ -22,14 +23,15 @@ export const OrderService = {
 	async cancelOrder(orderId: string) {
 		return await instance({
 			method: 'DELETE',
-			url: `${ORDERS_URL}${orderId}`,
+			url: `${ORDERS_URL}/${orderId}`,
 		})
 	},
 
-	async getAll() {
+	async getAll(data: IFilterSort) {
 		return await instance<IOrder[]>({
 			method: 'GET',
-			url: `${ORDERS_URL}`,
+			url: `${ORDERS_URL}/all`,
+			params: data,
 		})
 	},
 }

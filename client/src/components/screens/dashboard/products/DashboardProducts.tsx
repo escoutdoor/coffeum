@@ -18,7 +18,7 @@ const DashboardProducts = ({ products }: { products: IProduct[] }) => {
 				<SectionTitle
 					style={{
 						textAlign: 'center',
-						margin: '3rem 0',
+						marginBottom: '3rem',
 					}}
 				>
 					Створення продукту

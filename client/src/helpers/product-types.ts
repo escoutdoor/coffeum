@@ -1,15 +1,15 @@
-import { ProductType } from '@/shared/interfaces/product.interface'
+import { EnumProductType } from '@/shared/interfaces/product.interface'
 
-export interface IProductTypeOption {
-	readonly value: ProductType
+export interface IEnumProductTypeOption {
+	readonly value: EnumProductType
 	readonly label: string
 }
 
-export const productTypes: readonly IProductTypeOption[] = [
-	{ value: ProductType.COFFEE, label: 'Кава' },
-	{ value: ProductType.TEA, label: 'Чай' },
-	{ value: ProductType.COFFEE_MACHINES, label: 'Кавове обладнання' },
-	{ value: ProductType.MARKDOWN, label: 'Уцінка' },
-	{ value: ProductType.COCOA_CHOCOLATE, label: 'Какао & Шоколад' },
-	{ value: ProductType.ACCESSORIES, label: 'Аксесуари та сервіс' },
+export const EnumProductTypes: readonly IEnumProductTypeOption[] = [
+	{ value: EnumProductType.COFFEE, label: 'Кава' },
+	{ value: EnumProductType.TEA, label: 'Чай' },
+	{ value: EnumProductType.COFFEE_MACHINES, label: 'Кавове обладнання' },
+	{ value: EnumProductType.MARKDOWN, label: 'Уцінка' },
+	{ value: EnumProductType.COCOA_CHOCOLATE, label: 'Какао & Шоколад' },
+	{ value: EnumProductType.ACCESSORIES, label: 'Аксесуари та сервіс' },
 ]

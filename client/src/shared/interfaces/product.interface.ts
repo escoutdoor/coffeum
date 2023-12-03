@@ -26,7 +26,7 @@ export interface IProductItem {
 export interface IProduct extends IProductItem {
 	description: string
 	packing?: string
-	type: ProductType
+	type: EnumProductType
 	country: string
 	composition?: string[]
 }
@@ -36,7 +36,7 @@ export interface IProductResponse {
 	length: number
 }
 
-export enum ProductType {
+export enum EnumProductType {
 	COFFEE = 'coffee',
 	TEA = 'tea',
 	MARKDOWN = 'markdown',

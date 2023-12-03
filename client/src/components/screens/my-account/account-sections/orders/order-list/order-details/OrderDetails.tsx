@@ -1,13 +1,13 @@
 import s from './order-details.module.scss'
 import { FC } from 'react'
+import { useCancelOrder } from '@/hooks/useCancelOrder'
 import { EnumOrderStatus, IOrder } from '@/shared/interfaces/order.interface'
 import { getAddress } from '@/utils/get-address'
 import { getName } from '@/utils/get-name'
 import Text from '@/components/ui/heading/text/Text'
 import MiddleTitle from '@/components/ui/heading/middle-title/MiddleTitle'
 import FormButton from '@/components/ui/form-button/FormButton'
-import { useCancelOrder } from '@/hooks/useCancelOrder'
-import OrderGood from './order-good/OrderGood'
+import OrderGood from '@/components/ui/order-good/OrderGood'
 
 const OrderDetails: FC<{ item: IOrder }> = ({ item }) => {
 	const { cancelOrder, isLoading, error } = useCancelOrder()

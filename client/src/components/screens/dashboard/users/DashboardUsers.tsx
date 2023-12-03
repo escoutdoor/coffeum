@@ -17,7 +17,6 @@ const DashboardUsers = ({ users }: { users: IUser[] }) => {
 				<SectionTitle
 					style={{
 						textAlign: 'center',
-						margin: '3rem 0',
 					}}
 				>
 					Користувачі

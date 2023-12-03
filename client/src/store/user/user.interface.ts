@@ -1,7 +1,7 @@
-import { IUser } from '@/shared/interfaces/user.interface'
+import { IUser, IUserIdEmail } from '@/shared/interfaces/user.interface'
 
 export interface IInitialState {
-	user: IUser | null
+	user: IUserIdEmail | null
 	isLoading: boolean
 }
 

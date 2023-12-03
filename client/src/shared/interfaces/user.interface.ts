@@ -1,15 +1,18 @@
 import { IFavorite } from './favorite.interface'
 import { IRecipient } from './order.interface'
 
-export interface IUser {
-	id: string
-	email: string
+export interface IUser extends IUserIdEmail {
 	avatarPath: string
 	firstName: string
 	surName?: string
 	recipient?: IRecipient
 	favorites: IFavorite[]
 	role: EnumRole
+}
+
+export interface IUserIdEmail {
+	id: string
+	email: string
 }
 
 export enum EnumRole {

@@ -2,7 +2,7 @@ import s from './category.module.scss'
 import { FC } from 'react'
 import {
 	IProductItem,
-	ProductType,
+	EnumProductType,
 } from '@/shared/interfaces/product.interface'
 import { IProductFilter } from '@/shared/interfaces/filter-data.interface'
 import { ISidebarData } from '@/shared/interfaces/sidebar.interface'
@@ -25,7 +25,7 @@ interface ICategory {
 	params: IProductFilter
 	isLoading: boolean
 	sidebarData: ISidebarData
-	productType: ProductType
+	EnumProductType: EnumProductType
 }
 
 const Category: FC<ICategory> = ({
@@ -34,10 +34,10 @@ const Category: FC<ICategory> = ({
 	params,
 	isLoading,
 	sidebarData,
-	productType,
+	EnumProductType,
 }) => {
 	const meta =
-		categoryMeta[camelize(productType) as keyof typeof categoryMeta]
+		categoryMeta[camelize(EnumProductType) as keyof typeof categoryMeta]
 
 	return (
 		<Layout title={meta?.title} description={meta?.description}>
@@ -46,11 +46,11 @@ const Category: FC<ICategory> = ({
 				{sidebarData && <Sidebar data={sidebarData} />}
 				<main>
 					<div className={s.categories}>
-						{productType in productCategories && (
+						{EnumProductType in productCategories && (
 							<ProductCategories
 								categories={
 									productCategories[
-										productType as keyof typeof productCategories
+										EnumProductType as keyof typeof productCategories
 									]
 								}
 								activeCategory={params.category || ''}
@@ -60,7 +60,7 @@ const Category: FC<ICategory> = ({
 					<SortingBar />
 					<ProductList products={products} isLoading={isLoading} />
 					<Pagination length={length} />
-					{productType === 'coffee' &&
+					{EnumProductType === 'coffee' &&
 						coffeeInfo.map(item => (
 							<Section
 								title={item.title}

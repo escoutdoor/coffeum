@@ -1,7 +1,5 @@
-
 export interface IOrder extends IRecipient {
 	id: string
-	quantity: number
 	status: EnumOrderStatus
 	description?: string
 	items: IOrderItem[]

@@ -5,9 +5,9 @@ import { FaAngleDown } from 'react-icons/fa6'
 import Text from '@/components/ui/heading/text/Text'
 import Miniature from '@/components/ui/miniature/Miniature'
 import { getTotalPrice } from '@/utils/get-total-price'
-import OrderStatus from '../order-status/OrderStatus'
 import OrderDetails from '../order-details/OrderDetails'
 import SmallText from '@/components/ui/heading/small-text/SmallText'
+import OrderStatus from '@/components/ui/order-status/OrderStatus'
 
 const OrderItem: FC<{ item: IOrder }> = ({ item }) => {
 	const [active, setActive] = useState<boolean>(false)

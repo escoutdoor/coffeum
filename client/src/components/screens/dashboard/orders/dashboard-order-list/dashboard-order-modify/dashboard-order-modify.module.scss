@@ -1,0 +1,16 @@
+.order__modify {
+	display: flex;
+	width: 100%;
+
+	.right {
+		width: 100%;
+
+		.goods {
+			text-align: left;
+
+			> h1 {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}

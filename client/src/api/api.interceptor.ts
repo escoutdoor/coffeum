@@ -8,6 +8,10 @@ export const instance = axios.create({
 	headers: getContentType(),
 })
 
+export const defaultInstance = axios.create({
+	baseURL: process.env.API_URL,
+})
+
 instance.interceptors.request.use(config => {
 	const accessToken = getAccessToken()
 

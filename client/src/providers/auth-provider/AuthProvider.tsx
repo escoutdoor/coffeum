@@ -4,6 +4,7 @@ import { EnumTokens, getAccessToken } from '@/services/auth/auth.helper'
 import { useRouter } from 'next/router'
 import { FC, PropsWithChildren, useEffect } from 'react'
 import Cookies from 'js-cookie'
+import { useProfile } from '@/hooks/useProfile'
 
 const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	const { user } = useAuth()

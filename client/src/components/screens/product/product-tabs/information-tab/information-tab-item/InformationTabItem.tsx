@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import s from './information-tab-item.module.scss'
 import { FC } from 'react'
-import { ProductType } from '@/shared/interfaces/product.interface'
+import { EnumProductType } from '@/shared/interfaces/product.interface'
 
 interface IInformationTabItem {
 	title: string
 	query: string
 	value: string | string[]
-	type: ProductType
+	type: EnumProductType
 }
 
 const InformationTabItem: FC<IInformationTabItem> = ({

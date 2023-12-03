@@ -1,10 +1,10 @@
 .item {
 	border: 1px solid var(--grayBorder);
 	border-radius: 4px;
-	padding: 20px;
 	margin-bottom: 8px;
 
 	.preview {
+		padding: 20px;
 		display: flex;
 		justify-content: space-between;
 
@@ -53,7 +53,7 @@
 			visibility: visible;
 			height: auto;
 			opacity: 1;
-			padding: 20px 0 20px 24px;
+			padding: 20px 20px 20px 24px;
 		}
 	}
 

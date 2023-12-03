@@ -1,22 +1,27 @@
 .item {
-	width: 90%;
-	margin-bottom: 25px;
-	border-radius: 16px;
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	padding: 20px;
+	border: 1px solid #f1f1f1;
+	margin-bottom: 20px;
+	border-radius: 4px;
+	transition: all 0.3s ease-in-out;
 
 	.preview {
+		padding: 20px 30px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 
-		.left {
+		.details {
+			width: 90%;
 			display: flex;
-			gap: 20px;
-			align-items: center;
+			justify-content: space-between;
+
+			.preview__item {
+				width: 20%;
+				text-align: left;
+			}
 		}
 
-		.icon {
+		> svg {
 			color: var(--gray);
 			transition: all 0.2s var(--transition-cubic);
 		}
@@ -24,19 +29,24 @@
 
 	.dropdown {
 		display: none;
+		padding: 20px 30px 40px;
+	}
+
+	&:hover,
+	&.active {
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		border-color: var(--grayBorder);
 	}
 
 	&.active {
 		.preview {
-			.icon {
+			> svg {
 				transform: rotate(180deg);
 			}
 		}
 
 		.dropdown {
 			display: block;
-
-			padding: 20px 0 20px 14px;
 		}
 	}
 

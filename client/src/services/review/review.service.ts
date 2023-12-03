@@ -1,18 +1,15 @@
-import axios from 'axios'
 import { ReviewInfo } from './review.type'
 import { IReview } from '@/shared/interfaces/product.interface'
 import { instance } from '@/api/api.interceptor'
 
-class ReviewService {
-	private REVIEWS_URL = '/api/reviews/'
+const REVIEWS_URL = 'reviews'
 
+export const ReviewService = {
 	async create(data: ReviewInfo) {
 		return await instance<IReview>({
 			method: 'POST',
-			url: `${this.REVIEWS_URL}`,
+			url: `${REVIEWS_URL}`,
 			data,
 		})
-	}
+	},
 }
-
-export default new ReviewService()

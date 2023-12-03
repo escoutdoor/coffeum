@@ -1,7 +1,7 @@
 import s from './create-product-form.module.scss'
 import { useCreateProduct } from '@/hooks/useCreateProduct'
 import { TProductSchema, productSchema } from '@/lib/schemas/product.schema'
-import { ProductType } from '@/shared/interfaces/product.interface'
+import { EnumProductType } from '@/shared/interfaces/product.interface'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Field from '@/components/ui/field/Field'
@@ -27,7 +27,7 @@ const CreateProductForm = () => {
 		createProduct({
 			...data,
 			image: '',
-			type: data.type as ProductType,
+			type: data.type as EnumProductType,
 			categories: getArrayFromString(data.categories) as string[],
 			composition: getArrayFromString(data.composition),
 		})

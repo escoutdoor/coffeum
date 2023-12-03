@@ -1,7 +1,5 @@
 import s from './home.module.scss'
 import Layout from '@/components/layout/Layout'
-import { useState } from 'react'
-import { NextPage } from 'next'
 import Advantages from './advantages/Advantages'
 import Categories from './categories/Categories'
 
@@ -12,9 +10,16 @@ import Slider from './slider/Slider'
 import { catalog } from '@/helpers/catalog'
 import CarouselWithTitle from '@/components/ui/carousel-with-title/CarouselWithTitle'
 import { IProduct } from '@/shared/interfaces/product.interface'
-import { products } from '@/helpers/products'
 
-const Home = () => {
+const Home = ({
+	products,
+}: {
+	products: {
+		newProducts: IProduct[]
+		popularProducts: IProduct[]
+		markdownProducts: IProduct[]
+	}
+}) => {
 	return (
 		<Layout
 			title="Головна"
@@ -24,17 +29,23 @@ const Home = () => {
 				<Slider />
 				<Advantages />
 				<Categories />
-				<CarouselWithTitle title="знижки" products={products} />
+				<CarouselWithTitle
+					title="знижки"
+					products={products.markdownProducts}
+				/>
 				<div className={s.carousels}>
 					<CategoryCarousel
 						title="популярні товари"
-						products={products}
+						products={products.popularProducts}
 					/>
 					<CategoryCarousel
 						title="нові надходження"
-						products={products}
+						products={products.newProducts}
 					/>
-					<CategoryCarousel title="уцінка" products={products} />
+					<CategoryCarousel
+						title="уцінка"
+						products={products.markdownProducts}
+					/>
 				</div>
 				<div className={s.sections}>
 					<Catalog

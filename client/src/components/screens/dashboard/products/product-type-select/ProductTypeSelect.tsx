@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Select from 'react-select'
 import { Controller, Control } from 'react-hook-form'
-import { productTypes } from '@/helpers/product-types'
+import { EnumProductTypes } from '@/helpers/product-types'
 import { TProductSchema } from '@/lib/schemas/product.schema'
 import s from './product-type-select.module.scss'
 import ErrorText from '@/components/ui/error-text/ErrorText'
@@ -24,11 +24,11 @@ const ProductTypeSelect: FC<{
 						<Select
 							{...field}
 							className={s.select}
-							value={productTypes.find(
+							value={EnumProductTypes.find(
 								p => p.value === field.value
 							)}
 							onChange={e => field.onChange(e?.value)}
-							options={productTypes}
+							options={EnumProductTypes}
 							placeholder="Тип продукту"
 							theme={theme => ({
 								...theme,

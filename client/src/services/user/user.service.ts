@@ -3,7 +3,7 @@ import { IFilterSort } from '@/shared/interfaces/filter-data.interface'
 import { IProfileData, IUser } from '@/shared/interfaces/user.interface'
 import { TAdminModifyUser } from '@/lib/schemas/admin-modify-user.schema'
 
-const USERS_URL = '/api/users'
+const USERS_URL = 'users'
 
 export const UserService = {
 	async getProfile() {
