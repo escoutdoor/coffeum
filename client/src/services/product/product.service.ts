@@ -16,35 +16,6 @@ const PRODUCTS_URL = 'products'
 
 export const ProductService = {
 	async getAll(type: EnumProductType, data: IProductFilter) {
-		// return await defaultInstance<IProductResponse>(
-		// 	`${PRODUCTS_URL}/type/${type}`,
-		// 	{
-		// 		params: {
-		// 	limit: data.limit,
-		// 	page: data.page,
-		// 	minPrice: data.minPrice,
-		// 	maxPrice: data.maxPrice,
-		// 	sortBy: data.sortBy,
-		// 	...(data.category && { category: data.category }),
-		// 	...(data.brands?.length && {
-		// 		brands: getString(data.brands),
-		// 	}),
-		// 	...(data.countries?.length && {
-		// 		countries: getString(data.countries),
-		// 	}),
-		// 	...(data.availability?.length && {
-		// 		availability: getString(data.availability),
-		// 	}),
-		// 	...(data.composition?.length && {
-		// 		composition: getString(data.composition),
-		// 	}),
-		// 	...(data.packing?.length && {
-		// 		packing: getString(data.packing),
-		// 	}),
-		// },
-		// 	}
-		// )
-
 		return await defaultInstance<IProductResponse>({
 			method: 'GET',
 			url: `${PRODUCTS_URL}/type/${type}`,
@@ -75,44 +46,49 @@ export const ProductService = {
 	},
 
 	async getProductById(id: string) {
-		return await defaultInstance<IProduct>(`${PRODUCTS_URL}/${id}`)
+		return await defaultInstance<IProduct>({
+			method: 'GET',
+			url: `${PRODUCTS_URL}/${id}`,
+		})
 	},
 
 	async getSimilarProducts(productId: string) {
-		return await defaultInstance<IProductItem[]>(
-			`${PRODUCTS_URL}/similar/${productId}`
-		)
+		return await defaultInstance<IProductItem[]>({
+			method: 'GET',
+			url: `${PRODUCTS_URL}/similar/${productId}`,
+		})
 	},
 
 	async getAllBrands() {
-		return await defaultInstance(`${PRODUCTS_URL}/brands/getAll`)
+		return await instance({
+			method: 'GET',
+			url: `${PRODUCTS_URL}/brands/getAll`,
+		})
 	},
 
 	async getProductsByBrand(brand: string, data: IProductFilter) {
-		return await defaultInstance<IProductResponse>(
-			`${PRODUCTS_URL}/byBrand/${brand}`,
-			{
-				params: {
-					limit: data.limit,
-					page: data.page,
-					sortBy: data.sortBy,
-				},
-			}
-		)
+		return await defaultInstance<IProductResponse>({
+			method: 'GET',
+			url: `${PRODUCTS_URL}/byBrand/${brand}`,
+			params: {
+				limit: data.limit,
+				page: data.page,
+				sortBy: data.sortBy,
+			},
+		})
 	},
 
 	async getFoundProducts(data: IFilterSort) {
-		return await defaultInstance<{ length: number; products: IProduct[] }>(
-			`${PRODUCTS_URL}`,
-			{
-				params: {
-					limit: data.limit,
-					page: data.page,
-					sortBy: data.sortBy,
-					searchTerm: data.searchTerm,
-				},
-			}
-		)
+		return await defaultInstance<{ length: number; products: IProduct[] }>({
+			method: 'GET',
+			url: `${PRODUCTS_URL}`,
+			params: {
+				limit: data.limit,
+				page: data.page,
+				sortBy: data.sortBy,
+				searchTerm: data.searchTerm,
+			},
+		})
 	},
 
 	async createProduct(data: Omit<IProduct, 'id'>) {
