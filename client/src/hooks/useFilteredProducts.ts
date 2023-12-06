@@ -10,12 +10,10 @@ export const useFilteredProducts = ({
 	type: EnumProductType
 	data: IProductFilter
 }) => {
-	return useQuery(
-		['filtered products'],
-		() => ProductService.getAll(type, data),
-		{
-			select: ({ data }) => data,
-			enabled: !!type && !!data,
-		}
-	)
+	return useQuery({
+		queryKey: ['filtered products'],
+		queryFn: () => ProductService.getAll(type, data),
+		select: ({ data }) => data,
+		enabled: !!type && !!data,
+	})
 }

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import {
 	IProduct,
-	IProductItem,
 	IProductResponse,
 	EnumProductType,
 } from '@/shared/interfaces/product.interface'
@@ -53,7 +52,7 @@ export const ProductService = {
 	},
 
 	async getSimilarProducts(productId: string) {
-		return await defaultInstance<IProductItem[]>({
+		return await defaultInstance<IProduct[]>({
 			method: 'GET',
 			url: `${PRODUCTS_URL}/similar/${productId}`,
 		})

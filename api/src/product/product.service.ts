@@ -183,8 +183,6 @@ export class ProductService {
 			throw new NotFoundException('Product not found')
 		}
 
-		console.log(dto.composition)
-
 		return await this.prisma.product.update({
 			where: {
 				id: productId,

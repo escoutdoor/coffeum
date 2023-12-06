@@ -17,7 +17,7 @@ export default function CategoryPage() {
 
 	const params = useGetFilterParams(sidebar)
 
-	const { isLoading, data, refetch } = useFilteredProducts({
+	const { isLoading, data, refetch, isError } = useFilteredProducts({
 		type: categoryId as EnumProductType,
 		data: params,
 	})

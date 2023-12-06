@@ -27,6 +27,6 @@ export const saveToStorage = (data: IAuthResponse) => {
 }
 
 export enum EnumTokens {
-	ACCESSTOKEN = 'accessToken',
-	REFRESHTOKEN = 'refreshToken',
+	ACCESSTOKEN = 'access_token',
+	REFRESHTOKEN = 'refresh_token',
 }

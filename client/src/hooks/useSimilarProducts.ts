@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 export const useSimilarProducts = (productId: string) => {
 	const {
-		data: products,
+		data: similarProducts,
 		isLoading,
 		refetch,
 	} = useQuery(
@@ -16,7 +16,7 @@ export const useSimilarProducts = (productId: string) => {
 	)
 
 	return {
-		products,
+		similarProducts,
 		isLoading,
 		refetch,
 	}

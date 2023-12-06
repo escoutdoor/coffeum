@@ -4,8 +4,11 @@ import AccountNavigationBox from './account-navigation-box/AccountNavigationBox'
 import { navigationProfile } from '@/helpers/navigation-profile'
 import { useActions } from '@/hooks/useActions'
 import { RxExit } from 'react-icons/rx'
+import { useProfile } from '@/hooks/useProfile'
+import { RiAdminLine } from 'react-icons/ri'
 
 const ProfileNavigationList: FC = () => {
+	const { isAdmin } = useProfile()
 	const { logout } = useActions()
 
 	return (
@@ -24,6 +27,13 @@ const ProfileNavigationList: FC = () => {
 				Icon={RxExit}
 				onClick={logout}
 			/>
+			{isAdmin && (
+				<AccountNavigationBox
+					title={'Панель адміністратора'}
+					Icon={RiAdminLine}
+					href="/dashboard"
+				/>
+			)}
 		</ul>
 	)
 }

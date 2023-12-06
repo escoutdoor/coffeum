@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import s from './loading.module.scss'
 
-const Loading = () => {
+const Loading = ({ full }: { full?: boolean }) => {
 	return (
-		<div className={s.loading}>
+		<div className={full ? `${s.loading} ${s.full}` : s.loading}>
 			<Image
 				src={'/images/loading.gif'}
 				width={0}
