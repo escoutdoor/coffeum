@@ -6,9 +6,12 @@ import {
 import { useMutation } from '@tanstack/react-query'
 import { useActions } from './useActions'
 import { useCart } from './useCart'
+import { useRouter } from 'next/navigation'
 
 export const useCreateOrder = () => {
 	const { resetCart } = useActions()
+
+	const { replace } = useRouter()
 
 	const { cart } = useCart()
 
@@ -29,6 +32,7 @@ export const useCreateOrder = () => {
 			}),
 		onSuccess: () => {
 			resetCart()
+			replace('/success')
 		},
 	})
 

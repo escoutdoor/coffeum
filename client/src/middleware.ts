@@ -13,7 +13,11 @@ export function middleware(request: NextRequest) {
 	const isPrivateRoute = privateRoutes.some(route => url.includes(route))
 	const isAdminRoute = url.includes('/dashboard')
 
-	if ((!token && isPrivateRoute) || (isAdminRoute && !isAdmin)) {
+	if (isAdminRoute && !isAdmin) {
+		return NextResponse.redirect(new URL('/403', url))
+	}
+
+	if (!token && isPrivateRoute) {
 		return NextResponse.redirect(new URL('/my-account', url))
 	}
 }

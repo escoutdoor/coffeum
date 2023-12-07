@@ -1,25 +1,25 @@
-import s from './not-found.module.scss'
+import s from './success.module.scss'
+import { NextPage } from 'next'
 import Layout from '@/components/layout/Layout'
 import PageHeader from '@/components/ui/page-header/PageHeader'
-import { NextPage } from 'next'
 import Image from 'next/image'
 import MiddleTitle from '@/components/ui/heading/middle-title/MiddleTitle'
-import { useRouter } from 'next/navigation'
 import DarkButton from '@/components/ui/dark-button/DarkButton'
+import { useRouter } from 'next/navigation'
 
-const NotFound: NextPage = () => {
+const Success: NextPage = () => {
 	const { push } = useRouter()
 
 	return (
-		<Layout title="Сторінку не знайдено">
-			<PageHeader title="Сторінку не знайдено" />
+		<Layout title="Успіх">
+			<PageHeader title="Успіх" />
 			<div className={s.content}>
 				<Image
-					src={'/images/img/404.png'}
+					src={`/images/img/success.png`}
 					width={0}
 					height={0}
 					sizes="100vw"
-					alt="page not found image"
+					alt="success.png"
 					className={s.image}
 				/>
 
@@ -27,10 +27,10 @@ const NotFound: NextPage = () => {
 					Повернутись до покупок
 				</DarkButton>
 
-				<MiddleTitle>На жаль, такої сторінки не існує</MiddleTitle>
+				<MiddleTitle>Дякуємо, що купуєте товари у нас</MiddleTitle>
 			</div>
 		</Layout>
 	)
 }
 
-export default NotFound
+export default Success
