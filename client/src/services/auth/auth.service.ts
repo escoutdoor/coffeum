@@ -38,7 +38,7 @@ export const AuthService = {
 	},
 
 	async getNewTokens() {
-		const refreshToken = Cookies.get(EnumTokens.REFRESHTOKEN)
+		const refreshToken = Cookies.get(EnumTokens.REFRESH_TOKEN)
 
 		const response = await defaultInstance<string, { data: IAuthResponse }>(
 			{

@@ -1,15 +1,23 @@
 import { EnumTokens } from '@/services/auth/auth.helper'
 import { NextRequest, NextResponse } from 'next/server'
-import { useProfile } from './hooks/useProfile'
 
 const privateRoutes = ['/dashboard', '/cart']
 
-export default function middleware(request: NextRequest) {
-	const verify = request.cookies.get(EnumTokens.ACCESSTOKEN)
+export function middleware(request: NextRequest) {
+	const token = request.cookies.get(EnumTokens.ACCESS_TOKEN)
+
+	const isAdmin = request.cookies.get('isAdmin')
 
 	const url = request.url
 
-	if (!verify && privateRoutes.some(route => url.includes(route))) {
+	const isPrivateRoute = privateRoutes.some(route => url.includes(route))
+	const isAdminRoute = url.includes('/dashboard')
+
+	if ((!token && isPrivateRoute) || (isAdminRoute && !isAdmin)) {
 		return NextResponse.redirect(new URL('/my-account', url))
 	}
+}
+
+export const config = {
+	matcher: ['/cart', '/dashboard/:path*'],
 }

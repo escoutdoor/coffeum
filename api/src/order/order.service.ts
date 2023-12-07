@@ -115,6 +115,18 @@ export class OrderService {
 								mode: 'insensitive',
 							},
 						},
+						{
+							description: {
+								contains: dto.searchTerm,
+								mode: 'insensitive',
+							},
+						},
+						{
+							id: {
+								contains: dto.searchTerm,
+								mode: 'insensitive',
+							},
+						},
 					],
 			  }
 			: {}

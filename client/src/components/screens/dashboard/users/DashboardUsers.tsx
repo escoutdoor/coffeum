@@ -32,7 +32,7 @@ const DashboardUsers = ({ users }: { users: IUser[] }) => {
 						})
 					}
 					style={{
-						marginBottom: '3rem',
+						margin: '3rem 0',
 					}}
 				/>
 
