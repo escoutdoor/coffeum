@@ -127,6 +127,18 @@ export class OrderService {
 								mode: 'insensitive',
 							},
 						},
+						{
+							items: {
+								some: {
+									product: {
+										name: {
+											contains: dto.searchTerm,
+											mode: 'insensitive',
+										},
+									},
+								},
+							},
+						},
 					],
 			  }
 			: {}
