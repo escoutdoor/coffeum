@@ -34,8 +34,7 @@ export class OrderService {
 	async create(dto: OrderDto, userId: string) {
 		return this.prisma.order.create({
 			data: {
-				status: dto.status,
-				description: dto.description,
+				...dto,
 				user: {
 					connect: {
 						id: userId,
@@ -44,11 +43,6 @@ export class OrderService {
 				items: {
 					create: dto.items,
 				},
-				firstName: dto.firstName,
-				surName: dto.surName,
-				phone: dto.phone,
-				city: dto.city,
-				mailroom: dto.mailroom,
 			},
 			select: orderFields,
 		})

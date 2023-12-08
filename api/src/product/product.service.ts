@@ -155,20 +155,7 @@ export class ProductService {
 
 	async create(dto: ProductDto) {
 		return this.prisma.product.create({
-			data: {
-				name: dto.name,
-				description: dto.description,
-				type: dto.type,
-				originalPrice: dto.originalPrice,
-				discountedPrice: dto.discountedPrice,
-				country: dto.country,
-				packing: dto.packing,
-				brand: dto.brand,
-				quantity: dto.quantity,
-				categories: dto.categories,
-				composition: dto.composition,
-				image: dto.image,
-			},
+			data: dto,
 		})
 	}
 
@@ -188,18 +175,8 @@ export class ProductService {
 				id: productId,
 			},
 			data: {
-				name: dto.name,
-				description: dto.description,
-				type: dto.type,
-				originalPrice: dto.originalPrice,
-				discountedPrice: dto.discountedPrice,
-				country: dto.country,
-				packing: dto.packing,
-				brand: dto.brand,
-				quantity: dto.quantity,
-				categories: dto.categories,
+				...dto,
 				composition: dto.composition || [],
-				image: dto.image,
 			},
 			select: productFields,
 		})

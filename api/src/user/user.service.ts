@@ -87,10 +87,7 @@ export class UserService {
 		return await this.prisma.user.update({
 			where: { id },
 			data: {
-				firstName: dto.firstName,
-				surName: dto.surName,
-				email: dto.email,
-				avatarPath: dto.avatarPath,
+				...dto,
 				recipient: {
 					[user.recipient ? 'update' : 'create']: {
 						...dto.recipient,
