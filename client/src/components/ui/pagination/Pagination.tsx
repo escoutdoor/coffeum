@@ -21,6 +21,7 @@ const Pagination: FC<{ length: number }> = ({ length }) => {
 
 				<Select
 					id="pagination-select"
+					noOptionsMessage={() => 'Немає варіантів'}
 					instanceId={'pagination-select'}
 					className={s.count}
 					defaultValue={limitOptions[0]}

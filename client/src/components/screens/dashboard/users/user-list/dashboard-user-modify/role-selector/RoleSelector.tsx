@@ -23,6 +23,7 @@ const RoleSelector: FC<{
 					<>
 						<Select
 							{...field}
+							noOptionsMessage={() => 'Таких ролей немає'}
 							className={s.select}
 							value={roleOptions.find(
 								p => p.value === field.value

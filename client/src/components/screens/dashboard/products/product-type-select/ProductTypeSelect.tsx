@@ -23,6 +23,7 @@ const ProductTypeSelect: FC<{
 					<>
 						<Select
 							{...field}
+							noOptionsMessage={() => 'Немає варіантів'}
 							className={s.select}
 							value={EnumProductTypes.find(
 								p => p.value === field.value

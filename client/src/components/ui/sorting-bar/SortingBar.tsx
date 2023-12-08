@@ -18,6 +18,7 @@ const SortingBar: FC = () => {
 				<p className={s.label}>Сортувати по:</p>
 				<Select
 					id="sorting-select"
+					noOptionsMessage={() => 'Немає варіантів'}
 					instanceId="sorting-select"
 					className={s.sorting__select}
 					options={sortingOptions}
@@ -49,6 +50,7 @@ const SortingBar: FC = () => {
 				<Select
 					id="limit-select"
 					instanceId="limit-select"
+					noOptionsMessage={() => 'Немає варіантів'}
 					className={s.count}
 					options={limitOptions}
 					defaultValue={limitOptions[0]}
