@@ -1,5 +1,5 @@
 .search {
-	flex: 1;
+	width: 100%;
 	display: flex;
 	padding-left: 10px;
 	position: relative;
@@ -27,4 +27,11 @@
 
 .icon {
 	color: var(--gray);
+}
+
+@media screen and (max-width: 1200px) {
+	.search {
+		width: 70%;
+		margin: 0 10%;
+	}
 }

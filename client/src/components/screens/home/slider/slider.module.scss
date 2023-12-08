@@ -1,10 +1,17 @@
 .block {
 	max-width: 852px;
 	margin-left: 266px;
-}
 
-.swiper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	.swiper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.image {
+			width: 100%;
+			height: auto;
+			min-height: 415px;
+			object-fit: fill;
+		}
+	}
 }

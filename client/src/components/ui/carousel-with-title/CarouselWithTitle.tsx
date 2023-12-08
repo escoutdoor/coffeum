@@ -13,7 +13,23 @@ const CarouselWithTitle: FC<ICarousel> = ({ title, products }) => {
 			<UpperCaseTitle>{title}</UpperCaseTitle>
 			<div className={s.slider}>
 				<Swiper
+					spaceBetween={20}
 					slidesPerView={4}
+					breakpoints={{
+						320: {
+							slidesPerView: 1,
+						},
+						768: {
+							slidesPerView: 2,
+						},
+						1024: {
+							slidesPerView: 3,
+						},
+						1200: {
+							slidesPerView: 4,
+						},
+					}}
+					loop={true}
 					modules={[Pagination, Navigation]}
 					className={s.swiper}
 				>

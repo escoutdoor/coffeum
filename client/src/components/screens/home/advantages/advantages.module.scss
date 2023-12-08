@@ -8,11 +8,12 @@
 }
 
 .block__item {
+	flex: 1;
 	display: flex;
 	align-items: center;
 	gap: 8px;
 	margin: 12px 0;
-	padding: 12px 5px;
+	padding: 12px;
 
 	> svg {
 		font-size: 35px;
@@ -30,4 +31,12 @@
 	line-height: 16px;
 	max-width: 300px;
 	color: var(--gray);
+}
+
+@media screen and (max-width: 1200px) {
+	.block__item {
+		flex-direction: column;
+		text-align: center;
+		padding: 10px 15px;
+	}
 }

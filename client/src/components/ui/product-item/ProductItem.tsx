@@ -36,6 +36,7 @@ const ProductItem: FC<{ item: IProductItem; view?: string }> = ({
 					width={250}
 					height={267}
 					alt="product_image"
+					className={s.image}
 				/>
 			</Link>
 			<div className={s.details}>

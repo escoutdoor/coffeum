@@ -20,10 +20,12 @@ const Slider: FC = () => {
 						<Link href={item.link}>
 							<Image
 								src={`/images/img/home/slider/${item.image}`}
-								width={852}
+								width={0}
 								priority
-								height={520}
+								height={0}
+								sizes="100vw"
 								alt="image"
+								className={s.image}
 							/>
 						</Link>
 					</SwiperSlide>

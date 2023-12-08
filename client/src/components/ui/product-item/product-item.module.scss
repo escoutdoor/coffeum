@@ -8,19 +8,22 @@
 	max-width: 260px;
 	transition: all 0.2s var(--transition-cubic);
 
-	> a img {
+	> a {
 		transition: all 0.2s var(--transition-cubic);
+	}
+
+	.image {
 		margin-bottom: 16px;
-		width: auto;
 		height: auto;
-		max-width: 267px;
+		width: 267px;
 		max-height: 267px;
+		object-fit: contain;
 	}
 
 	&:hover {
 		color: var(--brown);
 
-		> a img {
+		> a {
 			transform: scale(1.01);
 			box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 		}
@@ -133,4 +136,7 @@
 		border-color: var(--brown);
 		color: #fff;
 	}
+}
+
+@media screen and (max-width: 1024px) {
 }

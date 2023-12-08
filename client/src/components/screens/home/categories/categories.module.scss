@@ -1,6 +1,7 @@
 .categories {
 	margin-bottom: 20px;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
+	gap: 20px;
 	flex-wrap: wrap;
 }
