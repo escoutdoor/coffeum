@@ -1,23 +1,21 @@
 import Layout from '@/components/layout/Layout'
 import PageHeader from '@/components/ui/page-header/PageHeader'
-import { promotions } from '@/helpers/promotions'
 import { NextPage } from 'next'
 import PromotionItem from './promotion-item/PromotionItem'
+import { IPromotionItem } from '@/interfaces/promotion-item.interface'
 
-const Promotions: NextPage = () => {
+const Promotions: NextPage<{ promotions: IPromotionItem[] }> = ({
+	promotions,
+}) => {
 	return (
-		<Layout title="Акції" description="Завжди в курсі акцій! Вибирайте найкращі пропозиції та знижки.">
+		<Layout
+			title="Акції"
+			description="Завжди в курсі акцій! Вибирайте найкращі пропозиції та знижки."
+		>
 			<PageHeader title="Акції" />
 			<main>
-				{promotions.map(promotion => (
-					<PromotionItem
-						key={promotion.id}
-						id={promotion.id}
-						title={promotion.title}
-						image={`/images/img/promotions/${promotion.image}`}
-						date={promotion.date}
-						description={promotion.description}
-					/>
+				{promotions?.map(item => (
+					<PromotionItem key={item.id} item={item} />
 				))}
 			</main>
 		</Layout>

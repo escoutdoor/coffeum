@@ -9,12 +9,10 @@ const DashboardNavigationItem = ({ item }: { item: IDashboardRoute }) => {
 	return (
 		<li
 			className={
-				pathname === `/dashboard${item.href}`
-					? `${s.item} ${s.active}`
-					: s.item
+				pathname === `${item.href}` ? `${s.item} ${s.active}` : s.item
 			}
 		>
-			<Link href={`/dashboard${item.href}`}>
+			<Link href={item.href}>
 				<item.Icon className={s.icon} />
 				<span className={s.title}>{item.title}</span>
 			</Link>

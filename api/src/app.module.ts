@@ -8,6 +8,7 @@ import { PaginationModule } from './pagination/pagination.module'
 import { AuthModule } from './auth/auth.module'
 import { ConfigModule } from '@nestjs/config'
 import { OrderModule } from './order/order.module'
+import { PromotionModule } from './promotion/promotion.module'
 
 @Module({
 	imports: [
@@ -18,6 +19,7 @@ import { OrderModule } from './order/order.module'
 		PaginationModule,
 		AuthModule,
 		OrderModule,
+		PromotionModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],

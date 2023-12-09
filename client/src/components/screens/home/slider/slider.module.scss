@@ -11,7 +11,8 @@
 			width: 100%;
 			height: auto;
 			min-height: 415px;
-			object-fit: fill;
+			max-height: 445px;
+			object-fit: contain;
 		}
 	}
 }

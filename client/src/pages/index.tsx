@@ -1,6 +1,8 @@
 import Home from '@/components/screens/home/Home'
+import { IPromotionItem } from '@/interfaces/promotion-item.interface'
 import { EnumSort } from '@/interfaces/sort.interface'
 import { ProductService } from '@/services/product/product.service'
+import { PromotionService } from '@/services/promotion/promotion.service'
 import {
 	IProduct,
 	EnumProductType,
@@ -9,14 +11,16 @@ import { GetStaticProps } from 'next'
 
 export default function HomePage({
 	products,
+	promotions,
 }: {
 	products: {
 		newProducts: IProduct[]
 		popularProducts: IProduct[]
 		markdownProducts: IProduct[]
 	}
+	promotions: IPromotionItem[]
 }) {
-	return <Home products={products} />
+	return <Home products={products} promotions={promotions} />
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -46,6 +50,8 @@ export const getStaticProps: GetStaticProps = async () => {
 		maxPrice: 10000,
 	})
 
+	const { data: promotions } = await PromotionService.getAll()
+
 	return {
 		props: {
 			products: {
@@ -53,6 +59,7 @@ export const getStaticProps: GetStaticProps = async () => {
 				popularProducts,
 				markdownProducts,
 			},
+			promotions: promotions,
 		},
 		revalidate: 86400,
 	}

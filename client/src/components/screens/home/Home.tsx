@@ -10,15 +10,18 @@ import Slider from './slider/Slider'
 import { catalog } from '@/helpers/catalog'
 import CarouselWithTitle from '@/components/ui/carousel-with-title/CarouselWithTitle'
 import { IProduct } from '@/shared/interfaces/product.interface'
+import { IPromotionItem } from '@/interfaces/promotion-item.interface'
 
 const Home = ({
 	products,
+	promotions,
 }: {
 	products: {
 		newProducts: IProduct[]
 		popularProducts: IProduct[]
 		markdownProducts: IProduct[]
 	}
+	promotions: IPromotionItem[]
 }) => {
 	return (
 		<Layout
@@ -26,7 +29,7 @@ const Home = ({
 			description="Захоплюючий світ кави та незамінні аксесуари для справжніх поціновувачів. "
 		>
 			<div className={s.home}>
-				<Slider />
+				<Slider promotions={promotions} />
 				<Advantages />
 				<Categories />
 				<CarouselWithTitle

@@ -84,6 +84,16 @@ model Product {
   orderItems      OrderItem[] 
 }
 
+model Promotion {
+  id            String @id @default(cuid())
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  name          String @unique
+  imagePath     String @default("no-image-discount.jpg") @map("image_path")
+  description   String
+}
+
 model Favorite {
   id          String @id @default(cuid())
   createdAt   DateTime @default(now()) @map("created_at")
@@ -130,6 +140,7 @@ model OrderItem {
   productId   String? @map("product_id")
   product     Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
+
 
 enum EnumOrderStatus {
   PENDING

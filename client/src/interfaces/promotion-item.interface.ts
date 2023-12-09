@@ -1,7 +1,7 @@
 export interface IPromotionItem {
-	id: number
-	title: string
-	image: string
-	date: Date
+	id: string
+	name: string
+	imagePath: string
 	description: string
+	createdAt: Date
 }
