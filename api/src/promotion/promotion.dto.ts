@@ -3,7 +3,7 @@ import { IsOptional, IsString, MinLength } from 'class-validator'
 export class PromotionDto {
 	@IsString()
 	@MinLength(3, {
-		message: 'Мінімальна довжина назви знакціїижки 3 символи',
+		message: 'Мінімальна довжина назви акції 3 символи',
 	})
 	name: string
 
@@ -32,7 +32,7 @@ export class UpdatePromotionDto {
 	@IsOptional()
 	@IsString()
 	@MinLength(3, {
-		message: 'Мінімальна довжина опису знижки 3 символи',
+		message: 'Мінімальна довжина опису акції 3 символи',
 	})
 	description: string
 }
